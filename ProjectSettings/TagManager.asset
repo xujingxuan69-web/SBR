@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - Horse
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Ground
+  - 
+  - Obstacle
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Character
+    uniqueID: 539244399
+    locked: 0
+  - name: Obstacle
+    uniqueID: 3532551967
+    locked: 0
+  - name: Ground
+    uniqueID: 3254727661
+    locked: 0
+  - name: Background
+    uniqueID: 571232545
+    locked: 0
