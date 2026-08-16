@@ -24,6 +24,7 @@ public class Horse : Entity
 
     private float _slopeAngle = 0f;
 
+
     protected override void Awake()
     {
         base.Awake();

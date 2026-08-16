@@ -103,6 +103,11 @@ public class Entity : MonoBehaviour
         verticalSpeed += Physics.gravity.y * Time.fixedDeltaTime;
         verticalSpeed = Mathf.Max(verticalSpeed, -30f);
     }
+
+    public virtual void SetVerticalSpeed()
+    {
+        verticalSpeed = jumpForce;
+    }
     #endregion
 
     public virtual void Turn(float horizontalInput)

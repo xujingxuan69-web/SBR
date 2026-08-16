@@ -11,6 +11,7 @@ public class HorseJumpState : HorseAirState
     public override void Enter()
     {
         base.Enter();
+        player.SetVerticalSpeed();
     }
 
     public override void Exit()

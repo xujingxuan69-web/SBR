@@ -34,6 +34,12 @@ public class HorseGroundState : EntityState<Horse>
             Debug.Log("Change To FallState");
             stateMachine.ChangeState(player.fallState);
         }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            stateMachine.ChangeState(player.jumpState);
+            return;
+        }
     }
 
     private void HandleMovement()
