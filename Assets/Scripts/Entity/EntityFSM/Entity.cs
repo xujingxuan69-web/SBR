@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    public ulong playerId;
+
+
     #region Inspector
     [Header("Movement Info")]
     [SerializeField] protected float maxTurnSpeed = 150f;

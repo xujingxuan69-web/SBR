@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class Horse : Entity
 {
+    #region State
     public EntityStateMachine<Horse> stateMachine { get; private set; }
 
     public HorseGroundState groundState { get; private set; }
     public HorseJumpState jumpState { get; private set; }
     public HorseFallState fallState { get; private set; }
-
+    #endregion
+    #region Obstacle
     public event System.Action onObstacleInFront;
     public event System.Action onObstacleClear;
-
-    [field: SerializeField] public float maxSlopeSlideSpeed { get; protected set; } = 15f;
-    [field: SerializeField] public float slopeSlideAcceleration { get; protected set; } = 3f;
-
-    public Vector3 SlopeSlideDirection { get; private set; } = Vector3.zero;
-
+    #endregion
+    #region Slide
     [Header("Slope Slide Settings")]
     [SerializeField] protected float slopeBufferDuration = 0.3f;
     private float _slopeAccumulatedTime = 0f;
-
     private float _slopeAngle = 0f;
 
+    [field: SerializeField] public float maxSlopeSlideSpeed { get; protected set; } = 15f;
+    [field: SerializeField] public float slopeSlideAcceleration { get; protected set; } = 3f;
+    public Vector3 SlopeSlideDirection { get; private set; } = Vector3.zero;
+    #endregion
+    [SerializeField] private float minJumpForceRate;
 
     protected override void Awake()
     {
@@ -61,6 +63,12 @@ public class Horse : Entity
             onObstacleClear?.Invoke();
             return false;
         }
+    }
+
+    public override void SetVerticalSpeed()
+    {
+        float verticalSpeedRate = Mathf.Clamp(horizontalSpeed / maxForwardSpeed, minJumpForceRate, 1);
+        verticalSpeed = jumpForce * verticalSpeedRate;
     }
 
     protected override void ExecuteMovement()
