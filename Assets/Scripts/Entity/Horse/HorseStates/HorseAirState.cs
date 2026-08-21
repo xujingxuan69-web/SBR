@@ -31,5 +31,7 @@ public class HorseAirState : EntityState<Horse>
             player.AddVerticalSpeed();
             player.anim.SetFloat("AirSpeed", player.verticalSpeed);
         }
+
+        player.IsObstacleInFront(); //后续要重新加逻辑
     }
 }

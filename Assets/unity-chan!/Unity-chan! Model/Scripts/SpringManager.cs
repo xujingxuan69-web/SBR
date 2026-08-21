@@ -29,33 +29,46 @@ namespace UnityChan
 
 		void Start ()
 		{
-			UpdateParameters ();
+            UpdateParameters ();
 		}
 	
 		void Update ()
 		{
-#if UNITY_EDITOR
-		//Kobayashi
-		if(dynamicRatio >= 1.0f)
-			dynamicRatio = 1.0f;
-		else if(dynamicRatio <= 0.0f)
-			dynamicRatio = 0.0f;
-		//Ebata
-		UpdateParameters();
-#endif
-		}
-	
-		private void LateUpdate ()
+
+        }
+
+
+        private void LateUpdate ()
 		{
-			//Kobayashi
-			if (dynamicRatio != 0.0f) {
-				for (int i = 0; i < springBones.Length; i++) {
-					if (dynamicRatio > springBones [i].threshold) {
-						springBones [i].UpdateSpring ();
-					}
-				}
-			}
-		}
+            
+        }
+
+        private void FixedUpdate()
+        {
+
+#if UNITY_EDITOR
+            //Kobayashi
+            if (dynamicRatio >= 1.0f)
+                dynamicRatio = 1.0f;
+            else if (dynamicRatio <= 0.0f)
+                dynamicRatio = 0.0f;
+            //Ebata
+            UpdateParameters();
+
+#endif
+
+            //Kobayashi
+            if (dynamicRatio != 0.0f)
+            {
+                for (int i = 0; i < springBones.Length; i++)
+                {
+                    if (dynamicRatio > springBones[i].threshold)
+                    {
+                        springBones[i].UpdateSpring();
+                    }
+                }
+            }
+        }
 
 		private void UpdateParameters ()
 		{

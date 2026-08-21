@@ -132,10 +132,9 @@ public class Horse : Entity
     {
         if (!showDebugBox) return;
 
-        bool hasObstacle = IsObstacleInFront();
         Vector3 center = GetObstacleDetectCenter();
 
-        Gizmos.color = hasObstacle ? obstacleColor : normalColor;
+        Gizmos.color = normalColor;
         Gizmos.DrawWireSphere(center, checkSphereRadius);
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(center, 0.08f);

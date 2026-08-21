@@ -77,12 +77,12 @@ namespace UnityChan
 
 		public void UpdateSpring ()
 		{
-			//Kobayashi
-			org = trs;
+            //Kobayashi
+            org = trs;
 			//回転をリセット
 			trs.localRotation = Quaternion.identity * localRotation;
 
-			float sqrDt = Time.deltaTime * Time.deltaTime;
+			float sqrDt = Time.fixedDeltaTime * Time.fixedDeltaTime;
 
 			//stiffness
 			Vector3 force = trs.rotation * (boneAxis * stiffnessForce) / sqrDt;
@@ -122,7 +122,7 @@ namespace UnityChan
 			//Kobayahsi:Lerp with mixWeight
 			Quaternion secondaryRotation = aimRotation * trs.rotation;
 			trs.rotation = Quaternion.Lerp (org.rotation, secondaryRotation, managerRef.dynamicRatio);
-		}
+        }
 
 		private void OnDrawGizmos ()
 		{
