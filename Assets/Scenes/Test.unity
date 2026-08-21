@@ -166,6 +166,7 @@ MonoBehaviour:
   <maxBackwardSpeed>k__BackingField: 5
   <maxObstacleInFrontSpeed>k__BackingField: 5
   <forwardAcceleration>k__BackingField: 5
+  <backwardAcceleration>k__BackingField: 5
   <deceleration>k__BackingField: 6
   <horizontalSpeed>k__BackingField: 0
   <verticalSpeed>k__BackingField: 0
