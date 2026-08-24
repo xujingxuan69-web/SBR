@@ -754,28 +754,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dynamicRatio: 1
-  stiffnessForce: 0.1
+  stiffnessForce: 0.15
   stiffnessCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.024417877
-      value: 0.8009453
-      inSlope: -0.5686327
-      outSlope: -0.5686327
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.022145
-      value: 0.20583533
-      inSlope: -0.5686327
-      outSlope: -0.5686327
-      tangentMode: 34
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0153219
+      value: 0.5092946
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -858,7 +858,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -868,7 +868,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!4 &691760216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7045198721508349576, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!4 &1196709677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -9186576998662326184, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
@@ -1433,7 +1433,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!4 &1260337095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3177683107300712045, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
@@ -1467,7 +1467,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -1477,7 +1477,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!4 &1263170012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3918029887126560232, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
@@ -1547,7 +1547,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -1557,7 +1557,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!1 &1403343163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,7 +1657,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -1667,7 +1667,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!1 &1487281352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,7 +1801,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -1811,7 +1811,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!1 &1585800401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3864185481855058387, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
@@ -1835,7 +1835,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -1845,7 +1845,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!4 &1591212309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9010953748875399182, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
@@ -1869,7 +1869,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -1879,7 +1879,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!4 &1646633404 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1870348398237041106, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
@@ -1903,7 +1903,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -1913,7 +1913,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!4 &1681026797 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6851596826573733103, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
@@ -1942,7 +1942,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -1952,7 +1952,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!1 &1716151112 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -211210480118076402, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
@@ -1976,7 +1976,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -1986,7 +1986,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!1 &1749127257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5920632472798624403, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
@@ -2010,7 +2010,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -2020,7 +2020,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!1 &1822226757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7932199522743516871, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
@@ -3920,7 +3920,7 @@ MonoBehaviour:
   isUseEachBoneForceSettings: 0
   stiffnessForce: 1
   dragForce: 0
-  springForce: {x: 0, y: -0.05, z: 0}
+  springForce: {x: 0, y: -0.07, z: 0}
   colliders:
   - {fileID: 1991372249}
   - {fileID: 2086462492}
@@ -3930,7 +3930,7 @@ MonoBehaviour:
   - {fileID: 1205683558}
   - {fileID: 1850281293}
   debug: 1
-  threshold: 0
+  threshold: 0.1
 --- !u!4 &2086462491 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5026675674700551322, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
