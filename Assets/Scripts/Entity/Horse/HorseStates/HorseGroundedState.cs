@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HorseGroundState : EntityState<Horse>
+public class HorseGroundedState : HorseState
 {
-    public HorseGroundState(Horse _player, EntityStateMachine<Horse> _stateMachine, string _animBoolName)
+    public HorseGroundedState(Horse _player, EntityStateMachine<Horse> _stateMachine, string _animBoolName)
         : base(_player, _stateMachine, _animBoolName)
     {
     }
@@ -12,6 +12,7 @@ public class HorseGroundState : EntityState<Horse>
     public override void Enter()
     {
         base.Enter();
+        player.InputReader.SetGroundedTime();
     }
 
     public override void Exit()
@@ -23,19 +24,20 @@ public class HorseGroundState : EntityState<Horse>
     {
         base.FixedUpdate();
         HandleMovement();
-
+        
         if (player.IsGrounded)
         {
             stateTimer = 0.2f;
             player.ResetVerticalSpeed();
+            player.InputReader.SetGroundedTime();
         }
         else if (stateTimer < 0 || player.IsOnSlope())
         {
             Debug.Log("Change To FallState");
-            stateMachine.ChangeState(player.fallState);
+            stateMachine.ChangeState(player.airState);
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (player.InputReader.CheckJumpPressed())
         {
             stateMachine.ChangeState(player.jumpState);
             return;

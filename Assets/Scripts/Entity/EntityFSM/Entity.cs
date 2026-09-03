@@ -23,8 +23,6 @@ public class Entity : MonoBehaviour
 
     [Header("Jump Info")]
     [SerializeField] protected float jumpForce = 12f;
-    [SerializeField] protected float jumpAirDuration = 0.1f;
-    private float lastJumpAirTime = -1f;
 
     [Header("Collision Detection")]
     [SerializeField] protected Vector3 checkSphereOffset = new Vector3(0, 0.5f, 0.8f);
@@ -133,10 +131,6 @@ public class Entity : MonoBehaviour
         _lastCollisionFlags = cc.Move(move);
     }
 
-    #region JumpAirTime
-    public void SetJumpAirTime() => lastJumpAirTime = Time.time;
-    public bool CheckJumpAirTime() => Time.time <= lastJumpAirTime + jumpAirDuration;
-    #endregion
     #region ColliderDetection
     public int GetObstacleInFront() => Physics.OverlapSphereNonAlloc(GetObstacleDetectCenter(), checkSphereRadius, obstacleHitBuffer, groundLayer);
     public virtual bool IsObstacleInFront() => GetObstacleInFront() > 0;

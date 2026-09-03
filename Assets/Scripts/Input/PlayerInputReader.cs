@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,42 +6,41 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputReader : MonoBehaviour
 {
-    private PlayerInputActions inputActions = new PlayerInputActions();
+    protected PlayerInputActions inputActions;
 
-    public Vector2 MoveInput { get; private set; }
-    public bool JumpPressed { get; private set; }
+    [field: SerializeField] public Vector2 MoveInput { get; protected set; }
 
-    private void OnEnable()
+    [SerializeField] private float jumpBufferTime = 0.2f;   //预输入缓存
+    private float lastJumpPressedTime = -1f;
+    [SerializeField] private float coyoteTime = 0.2f;    //土狼时间
+    private float lastGroundedTime = -1f;
+
+    protected void Awake()
     {
-        inputActions.Player_Horse.Enable();
-        inputActions.Player_Horse.Jump.performed += OnJump;
+        inputActions = new PlayerInputActions();
     }
 
-    private void OnDisable()
-    {
-        inputActions.Player_Horse.Jump.performed -= OnJump;
-        inputActions.Player_Horse.Disable();
-    }
-
-    private void FixedUpdate()
-    {
-        MoveInput = inputActions.Player_Horse.Move.ReadValue<Vector2>();
-    }
-
-    private void OnJump(InputAction.CallbackContext context)
-    {
-        JumpPressed = true;
-    }
-
-    public bool ConsumeJumpPressed()
-    {
-        if (!JumpPressed) return false;
-        JumpPressed = false;
-        return true;
-    }
-
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         inputActions?.Dispose();
+    }
+
+    protected void OnJump(InputAction.CallbackContext context) => lastJumpPressedTime = Time.time;
+
+    public void SetGroundedTime() => lastGroundedTime = Time.time;
+    
+    public bool CheckJumpPressed()
+    {
+        bool isBufferTime = Time.time - lastJumpPressedTime < jumpBufferTime;
+        bool isCoyoteTime = Time.time - lastGroundedTime < coyoteTime;
+
+        if (isBufferTime && isCoyoteTime)
+        {
+            lastJumpPressedTime = -1f;
+            lastGroundedTime = -1f; //对输入进行消费，防止重复输入导致问题
+            return true;
+        }
+
+        return false;
     }
 }

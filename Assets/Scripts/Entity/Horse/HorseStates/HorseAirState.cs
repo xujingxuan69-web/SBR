@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HorseAirState : EntityState<Horse>
+public class HorseAirState : HorseUnGroundedState
 {
     public HorseAirState(Horse _player, EntityStateMachine<Horse> _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
@@ -21,17 +21,5 @@ public class HorseAirState : EntityState<Horse>
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-
-        if (player.IsGrounded && !player.IsOnSlope())
-        {
-            stateMachine.ChangeState(player.groundState);
-        }
-        else
-        {
-            player.AddVerticalSpeed();
-            player.anim.SetFloat("AirSpeed", player.verticalSpeed);
-        }
-
-        player.IsObstacleInFront(); //后续要重新加逻辑
     }
 }

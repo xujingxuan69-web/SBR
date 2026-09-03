@@ -57,10 +57,8 @@ public class EntityState<T> where T : Entity
         GetMoveInput();
     }
 
-    private void GetMoveInput()
+    protected virtual void GetMoveInput()
     {
-        verticalInput = Input.GetAxisRaw("Vertical");
-        horizontalInput = Input.GetAxisRaw("Horizontal");
     }
 
     public virtual void Exit()

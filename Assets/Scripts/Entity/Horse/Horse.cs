@@ -7,14 +7,15 @@ public class Horse : Entity
     #region State
     public EntityStateMachine<Horse> stateMachine { get; private set; }
 
-    public HorseGroundState groundState { get; private set; }
+    public HorseGroundedState groundState { get; private set; }
     public HorseJumpState jumpState { get; private set; }
-    public HorseFallState fallState { get; private set; }
+    public HorseAirState airState { get; private set; }
     #endregion
     #region Obstacle
     public event System.Action onObstacleInFront;
     public event System.Action onObstacleClear;
     #endregion
+    #region Inspector
     #region Slide
     [Header("Slope Slide Settings")]
     [SerializeField] protected float slopeBufferDuration = 0.3f;
@@ -25,16 +26,20 @@ public class Horse : Entity
     [field: SerializeField] public float slopeSlideAcceleration { get; protected set; } = 3f;
     public Vector3 SlopeSlideDirection { get; private set; } = Vector3.zero;
     #endregion
+
+    [Header("Other")]
     [SerializeField] private float minJumpForceRate;
+    [field: SerializeField] public HorseInputReader InputReader { get; private set; }
+    #endregion
 
     protected override void Awake()
     {
         base.Awake();
         stateMachine = new EntityStateMachine<Horse>();
 
-        groundState = new HorseGroundState(this, stateMachine, "Grounded");
+        groundState = new HorseGroundedState(this, stateMachine, "Grounded");
         jumpState = new HorseJumpState(this, stateMachine, "Air");
-        fallState = new HorseFallState(this, stateMachine, "Air");
+        airState = new HorseAirState(this, stateMachine, "Air");
     }
 
     protected override void Start()
