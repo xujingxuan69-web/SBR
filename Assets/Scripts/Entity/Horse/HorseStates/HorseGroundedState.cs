@@ -31,16 +31,20 @@ public class HorseGroundedState : HorseState
             player.ResetVerticalSpeed();
             player.InputReader.SetGroundedTime();
         }
-        else if (stateTimer < 0 || player.IsOnSlope())
+        else if (stateTimer < 0 || player.IsSlopeFall())
         {
-            Debug.Log("Change To FallState");
             stateMachine.ChangeState(player.airState);
+            return;
         }
 
-        if (player.InputReader.CheckJumpPressed())
+        if (!player.IsOnSlope())
+        {
+            if (player.InputReader.CheckJumpPressed()) //必须呈包含关系，否则跳跃会被提前消耗掉
         {
             stateMachine.ChangeState(player.jumpState);
             return;
+        }
+
         }
     }
 

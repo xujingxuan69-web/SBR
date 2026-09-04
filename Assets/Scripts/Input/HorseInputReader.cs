@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class HorseInputReader : PlayerInputReader
 {
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     private void OnEnable()
     {
         inputActions.Player_Horse.Enable();

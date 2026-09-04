@@ -18,13 +18,14 @@ public class Horse : Entity
     #region Inspector
     #region Slide
     [Header("Slope Slide Settings")]
+    [SerializeField] protected float slopeSpeed = 0f;
     [SerializeField] protected float slopeBufferDuration = 0.3f;
     private float _slopeAccumulatedTime = 0f;
     private float _slopeAngle = 0f;
 
     [field: SerializeField] public float maxSlopeSlideSpeed { get; protected set; } = 15f;
     [field: SerializeField] public float slopeSlideAcceleration { get; protected set; } = 3f;
-    public Vector3 SlopeSlideDirection { get; private set; } = Vector3.zero;
+    private Vector3 slopeSlideDirection = Vector3.zero;
     #endregion
 
     [Header("Other")]
@@ -53,7 +54,7 @@ public class Horse : Entity
         base.FixedUpdate();
         stateMachine.currentState.FixedUpdate();
     }
-    public bool IsOnSlope() => _slopeAccumulatedTime > slopeBufferDuration;
+    
 
     public override bool IsObstacleInFront()
     {
@@ -80,9 +81,9 @@ public class Horse : Entity
     {
         Vector3 move;
 
-        if (SlopeSlideDirection != Vector3.zero && IsOnSlope())
+        if (slopeSlideDirection != Vector3.zero && IsSlopeFall())
         {
-            Vector3 slideDir = SlopeSlideDirection.normalized;
+            Vector3 slideDir = slopeSlideDirection.normalized;
 
             float gravityComponent = Mathf.Abs(Physics.gravity.y) * Mathf.Sin(_slopeAngle * Mathf.Deg2Rad);
             float acc = gravityComponent * 0.5f + slopeSlideAcceleration;
@@ -109,26 +110,29 @@ public class Horse : Entity
     }
 
     #region Controller Collider Hit
+    public bool IsOnSlope() => _slopeAngle > cc.slopeLimit;
+
+    public bool IsSlopeFall() => _slopeAccumulatedTime > slopeBufferDuration;
+
     protected virtual void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.moveDirection.y >= 0) return;
 
         Vector3 normal = hit.normal;
-        float angle = Vector3.Angle(normal, Vector3.up);
-
-        if (angle > cc.slopeLimit)
+        _slopeAngle = Vector3.Angle(normal, Vector3.up);
+        if (_slopeAngle > cc.slopeLimit)
         {
-            _slopeAngle = angle;
+           
 
             Vector3 slopeDown = Vector3.ProjectOnPlane(Vector3.down, normal).normalized;
-            SlopeSlideDirection = slopeDown;
+            slopeSlideDirection = slopeDown;
 
             _slopeAccumulatedTime += Time.fixedDeltaTime;
         }
         else
         {
             _slopeAccumulatedTime = 0f;
-            SlopeSlideDirection = Vector3.zero;
+            slopeSlideDirection = Vector3.zero;
         }
     }
     #endregion

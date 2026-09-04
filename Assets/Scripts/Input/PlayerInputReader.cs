@@ -11,11 +11,11 @@ public class PlayerInputReader : MonoBehaviour
     [field: SerializeField] public Vector2 MoveInput { get; protected set; }
 
     [SerializeField] private float jumpBufferTime = 0.2f;   //预输入缓存
-    private float lastJumpPressedTime = -1f;
+    [SerializeField] private float lastJumpPressedTime = -1f;
     [SerializeField] private float coyoteTime = 0.2f;    //土狼时间
-    private float lastGroundedTime = -1f;
+    [SerializeField] private float lastGroundedTime = -1f;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         inputActions = new PlayerInputActions();
     }
