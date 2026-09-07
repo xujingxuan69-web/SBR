@@ -7,7 +7,7 @@ public class Horse : Entity
     #region State
     public EntityStateMachine<Horse> stateMachine { get; private set; }
 
-    public HorseGroundedState groundState { get; private set; }
+    public HorseGroundedState groundedState { get; private set; }
     public HorseJumpState jumpState { get; private set; }
     public HorseAirState airState { get; private set; }
     #endregion
@@ -38,7 +38,7 @@ public class Horse : Entity
         base.Awake();
         stateMachine = new EntityStateMachine<Horse>();
 
-        groundState = new HorseGroundedState(this, stateMachine, "Grounded");
+        groundedState = new HorseGroundedState(this, stateMachine, "Grounded");
         jumpState = new HorseJumpState(this, stateMachine, "Air");
         airState = new HorseAirState(this, stateMachine, "Air");
     }
@@ -46,13 +46,13 @@ public class Horse : Entity
     protected override void Start()
     {
         base.Start();
-        stateMachine.Initialize(groundState);
+        stateMachine.Initialize(groundedState);
     }
 
     protected override void FixedUpdate()
     {
-        base.FixedUpdate();
         stateMachine.currentState.FixedUpdate();
+        base.FixedUpdate();
     }
     
 
@@ -79,34 +79,43 @@ public class Horse : Entity
 
     protected override void ExecuteMovement()
     {
-        Vector3 move;
+        Vector3 horizontalVelocity = transform.forward * horizontalSpeed;
+        Vector3 velocity = horizontalVelocity + GetSlopeSlideVelocity();
 
-        if (slopeSlideDirection != Vector3.zero && IsSlopeFall())
+        bool isAirborne = stateMachine.currentState == jumpState
+                       || stateMachine.currentState == airState;
+
+        if (isAirborne)
         {
-            Vector3 slideDir = slopeSlideDirection.normalized;
-
-            float gravityComponent = Mathf.Abs(Physics.gravity.y) * Mathf.Sin(_slopeAngle * Mathf.Deg2Rad);
-            float acc = gravityComponent * 0.5f + slopeSlideAcceleration;
-            acc = Mathf.Min(acc, maxSlopeSlideSpeed);
-
-            Vector3 forward = transform.forward;
-            float dot = Vector3.Dot(slideDir, forward);
-
-            float direction = Mathf.Sign(dot);
-            if (Mathf.Abs(dot) < 0.1f) direction = 1f;
-
-            horizontalSpeed += acc * Time.fixedDeltaTime * direction;
-
-            move = forward * horizontalSpeed * Time.fixedDeltaTime;
-            move.y = verticalSpeed * Time.fixedDeltaTime;
+            velocity.y = verticalSpeed;
+            _lastCollisionFlags = cc.Move(velocity * Time.fixedDeltaTime);
+            isGrounded = cc.isGrounded;
         }
         else
         {
-            move = transform.forward * horizontalSpeed * Time.fixedDeltaTime;
-            move.y = verticalSpeed * Time.fixedDeltaTime;
+            // SimpleMove expects units/second and applies gravity internally.
+            isGrounded = cc.SimpleMove(velocity);
+        }
+    }
+
+    private Vector3 GetSlopeSlideVelocity()
+    {
+        if (!IsSlopeFall() || slopeSlideDirection == Vector3.zero)
+        {
+            slopeSpeed = 0f;
+            return Vector3.zero;
         }
 
-        _lastCollisionFlags = cc.Move(move);
+        float gravityComponent = Mathf.Abs(Physics.gravity.y)
+                               * Mathf.Sin(_slopeAngle * Mathf.Deg2Rad);
+        float acceleration = gravityComponent * 0.5f + slopeSlideAcceleration;
+
+        slopeSpeed = Mathf.MoveTowards(
+            slopeSpeed,
+            maxSlopeSlideSpeed,
+            acceleration * Time.fixedDeltaTime);
+
+        return slopeSlideDirection.normalized * slopeSpeed;
     }
 
     #region Controller Collider Hit
@@ -116,7 +125,9 @@ public class Horse : Entity
 
     protected virtual void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.moveDirection.y >= 0) return;
+        // moveDirection.y is unreliable while descending a slope. The contact
+        // normal is the stable way to distinguish ground from walls/ceilings.
+        if (hit.normal.y <= 0f) return;
 
         Vector3 normal = hit.normal;
         _slopeAngle = Vector3.Angle(normal, Vector3.up);

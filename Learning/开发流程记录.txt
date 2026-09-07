@@ -1,0 +1,87 @@
+2026/8/29-2026/9/5 完成输入优化，包括预输入、土狼时间
+
+2026/8/28 使用new Input System
+
+2026/8/27 了解、学习asmdef，做笔记
+开始输入的优化：预输入（魔女时间）、绑键、土狼时间
+
+2026/8/26 拆解UE的gas系统，准备模仿搭建数值与技能体系
+
+2026/8/25 完成马匹的参数优化，调整马匹的跑步速度、跳跃高度、尾部骨骼灵活性，优化手感
+
+2026/8/21 发现尾部抖动是动画和SpringBone在抢夺控制权，但是将SpringBone从LateUpdate改为FixedUpdate，或将Animator的UpdateMode改为Fixed，都会出现抖动或控制失效的情况，因此我把尾巴根部通过Animation Rigging的Multi-Parent Constraint绑定在了Bone_Core上，将所有尾巴骨骼的动画删除，这样就可以通过FixedUpdate控制尾部骨骼
+
+脚部IK的主要问题在于，由于马匹是四足动物，超出humanoid范畴，没有接口进行动画的参数获取和设置。目前对我而言实现脚部IK的解决方案有两种：1.把脚部动画大部分删除，实现程序化动画；2.使用Final IK。我目前没有时间和精力完成，所以脚部IK需要放弃
+
+2026/8/16 发现AnimationRigging对于Generic骨骼的致命问题——无法正确获取当前或下一帧动画的脚部原来骨骼的位置，脚部IK无法实现，最终搁置IK的实现，尾部骨骼已通过SpringBone实现
+
+实现马匹的基本跳跃，预计后续加入速度匹配跳跃高度、跳跃预输入、土狼时间等，以匹配马匹设定，优化游戏手感
+
+2026/8/15 考虑了Magica Cloth、Spring Bone对马的尾部骨骼移动的可行性，都是可行的，先推迟到脚部IK完成
+
+基本了解Final IK的脚部检测原理：检测底部的一片区域，但是觉得短时间内无法实现，且优化方面我自身能力无法解决
+
+最终决定简单地实现IK，参考方案：https://www.youtube.com/watch?v=jfKTmEWJESw
+
+思路步骤：1.从马的膝盖向下发射射线，检测地面情况；2.根据动画中脚的移动和射线，预测下一帧脚的移动检测；3.根据脚部到地面的距离来决定马的身体的下沉
+
+脚使用状态机管理IK，分成两种状态，第一种是Lock，就是贴合于地面，第二种是Release，脱离于地面，但是怎么管理呢，教程里是针对两种情况，使用Angle检测脚是否要抬起，使用Lerp进行脚的位置过渡
+然后创建了一个Unity的动画曲线编辑器，对于想要进行调整的动画，每一帧当检测到地面时，进行脚部的检测等等，但是我这里可以使用状态机决定什么时候调用脚部，因为实际上HorseBodyController才是决定怎么调整脚部，调整身体位置的，所以我可以只在某些状态里的Update调用HorseBodyController对身体的管理
+
+对于身体的检测，教程使用的方法是从臀部检测向下的到达地面的差距，如果差距在一定范围内，那么就把马的整体下沉，但是马分成前半身和后半身，这可能导致前半身和后半身出现严重的骨骼撕裂情况，但是一个好消息是马的有一个骨骼可以进行上下旋转操控包括肚子的前半身的角度来一定程度上适应
+
+
+BV1G34y127e6 
+选用SpringBone插件进行尾巴的物理模拟效果
+SpringBone 把每个需要模拟的骨骼(除了最后一个，因为没有子物体)都挂载SpringBone脚本
+SpringManager 管理一串或多串挂载了SpringBone的骨骼链，可以挂载在根节点或骨骼链的父节点上
+SpringCollider 创建SpringCollider进行碰撞检测防止头发/布料等穿模
+
+
+重新进行脚部IK的思路，首先尝试向前的斜坡脚部IK的实现
+
+2026/8/13 使用Animation Rigging的Damped Transform和Multi-Position Constraint结合尝试模拟尾部骨骼运动，效果不佳
+
+2026/8/12
+暂时放弃Tail的左右跟随逻辑
+
+2026/8/4
+找到cc.IsGround不稳定现象的解决方案，即给马一直施加一个较小的向下的力即可
+优化滑坡的转向和滑落速度效果，利用Cinemachine实现镜头移动和跟随效果
+
+略微优化Tail的上下旋转逻辑
+
+优化IsGround判定，如果当前持续没有移动，但是得到判定结果为!IsGround，就强制判定为IsGround直到移动
+
+增加左右移动的头部旋转逻辑以提升手感，使用UniTask插件代替协程来减少GC回收
+
+
+2026/8/3 继续脚部IK，优化Tail旋转问题，添加斜坡滑落逻辑，发现Overlap和Raycast检测滑坡下落逻辑不稳定，最终使用Character Controller的OnControllerColliderHit进行检测法线角度并计算滑落速度
+
+发现cc(Character Controller)的IsGround不稳定现象，改用球形检测器进行碰撞检测，但出现浮空问题，又添加了重力系统
+后发现Character Controller在部分方法下使用会导致Character Controller.IsGround大部分情况下返回false，但放到别的地方又会恢复正常
+最终恢复使用cc.IsGround进行地面的碰撞检测，去除球形检测器和重力系统
+
+使用泛型重构了状态机架构的State与StateMachine
+
+剩余目标：优化斜坡滑落效果，实现脚部IK和Cinemachine的俯视角可转动跟随效果
+
+
+2026/8/2 主要针对脚部重做Blender骨骼及权重并导出fbx文件，并进行脚部IK的Unity测试和实现的思路推进，包括自行思考，询问ai，查找相关资料(主要为Bilibili的IK相关视频，但基本都与双脚站立的人形角色，或是Unity官方的程序化动画相关，由于我当前的马匹是以动画为基础，因此Unity官方的程序化动画参考意义不大，双脚的思路有一定参考意义，为我提供了AnimationRigging的基本使用参考和臀部下沉的思路，而且中间有一个视频提到通过状态机实现IK的思路，让我眼前一亮，但暂时未用于参考)
+
+
+2026/8/1 针对尾巴重做Blender骨骼及权重并导出fbx文件，并基本完成尾巴的摆动效果，思路从 利用AnimationRigging的阻尼效果 转向到 排除AnimationRigging，而是以马的尾巴的骨骼Rotation随速度转向0，并加上上下摆动来模拟
+
+
+2026/7/31 导入Unity后发现部分动画崩坏、骨骼错乱等问题
+查找资料发现主要问题为Blender导出时错误设置，解决问题后，以之前做的2D游戏demo的状态机为基础模板，实现角色控制器，完成头部的碰撞检测并通过AnimationRigging基本实现转向，在Blender中添加了Death动画并重新导入Unity
+决定拥有马匹角色的角色控制器只应用在马匹上，人物只使用AnimationRigging把手部IK在马身上
+
+
+2026/7/30 尝试3ds Max进行骨骼绑定，但软件崩溃，转用Blender，根据Bilibili的Blender教程和马匹动作视频，完成Blender马匹骨骼动画，包括Idle、Jump、Fall、Land等，实现了脚部IK，并舍弃尾部骨骼在Blender的移动操作，转向Unity的物理模拟或AnimationRigging(已有2D游戏demo和做过的课设所积累的部分建模和骨骼动画基础)
+
+
+2026/7/29 查找合适的3D马匹模型，与模型作者SleepyPineapple交流是否可免费商用乃至在Steam上架，在此非常感谢模型作者SleepyPineapple的许可
+
+
+2026/7/26-2026/7/27(两天之间的凌晨) 以先前就有过的SBR赛马游戏的灵感为基础，写下一系列的基本内容并完善，包括基础属性、基础机制、初始角色与能力、部分平衡、规避版权问题等内容，还决定了开发的基本流程，要学习的内容

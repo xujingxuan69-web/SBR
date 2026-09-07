@@ -49,7 +49,7 @@ public class Entity : MonoBehaviour
     #endregion
     #region Properties
     public bool IsMoving => Mathf.Abs(horizontalSpeed) > 0.1f;
-    public bool IsGrounded => cc.isGrounded;
+    public bool IsGrounded => isGrounded;
 
     protected CollisionFlags _lastCollisionFlags;
     #endregion
@@ -96,7 +96,9 @@ public class Entity : MonoBehaviour
     #region VerticalSpeed
     public virtual void ResetVerticalSpeed()
     {
-        verticalSpeed = -1f;
+        // Ground movement uses CharacterController.SimpleMove. Keep this value
+        // for jump and airborne movement only.
+        verticalSpeed = 0f;
     }
 
     public virtual void AddVerticalSpeed()

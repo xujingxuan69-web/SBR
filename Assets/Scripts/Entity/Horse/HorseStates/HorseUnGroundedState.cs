@@ -22,9 +22,10 @@ public class HorseUnGroundedState : HorseState
     {
         base.FixedUpdate();
 
+
         if (player.IsGrounded && !player.IsSlopeFall() && !player.IsOnSlope())
         {
-            stateMachine.ChangeState(player.groundState);
+            stateMachine.ChangeState(player.groundedState);
             return;
         }
 
@@ -40,6 +41,6 @@ public class HorseUnGroundedState : HorseState
         player.AddVerticalSpeed();
         player.anim.SetFloat("AirSpeed", player.verticalSpeed);
 
-        player.IsObstacleInFront(); //后续要更改逻辑，因为撞墙的头部逻辑不同
+        player.IsObstacleInFront(); //鍚庣画瑕佹洿鏀归�昏緫锛屽洜涓烘挒澧欑殑澶撮儴閫昏緫涓嶅悓
     }
 }

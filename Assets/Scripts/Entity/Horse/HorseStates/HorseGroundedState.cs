@@ -25,13 +25,15 @@ public class HorseGroundedState : HorseState
         base.FixedUpdate();
         HandleMovement();
         
-        if (player.IsGrounded)
+        if (player.IsGrounded || player.IsOnSlope())
         {
             stateTimer = 0.2f;
             player.ResetVerticalSpeed();
             player.InputReader.SetGroundedTime();
         }
-        else if (stateTimer < 0 || player.IsSlopeFall())
+
+        
+        if (stateTimer < 0)
         {
             stateMachine.ChangeState(player.airState);
             return;
@@ -39,11 +41,11 @@ public class HorseGroundedState : HorseState
 
         if (!player.IsOnSlope())
         {
-            if (player.InputReader.CheckJumpPressed()) //±ØĞë³Ê°üº¬¹ØÏµ£¬·ñÔòÌøÔ¾»á±»ÌáÇ°ÏûºÄµô
-        {
-            stateMachine.ChangeState(player.jumpState);
-            return;
-        }
+            if (player.InputReader.CheckJumpPressed()) //å¿…é¡»å‘ˆåŒ…å«å…³ç³»ï¼Œå¦åˆ™è·³è·ƒä¼šè¢«æå‰æ¶ˆè€—æ‰
+            {
+                stateMachine.ChangeState(player.jumpState);
+                return;
+            }
 
         }
     }
@@ -55,7 +57,7 @@ public class HorseGroundedState : HorseState
         if (verticalInput > 0.1f) acc = player.forwardAcceleration;
         else if (verticalInput < -0.1f) acc = -player.backwardAcceleration;
         else
-        {   //ÎŞÊäÈë£¬×Ô¶¯½µËÙ
+        {   //æ— è¾“å…¥ï¼Œè‡ªåŠ¨é™é€Ÿ
             if (player.IsMoving)
             {
                 acc = -Mathf.Sign(player.horizontalSpeed) * player.deceleration;
@@ -67,7 +69,7 @@ public class HorseGroundedState : HorseState
             }
         }
 
-        bool isOpposite = Mathf.Sign(verticalInput) != Mathf.Sign(player.horizontalSpeed)  //Ïà·´°´¼ü¼±Í£
+        bool isOpposite = Mathf.Sign(verticalInput) != Mathf.Sign(player.horizontalSpeed)  //ç›¸åæŒ‰é”®æ€¥åœ
                           && Mathf.Abs(verticalInput) > 0.1f
                           && player.IsMoving;
 
@@ -75,7 +77,7 @@ public class HorseGroundedState : HorseState
 
         player.ChangeHorizontalSpeedBy(acc);
 
-        if (player.IsMoving) player.Turn(horizontalInput);  //×ªÏò¿ØÖÆ
+        if (player.IsMoving) player.Turn(horizontalInput);  //è½¬å‘æ§åˆ¶
 
         player.anim.SetFloat("GroundSpeed", Mathf.Abs(player.horizontalSpeed / player.maxForwardSpeed));
     }
