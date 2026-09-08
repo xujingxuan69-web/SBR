@@ -25,7 +25,9 @@ public class Horse : Entity
 
     [field: SerializeField] public float maxSlopeSlideSpeed { get; protected set; } = 15f;
     [field: SerializeField] public float slopeSlideAcceleration { get; protected set; } = 3f;
+    [SerializeField] private float groundStickSpeed = 2f;
     private Vector3 slopeSlideDirection = Vector3.zero;
+    private Vector3 groundNormal = Vector3.up;
     #endregion
 
     [Header("Other")]
@@ -88,14 +90,19 @@ public class Horse : Entity
         if (isAirborne)
         {
             velocity.y = verticalSpeed;
-            _lastCollisionFlags = cc.Move(velocity * Time.fixedDeltaTime);
-            isGrounded = cc.isGrounded;
         }
         else
         {
-            // SimpleMove expects units/second and applies gravity internally.
-            isGrounded = cc.SimpleMove(velocity);
+            // CharacterController does not project horizontal motion onto a slope
+            // automatically. Keep the slope-following horizontal direction, but
+            // force the final vertical component downward. Otherwise the upward
+            // component created while climbing can cancel the stick force.
+            velocity = Vector3.ProjectOnPlane(velocity, groundNormal);
+            velocity.y = -groundStickSpeed;
         }
+
+        _lastCollisionFlags = cc.Move(velocity * Time.fixedDeltaTime);
+        isGrounded = (_lastCollisionFlags & CollisionFlags.Below) != 0;
     }
 
     private Vector3 GetSlopeSlideVelocity()
@@ -130,6 +137,7 @@ public class Horse : Entity
         if (hit.normal.y <= 0f) return;
 
         Vector3 normal = hit.normal;
+        groundNormal = normal;
         _slopeAngle = Vector3.Angle(normal, Vector3.up);
         if (_slopeAngle > cc.slopeLimit)
         {

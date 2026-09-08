@@ -25,15 +25,15 @@ public class HorseGroundedState : HorseState
         base.FixedUpdate();
         HandleMovement();
         
-        if (player.IsGrounded || player.IsOnSlope())
+        if (player.IsGrounded)
         {
-            stateTimer = 0.2f;
+            stateTimer = 0.1f;
             player.ResetVerticalSpeed();
             player.InputReader.SetGroundedTime();
         }
 
         
-        if (stateTimer < 0)
+        if (stateTimer < 0 || player.IsSlopeFall())
         {
             stateMachine.ChangeState(player.airState);
             return;
