@@ -17,10 +17,11 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: cb419a76d2943a54197fa9855b99b7af
   m_SerializeEntries:
-  - m_GUID: eaaf7b4fd53bebb48984e91e53ece345
-    m_Address: Assets/Model/Horse/Horse.fbx
+  - m_GUID: 6963183600ca3ff448cf2c176110295e
+    m_Address: Character/Horse
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Character
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 396909f6190cfd5429bb3c6f29687b96, type: 2}

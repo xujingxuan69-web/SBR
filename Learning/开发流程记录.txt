@@ -1,4 +1,4 @@
-2026/9/8 
+新增：asmdef、Addressables
 
 2026/8/28-2026/9/5 使用new Input System，完成输入优化，包括预输入、土狼时间
 
