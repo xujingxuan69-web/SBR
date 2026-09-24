@@ -1,10 +1,13 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public struct AttributeValue
+namespace SBR.GAS
 {
-    public float BaseValue { get; set; }
+    public struct AttributeValue
+    {
+        public float BaseValue { get; set; }
 
-    public float CurrentValue { get; set; }
+        public float CurrentValue { get; set; }
+    }
 }
