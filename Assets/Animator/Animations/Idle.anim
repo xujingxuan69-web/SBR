@@ -553,7 +553,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -587,7 +587,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -621,7 +621,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -646,7 +646,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -671,7 +671,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -696,7 +696,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -721,7 +721,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -805,7 +805,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -839,7 +839,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -882,7 +882,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -916,7 +916,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -941,7 +941,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -966,7 +966,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -991,7 +991,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1721,7 +1721,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1746,7 +1746,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1771,7 +1771,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1796,7 +1796,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1821,7 +1821,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1846,7 +1846,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -1871,7 +1871,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2135,7 +2135,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2160,7 +2160,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2185,7 +2185,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2210,7 +2210,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2235,7 +2235,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2269,7 +2269,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2294,7 +2294,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2788,7 +2788,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2813,7 +2813,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2838,7 +2838,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2863,7 +2863,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2888,7 +2888,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2913,7 +2913,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -2938,7 +2938,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -3013,7 +3013,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -3038,7 +3038,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -3063,7 +3063,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -3088,7 +3088,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -3113,7 +3113,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -3138,7 +3138,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -3163,7 +3163,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -7609,7 +7609,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -7747,7 +7747,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -7885,7 +7885,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -7915,7 +7915,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -7945,7 +7945,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -7975,7 +7975,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8005,7 +8005,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8035,7 +8035,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8065,7 +8065,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8095,7 +8095,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8125,7 +8125,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8155,7 +8155,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8185,7 +8185,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8215,7 +8215,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8245,7 +8245,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8275,7 +8275,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8305,7 +8305,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8335,7 +8335,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8365,7 +8365,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8395,7 +8395,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8425,7 +8425,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8455,7 +8455,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8485,7 +8485,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8515,7 +8515,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8545,7 +8545,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8575,7 +8575,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8605,7 +8605,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8635,7 +8635,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8665,7 +8665,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8695,7 +8695,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8725,7 +8725,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8755,7 +8755,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8785,7 +8785,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8815,7 +8815,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8845,7 +8845,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8875,7 +8875,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8905,7 +8905,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8935,7 +8935,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8965,7 +8965,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -8995,7 +8995,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -9025,7 +9025,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -9055,7 +9055,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -9634,7 +9634,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -9853,7 +9853,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10072,7 +10072,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10102,7 +10102,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10132,7 +10132,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10162,7 +10162,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10192,7 +10192,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10222,7 +10222,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10252,7 +10252,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10282,7 +10282,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10312,7 +10312,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10342,7 +10342,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10372,7 +10372,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10402,7 +10402,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10432,7 +10432,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10462,7 +10462,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10492,7 +10492,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10522,7 +10522,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10552,7 +10552,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10582,7 +10582,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10612,7 +10612,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10642,7 +10642,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10672,7 +10672,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10702,7 +10702,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10732,7 +10732,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10762,7 +10762,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10792,7 +10792,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10822,7 +10822,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10852,7 +10852,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10882,7 +10882,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10921,7 +10921,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10960,7 +10960,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -10999,7 +10999,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -11029,7 +11029,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -11059,7 +11059,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -11089,7 +11089,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -11119,7 +11119,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -11149,7 +11149,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -11179,7 +11179,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -11209,7 +11209,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -11239,7 +11239,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -11269,7 +11269,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14101,7 +14101,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14131,7 +14131,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14161,7 +14161,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14191,7 +14191,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14230,7 +14230,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14269,7 +14269,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14308,7 +14308,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14347,7 +14347,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14386,7 +14386,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14425,7 +14425,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14464,7 +14464,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14503,7 +14503,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14533,7 +14533,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14563,7 +14563,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14593,7 +14593,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14623,7 +14623,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14653,7 +14653,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14683,7 +14683,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14713,7 +14713,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14743,7 +14743,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14773,7 +14773,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14803,7 +14803,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14833,7 +14833,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14863,7 +14863,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14893,7 +14893,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14923,7 +14923,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14953,7 +14953,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -14983,7 +14983,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15262,7 +15262,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15301,7 +15301,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15340,7 +15340,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15379,7 +15379,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15418,7 +15418,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15457,7 +15457,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15496,7 +15496,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15535,7 +15535,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15583,7 +15583,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15631,7 +15631,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15679,7 +15679,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15727,7 +15727,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15766,7 +15766,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15805,7 +15805,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15844,7 +15844,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15883,7 +15883,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15913,7 +15913,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15943,7 +15943,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -15973,7 +15973,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -16003,7 +16003,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -16033,7 +16033,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -16063,7 +16063,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -16093,7 +16093,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -16123,7 +16123,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -16153,7 +16153,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.x
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -16183,7 +16183,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.y
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -16213,7 +16213,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.z
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -16243,7 +16243,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalRotation.w
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18305,7 +18305,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18335,7 +18335,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18365,7 +18365,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_LeftBehind
+    path: Armature/Bone_LeftRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18404,7 +18404,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18443,7 +18443,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18482,7 +18482,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18521,7 +18521,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18560,7 +18560,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18599,7 +18599,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18629,7 +18629,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18659,7 +18659,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18689,7 +18689,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18719,7 +18719,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18749,7 +18749,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18779,7 +18779,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_LeftBehind/Bone_LeftBehindLeg1/Bone_LeftBehindLeg2/Bone_LeftBehindLeg3/Bone_LeftBehindLegFoot
+    path: Armature/Bone_LeftRear/Bone_LeftRearLeg1/Bone_LeftRearLeg2/Bone_LeftRearLeg3/Bone_LeftRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18809,7 +18809,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18839,7 +18839,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18869,7 +18869,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_LeftBehindLeg_IK
+    path: Armature/Bone_LeftRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18899,7 +18899,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18929,7 +18929,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -18959,7 +18959,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_LeftBehindLeg_IK/Bone_LeftBehindLeg_IKPose
+    path: Armature/Bone_LeftRearLeg_IK/Bone_LeftRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19178,7 +19178,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19217,7 +19217,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19256,7 +19256,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_RightBehind
+    path: Armature/Bone_RightRear
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19295,7 +19295,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19334,7 +19334,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19373,7 +19373,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19421,7 +19421,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19469,7 +19469,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19517,7 +19517,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19556,7 +19556,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19595,7 +19595,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19634,7 +19634,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19664,7 +19664,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19694,7 +19694,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19724,7 +19724,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_RightBehind/Bone_RightBehindLeg1/Bone_RightBehindLeg2/Bone_RightBehindLeg3/Bone_RightBehindFoot
+    path: Armature/Bone_RightRear/Bone_RightRearLeg1/Bone_RightRearLeg2/Bone_RightRearLeg3/Bone_RightRearFoot
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19754,7 +19754,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19784,7 +19784,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19814,7 +19814,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_RightBehindLeg_IK
+    path: Armature/Bone_RightRearLeg_IK
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19844,7 +19844,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.x
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19874,7 +19874,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.y
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -19904,7 +19904,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAngles.z
-    path: Armature/Bone_RightBehindLeg_IK/Bone_RightBehindLeg_IKPose
+    path: Armature/Bone_RightRearLeg_IK/Bone_RightRearLeg_IKPose
     classID: 4
     script: {fileID: 0}
     flags: 0

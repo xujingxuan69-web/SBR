@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2856764805997217033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1498458035313907859}
+  m_Layer: 0
+  m_Name: LeftRearTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1498458035313907859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2856764805997217033}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.23802185, y: 0.42496133, z: -1.2659512}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4686100554280200925}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3831820322801615319
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +150,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6945976448841159591}
+  - component: {fileID: 4308690433815690959}
+  - component: {fileID: 3762077413896469506}
   m_Layer: 0
   m_Name: LeftRearTracking
   m_TagString: Untagged
@@ -135,12 +168,67 @@ Transform:
   m_GameObject: {fileID: 6210922231431571719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.23802185, y: 0.42496133, z: -1.2659512}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4686100554280200925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4308690433815690959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210922231431571719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeda7bfbf984f2a4da5ab4b8967b115d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weight: 1
+  m_Data:
+    m_Root: {fileID: 77428841657909492}
+    m_Mid: {fileID: 7882608983885670160}
+    m_Tip: {fileID: 9112647615332622148}
+    m_Target: {fileID: 1498458035313907859}
+    m_Hint: {fileID: 3405528229890895669}
+    m_TargetPositionWeight: 1
+    m_TargetRotationWeight: 0
+    m_HintWeight: 1
+    m_MaintainTargetPositionOffset: 0
+    m_MaintainTargetRotationOffset: 0
+--- !u!114 &3762077413896469506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210922231431571719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff423636c9068140ae960c4f2a0ea14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feet:
+  - animatedFoot: {fileID: 0}
+    ikTarget: {fileID: 0}
+  - animatedFoot: {fileID: 0}
+    ikTarget: {fileID: 0}
+  - animatedFoot: {fileID: 0}
+    ikTarget: {fileID: 0}
+  - animatedFoot: {fileID: 0}
+    ikTarget: {fileID: 0}
+  poseReader: {fileID: 4683343654511802877}
+  poseIndex: 2
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 327680
+  rayStartHeight: 0.5
+  rayLength: 1.5
+  footHeight: 0.02
+  weight: 1
+  drawRays: 1
 --- !u!1 &8226194611389643022
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +412,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6945976448841159591}
+  - {fileID: 1498458035313907859}
   m_Father: {fileID: 1313708773358769887}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1934470652984047283
@@ -1655,7 +1744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5658985089501064499, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
       propertyPath: m_Name
-      value: Bone_LeftRearLegFoot
+      value: Bone_LeftRearFoot
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
       propertyPath: m_Avatar
@@ -1903,7 +1992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8502404984593576126, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
       propertyPath: m_Name
-      value: Bone_LeftRearLegFoot_end
+      value: Bone_LeftRearFoot_end
       objectReference: {fileID: 0}
     - target: {fileID: 8519088165436917670, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
