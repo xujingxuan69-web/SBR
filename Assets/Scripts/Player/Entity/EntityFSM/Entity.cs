@@ -115,12 +115,10 @@ public class Entity : MonoBehaviour
 
     public virtual void Turn(float horizontalInput)
     {
-        if (!IsMoving) return;
-
         float speedRatio = Mathf.Abs(horizontalSpeed / maxForwardSpeed);
         float turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio * speedRatio);
 
-        float direction = horizontalSpeed > 0 ? 1f : -1f;
+        float direction = horizontalSpeed < 0 ? -1f : 1f;
         onTurn?.Invoke(direction * horizontalInput);
         transform.Rotate(0, horizontalInput * turnSpeed * direction * Time.fixedDeltaTime, 0);
     }

@@ -4,12 +4,13 @@ using UnityEngine.Animations;
 using UnityEngine.Animations.Rigging;
 
 [System.Serializable]
-public struct HorseFootPoseReaderData : IAnimationJobData   //JobData-Êı¾İÈİÆ÷
+public struct HorseFootPoseReaderData : IAnimationJobData   //JobData-æ•°æ®å®¹å™¨
 {
     [SerializeField] private Transform leftFront;
     [SerializeField] private Transform rightFront;
     [SerializeField] private Transform leftRear;
     [SerializeField] private Transform rightRear;
+    [SerializeField] private Transform leftRearGroundProbe;
 
     public Transform GetFoot(int index) => index switch
     {
@@ -20,19 +21,23 @@ public struct HorseFootPoseReaderData : IAnimationJobData   //JobData-Êı¾İÈİÆ÷
         _ => null
     };
 
-    bool IAnimationJobData.IsValid() => leftFront && rightFront && leftRear && rightRear;
+    public Transform LeftRearGroundProbe => leftRearGroundProbe;
+
+    bool IAnimationJobData.IsValid() => leftFront && rightFront && leftRear && rightRear && leftRearGroundProbe;
     void IAnimationJobData.SetDefaultValues()
     {
         leftFront = rightFront = leftRear = rightRear = null;
+        leftRearGroundProbe = null;
     }
 }
 
-public struct HorseFootPoseReaderJob : IWeightedAnimationJob    //Job-¶ÁÈ¡¶¯»­Á÷ÖĞµÄÊı¾İ
+public struct HorseFootPoseReaderJob : IWeightedAnimationJob    //Job-è¯»å–åŠ¨ç”»æµä¸­çš„æ•°æ®
 {
     public TransformStreamHandle leftFront;
     public TransformStreamHandle rightFront;
     public TransformStreamHandle leftRear;
     public TransformStreamHandle rightRear;
+    public TransformStreamHandle leftRearGroundProbe;
     public NativeArray<Vector3> positions;
     public FloatProperty jobWeight { get; set; }
 
@@ -44,10 +49,11 @@ public struct HorseFootPoseReaderJob : IWeightedAnimationJob    //Job-¶ÁÈ¡¶¯»­Á÷
         positions[1] = rightFront.GetPosition(stream);
         positions[2] = leftRear.GetPosition(stream);
         positions[3] = rightRear.GetPosition(stream);
+        positions[4] = leftRearGroundProbe.GetPosition(stream);
     }
 }
 
-public class HorseFootPoseReaderJobBinder : AnimationJobBinder<HorseFootPoseReaderJob, HorseFootPoseReaderData> //JobBinder-°ÑJobDataºÍJobÁ¬½ÓÆğÀ´£¬Í¬Ê±¹ÜÀíJobµÄÉúÃüÖÜÆÚ
+public class HorseFootPoseReaderJobBinder : AnimationJobBinder<HorseFootPoseReaderJob, HorseFootPoseReaderData> //JobBinder-æŠŠJobDataå’ŒJobè¿æ¥èµ·æ¥ï¼ŒåŒæ—¶ç®¡ç†Jobçš„ç”Ÿå‘½å‘¨æœŸ
 {
     public override HorseFootPoseReaderJob Create(Animator animator, ref HorseFootPoseReaderData data, Component component)
     {
@@ -60,6 +66,7 @@ public class HorseFootPoseReaderJobBinder : AnimationJobBinder<HorseFootPoseRead
             rightFront = animator.BindStreamTransform(data.GetFoot(1)),
             leftRear = animator.BindStreamTransform(data.GetFoot(2)),
             rightRear = animator.BindStreamTransform(data.GetFoot(3)),
+            leftRearGroundProbe = animator.BindStreamTransform(data.LeftRearGroundProbe),
             positions = reader.Output
         };
     }
@@ -72,20 +79,22 @@ public class HorseFootPoseReaderJobBinder : AnimationJobBinder<HorseFootPoseRead
 }
 
 [AddComponentMenu("Animation Rigging/Horse Foot Pose Reader")]
-public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFootPoseReaderData, HorseFootPoseReaderJobBinder> //Ô¼Êø×é¼ş
+public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFootPoseReaderData, HorseFootPoseReaderJobBinder> //çº¦æŸç»„ä»¶
 {
     [SerializeField] private bool showDebugGizmos = true;
     private NativeArray<Vector3> output;
-    private readonly Vector3[] sampledPositions = new Vector3[4];
+    private readonly Vector3[] sampledPositions = new Vector3[5];
+    private float nextGizmoDiagnosticTime;
 
     internal NativeArray<Vector3> Output => output;
 
     public Vector3 GetSampledPosition(int footIndex) => sampledPositions[footIndex];
+    public Vector3 GetSampledLeftRearGroundProbePosition() => sampledPositions[4];
 
     internal void InitializeOutput()
     {
         if (!output.IsCreated)
-            output = new NativeArray<Vector3>(4, Allocator.Persistent);
+            output = new NativeArray<Vector3>(5, Allocator.Persistent);
     }
 
     private void LateUpdate()
@@ -100,8 +109,29 @@ public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFo
     {
         if (!showDebugGizmos) return;
 
+        if (Application.isPlaying && Time.unscaledTime >= nextGizmoDiagnosticTime)
+        {
+            nextGizmoDiagnosticTime = Time.unscaledTime + 1f;
+            Debug.Log($"[HorseFootPoseReader Gizmo:{name}#{GetInstanceID()}] source=sampledPositions, outputCreated={output.IsCreated}, " +
+                      $"leftFront={sampledPositions[0]:F3}, rightFront={sampledPositions[1]:F3}, " +
+                      $"leftRear={sampledPositions[2]:F3}, rightRear={sampledPositions[3]:F3}, " +
+                      $"leftRearBinding={(data.GetFoot(2) ? data.GetFoot(2).position.ToString("F3") : "<null>")}", this);
+        }
+
         Gizmos.color = Color.cyan;
-        for (int i = 0; i < sampledPositions.Length; i++)
-            Gizmos.DrawSphere(sampledPositions[i], 0.035f);
+        for (int i = 0; i < 4; i++)
+        {
+            Transform foot = data.GetFoot(i);
+            if (Application.isPlaying)
+                Gizmos.DrawSphere(sampledPositions[i], 0.035f);
+            else if (foot)
+                Gizmos.DrawSphere(foot.position, 0.035f);
+        }
+
+        Gizmos.color = Color.magenta;
+        if (Application.isPlaying)
+            Gizmos.DrawSphere(sampledPositions[4], 0.035f);
+        else if (data.LeftRearGroundProbe)
+            Gizmos.DrawSphere(data.LeftRearGroundProbe.position, 0.035f);
     }
 }

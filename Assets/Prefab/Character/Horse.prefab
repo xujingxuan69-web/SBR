@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1498458035313907859}
   m_Layer: 0
-  m_Name: LeftRearTarget
+  m_Name: LeftRearIKTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,6 +141,37 @@ Transform:
   - {fileID: 4686100554280200925}
   m_Father: {fileID: 4369623556992978041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5475603834247544419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7839240997283923061}
+  m_Layer: 0
+  m_Name: Bone_LeftRearLeg_IKPose_Opposite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7839240997283923061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5475603834247544419}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3405528229890895669}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6210922231431571719
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +182,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6945976448841159591}
   - component: {fileID: 4308690433815690959}
-  - component: {fileID: 3762077413896469506}
   m_Layer: 0
   m_Name: LeftRearTracking
   m_TagString: Untagged
@@ -192,43 +222,12 @@ MonoBehaviour:
     m_Mid: {fileID: 7882608983885670160}
     m_Tip: {fileID: 9112647615332622148}
     m_Target: {fileID: 1498458035313907859}
-    m_Hint: {fileID: 3405528229890895669}
+    m_Hint: {fileID: 7839240997283923061}
     m_TargetPositionWeight: 1
     m_TargetRotationWeight: 0
     m_HintWeight: 1
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
---- !u!114 &3762077413896469506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6210922231431571719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aff423636c9068140ae960c4f2a0ea14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  feet:
-  - animatedFoot: {fileID: 0}
-    ikTarget: {fileID: 0}
-  - animatedFoot: {fileID: 0}
-    ikTarget: {fileID: 0}
-  - animatedFoot: {fileID: 0}
-    ikTarget: {fileID: 0}
-  - animatedFoot: {fileID: 0}
-    ikTarget: {fileID: 0}
-  poseReader: {fileID: 4683343654511802877}
-  poseIndex: 2
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 327680
-  rayStartHeight: 0.5
-  rayLength: 1.5
-  footHeight: 0.02
-  weight: 1
-  drawRays: 1
 --- !u!1 &8226194611389643022
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,6 +379,37 @@ MonoBehaviour:
   turnMoveDistance: 1.5
   maxMoveDistance: 10
   turnSmoothSpeed: 0.5
+--- !u!1 &8307492978534193381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1273841209978633363}
+  m_Layer: 0
+  m_Name: Bone_LeftRearLeg_IKPose_Opposite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1273841209978633363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307492978534193381}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3405528229890895669}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8423182925177657877
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +421,7 @@ GameObject:
   - component: {fileID: 4686100554280200925}
   - component: {fileID: 1934470652984047283}
   - component: {fileID: 4683343654511802877}
+  - component: {fileID: 6567299084260212645}
   m_Layer: 0
   m_Name: FootTracking
   m_TagString: Untagged
@@ -443,11 +474,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    leftFront: {fileID: 5278784625695119042}
-    rightFront: {fileID: 5370040576700599560}
-    leftRear: {fileID: 7718381029420620595}
-    rightRear: {fileID: 144942883827017759}
+    leftFront: {fileID: 93569106905851833}
+    rightFront: {fileID: 4228162233014251779}
+    leftRear: {fileID: 9112647615332622148}
+    rightRear: {fileID: 7036925331889804924}
+    leftRearGroundProbe: {fileID: 7718381029420620595}
   showDebugGizmos: 1
+--- !u!114 &6567299084260212645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8423182925177657877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff423636c9068140ae960c4f2a0ea14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feet:
+  - animatedFoot: {fileID: 9112647615332622148}
+    groundProbe: {fileID: 7718381029420620595}
+    ikTarget: {fileID: 1498458035313907859}
+  poseReader: {fileID: 4683343654511802877}
+  poseIndex: 2
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 327680
+  rayStartHeight: 0.5
+  rayLength: 1.5
+  maxGroundDistance: 1
+  footHeight: 0.02
+  weight: 1
+  drawRays: 1
 --- !u!1 &8592063642239575932
 GameObject:
   m_ObjectHideFlags: 0
@@ -2074,6 +2133,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2906668546874934418, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8976191379950965383}
+    - targetCorrespondingSourceObject: {fileID: -7751713220066966361, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1273841209978633363}
+    - targetCorrespondingSourceObject: {fileID: -7751713220066966361, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7839240997283923061}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eaaf7b4fd53bebb48984e91e53ece345, type: 3}
       insertIndex: -1
@@ -2699,6 +2764,7 @@ MonoBehaviour:
   <groundLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 327680
+  maxWalkableSlopeAngle: 30
   slopeSpeed: 0
   slopeBufferDuration: 0.3
   <maxSlopeSlideSpeed>k__BackingField: 15

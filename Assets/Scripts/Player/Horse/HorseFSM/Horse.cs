@@ -18,6 +18,7 @@ public class Horse : Entity
     #region Inspector
     #region Slide
     [Header("Slope Slide Settings")]
+    [SerializeField, Range(0f, 89f)] private float maxWalkableSlopeAngle = 30f;
     [SerializeField] protected float slopeSpeed = 0f;
     [SerializeField] protected float slopeBufferDuration = 0.3f;
     private float _slopeAccumulatedTime = 0f;
@@ -48,6 +49,7 @@ public class Horse : Entity
     protected override void Start()
     {
         base.Start();
+        cc.slopeLimit = maxWalkableSlopeAngle;
         stateMachine.Initialize(groundedState);
     }
 
@@ -126,20 +128,39 @@ public class Horse : Entity
     }
 
     #region Controller Collider Hit
-    public bool IsOnSlope() => _slopeAngle > cc.slopeLimit;
+    public bool IsOnSlope() => _slopeAngle > maxWalkableSlopeAngle;
 
     public bool IsSlopeFall() => _slopeAccumulatedTime > slopeBufferDuration;
 
     protected virtual void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        // moveDirection.y is unreliable while descending a slope. The contact
-        // normal is the stable way to distinguish ground from walls/ceilings.
+        bool isAirborne = stateMachine.currentState == jumpState
+                       || stateMachine.currentState == airState;
+
+        if (hit.normal.y < -0.5f)
+        {
+            if (isAirborne && verticalSpeed > 0f)
+                verticalSpeed = 0f;
+            return;
+        }
+
+        // Treat near-vertical contacts as walls; sloped surfaces remain available
+        // to the existing slope handling below.
+        if (Mathf.Abs(hit.normal.y) <= 0.2f)
+        {
+            Vector3 horizontalVelocity = transform.forward * horizontalSpeed;
+            if (isAirborne && Vector3.Dot(horizontalVelocity, hit.normal) < 0f)
+                horizontalSpeed = 0f;
+            return;
+        }
+
         if (hit.normal.y <= 0f) return;
 
+        // moveDirection.y is unreliable while descending a slope; use the contact normal.
         Vector3 normal = hit.normal;
         groundNormal = normal;
         _slopeAngle = Vector3.Angle(normal, Vector3.up);
-        if (_slopeAngle > cc.slopeLimit)
+        if (_slopeAngle > maxWalkableSlopeAngle)
         {
            
 

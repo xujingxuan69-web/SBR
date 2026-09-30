@@ -128,7 +128,7 @@ namespace UnityChan
 		{
 			if (debug) {
 				Gizmos.color = Color.yellow;
-				Gizmos.DrawWireSphere (currTipPos, radius);
+				Gizmos.DrawWireSphere (Application.isPlaying ? currTipPos : child ? child.position : transform.position, radius);
 			}
 		}
 	}

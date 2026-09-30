@@ -65,7 +65,6 @@ public class HorseGroundedState : HorseState
             else
             {
                 player.SetHorizontalSpeedAs(0f);
-                return;
             }
         }
 
@@ -77,7 +76,7 @@ public class HorseGroundedState : HorseState
 
         player.ChangeHorizontalSpeedBy(acc);
 
-        if (player.IsMoving) player.Turn(horizontalInput);  //转向控制
+        player.Turn(horizontalInput);  //转向控制
 
         player.anim.SetFloat("GroundSpeed", Mathf.Abs(player.horizontalSpeed / player.maxForwardSpeed));
     }
