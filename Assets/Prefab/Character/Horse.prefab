@@ -503,7 +503,7 @@ MonoBehaviour:
     m_Bits: 327680
   rayStartHeight: 0.5
   rayLength: 1.5
-  maxGroundDistance: 1
+  maxGroundDistance: 0.1
   footHeight: 0.02
   weight: 1
   drawRays: 1
@@ -2634,7 +2634,7 @@ CharacterController:
   m_Height: 3.4
   m_Radius: 1.7
   m_SlopeLimit: 30
-  m_StepOffset: 0.3
+  m_StepOffset: 0.5
   m_SkinWidth: 0.001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.75, z: 0}
@@ -2764,9 +2764,9 @@ MonoBehaviour:
   <groundLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 327680
-  maxWalkableSlopeAngle: 30
+  maxWalkableSlopeAngle: 60
   slopeSpeed: 0
-  slopeBufferDuration: 0.3
+  slopeBufferDuration: 0.4
   <maxSlopeSlideSpeed>k__BackingField: 15
   <slopeSlideAcceleration>k__BackingField: 3
   groundStickSpeed: 5

@@ -1386,18 +1386,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 357649649005269068, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      propertyPath: slopeBufferDuration
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 357649649005269068, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      propertyPath: maxWalkableSlopeAngle
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2334430532726646419, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      propertyPath: m_StepOffset
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4030675305915913923, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
       propertyPath: m_Name
       value: Horse
@@ -1441,10 +1429,6 @@ PrefabInstance:
     - target: {fileID: 4369623556992978041, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6567299084260212645, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      propertyPath: maxGroundDistance
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
