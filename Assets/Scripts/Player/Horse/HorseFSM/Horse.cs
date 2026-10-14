@@ -14,9 +14,15 @@ public class Horse : Entity
     #region Obstacle
     public event System.Action onObstacleInFront;
     public event System.Action onObstacleClear;
+
+    [Header("Collision Detection")]
+    [SerializeField] protected Vector3 checkSphereOffset = new Vector3(0, 0.5f, 0.8f);
+    [field: SerializeField] public float checkSphereRadius { get; protected set; } = 0.6f;
+    private Collider[] obstacleHitBuffer = new Collider[10];
+
     #endregion
     #region Inspector
-    #region Slide
+    /*#region Slide
     [Header("Slope Slide Settings")]
     [SerializeField, Range(0f, 89f)] private float maxWalkableSlopeAngle = 30f;
     [SerializeField] protected float slopeSpeed = 0f;
@@ -29,7 +35,7 @@ public class Horse : Entity
     [SerializeField] private float groundStickSpeed = 2f;
     private Vector3 slopeSlideDirection = Vector3.zero;
     private Vector3 groundNormal = Vector3.up;
-    #endregion
+    #endregion*/
 
     [Header("Other")]
     [SerializeField] private float minJumpForceRate;
@@ -49,7 +55,7 @@ public class Horse : Entity
     protected override void Start()
     {
         base.Start();
-        cc.slopeLimit = maxWalkableSlopeAngle;
+        //cc.slopeLimit = maxWalkableSlopeAngle;
         stateMachine.Initialize(groundedState);
     }
 
@@ -60,20 +66,7 @@ public class Horse : Entity
     }
     
 
-    public override bool IsObstacleInFront()
-    {
-        int count = GetObstacleInFront();
-        if (count > 0)
-        {
-            onObstacleInFront?.Invoke();
-            return true;
-        }
-        else
-        {
-            onObstacleClear?.Invoke();
-            return false;
-        }
-    }
+    
 
     public override void SetVerticalSpeed()
     {
@@ -81,7 +74,7 @@ public class Horse : Entity
         verticalSpeed = jumpForce * verticalSpeedRate;
     }
 
-    protected override void ExecuteMovement()
+    /*protected override void ExecuteMovement()
     {
         Vector3 horizontalVelocity = transform.forward * horizontalSpeed;
         Vector3 velocity = horizontalVelocity + GetSlopeSlideVelocity();
@@ -105,9 +98,9 @@ public class Horse : Entity
 
         _lastCollisionFlags = cc.Move(velocity * Time.fixedDeltaTime);
         isGrounded = (_lastCollisionFlags & CollisionFlags.Below) != 0;
-    }
+    }*/
 
-    private Vector3 GetSlopeSlideVelocity()
+    /*private Vector3 GetSlopeSlideVelocity()
     {
         if (!IsSlopeFall() || slopeSlideDirection == Vector3.zero)
         {
@@ -125,14 +118,14 @@ public class Horse : Entity
             acceleration * Time.fixedDeltaTime);
 
         return slopeSlideDirection.normalized * slopeSpeed;
-    }
+    }*/
 
-    #region Controller Collider Hit
+   /* #region Controller Collider Hit
     public bool IsOnSlope() => _slopeAngle > maxWalkableSlopeAngle;
 
     public bool IsSlopeFall() => _slopeAccumulatedTime > slopeBufferDuration;
-
-    protected virtual void OnControllerColliderHit(ControllerColliderHit hit)
+*/
+    /*protected virtual void OnControllerColliderHit(ControllerColliderHit hit)
     {
         bool isAirborne = stateMachine.currentState == jumpState
                        || stateMachine.currentState == airState;
@@ -174,8 +167,7 @@ public class Horse : Entity
             _slopeAccumulatedTime = 0f;
             slopeSlideDirection = Vector3.zero;
         }
-    }
-    #endregion
+    }*/
 
     private void OnDrawGizmos()
     {
@@ -201,4 +193,26 @@ public class Horse : Entity
             Gizmos.DrawLine(transform.position, groundCenter);
         }*/
     }
+
+    #region ObstacleDetection
+    public int GetObstacleInFront() => Physics.OverlapSphereNonAlloc(GetObstacleDetectCenter(), checkSphereRadius, obstacleHitBuffer, groundLayer);
+    public bool IsObstacleInFront()
+    {
+        int count = GetObstacleInFront();
+        if (count > 0)
+        {
+            onObstacleInFront?.Invoke();
+            return true;
+        }
+        else
+        {
+            onObstacleClear?.Invoke();
+            return false;
+        }
+    }
+    public Collider[] GetObstacleHitBuffer() => obstacleHitBuffer;
+    public Vector3 GetObstacleDetectCenter() => transform.position + transform.forward * checkSphereOffset.z
+                                       + transform.up * checkSphereOffset.y
+                                       + transform.right * checkSphereOffset.x;
+    #endregion
 }

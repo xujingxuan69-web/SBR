@@ -24,10 +24,7 @@ public class Entity : MonoBehaviour
     [Header("Jump Info")]
     [SerializeField] protected float jumpForce = 12f;
 
-    [Header("Collision Detection")]
-    [SerializeField] protected Vector3 checkSphereOffset = new Vector3(0, 0.5f, 0.8f);
-    [field: SerializeField] public float checkSphereRadius { get; protected set; } = 0.6f;
-    private Collider[] obstacleHitBuffer = new Collider[10];
+    
 
     [field: SerializeField] public bool isGrounded { get; protected set; } 
     /*[SerializeField] protected Vector3 groundCheckOffset = new Vector3(0, 0f, 0f);
@@ -71,7 +68,7 @@ public class Entity : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         //UpdateGroundedState();
-        ExecuteMovement();
+        //ExecuteMovement();
     }
 
     #region HorizontalSpeed
@@ -82,9 +79,7 @@ public class Entity : MonoBehaviour
 
     public virtual void ChangeHorizontalSpeedBy(float _acc)
     {
-        bool hasObstacle = IsObstacleInFront();
-
-        if (hasObstacle && horizontalSpeed > maxObstacleInFrontSpeed)
+        if ( horizontalSpeed > maxObstacleInFrontSpeed)
         {
             _acc = Mathf.Min(_acc, 0f);
         }
@@ -96,15 +91,12 @@ public class Entity : MonoBehaviour
     #region VerticalSpeed
     public virtual void ResetVerticalSpeed()
     {
-        // Ground movement uses CharacterController.SimpleMove. Keep this value
-        // for jump and airborne movement only.
         verticalSpeed = 0f;
     }
 
     public virtual void AddVerticalSpeed()
     {
         verticalSpeed += Physics.gravity.y * Time.fixedDeltaTime;
-        verticalSpeed = Mathf.Max(verticalSpeed, -30f);
     }
 
     public virtual void SetVerticalSpeed()
@@ -115,32 +107,25 @@ public class Entity : MonoBehaviour
 
     public virtual void Turn(float horizontalInput)
     {
-        float speedRatio = Mathf.Abs(horizontalSpeed / maxForwardSpeed);
+        /*float speedRatio = Mathf.Abs(horizontalSpeed / maxForwardSpeed);
         float turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio * speedRatio);
 
         float direction = horizontalSpeed < 0 ? -1f : 1f;
         onTurn?.Invoke(direction * horizontalInput);
-        transform.Rotate(0, horizontalInput * turnSpeed * direction * Time.fixedDeltaTime, 0);
+        transform.Rotate(0, horizontalInput * turnSpeed * direction * Time.fixedDeltaTime, 0);*/
     }
 
-    protected virtual void ExecuteMovement()
+   /* protected virtual void ExecuteMovement()
     {
         Vector3 move = transform.forward * horizontalSpeed * Time.fixedDeltaTime;
         move.y = verticalSpeed * Time.fixedDeltaTime;
 
         _lastCollisionFlags = cc.Move(move);
-    }
+    }*/
 
-    #region ColliderDetection
-    public int GetObstacleInFront() => Physics.OverlapSphereNonAlloc(GetObstacleDetectCenter(), checkSphereRadius, obstacleHitBuffer, groundLayer);
-    public virtual bool IsObstacleInFront() => GetObstacleInFront() > 0;
-    public Collider[] GetObstacleHitBuffer() => obstacleHitBuffer;
-    public Vector3 GetObstacleDetectCenter() => transform.position + transform.forward * checkSphereOffset.z
-                                       + transform.up * checkSphereOffset.y
-                                       + transform.right * checkSphereOffset.x;
-    #endregion
-    #region GroundedDetection
-    /*private void UpdateGroundedState()
+   
+   /* #region GroundedDetection
+    private void UpdateGroundedState()
     {
         bool isGroundedFromCollision = (_lastCollisionFlags & CollisionFlags.Below) != 0;
         bool currentlyGrounded = isGroundedFromCollision || CheckIfGrounded();
@@ -174,6 +159,6 @@ public class Entity : MonoBehaviour
 
         Collider[] hitColliders = Physics.OverlapSphere(sphereCenter, groundCheckRadius, groundLayerMask);
         return hitColliders.Length > 0;
-    }*/
-    #endregion
+    }
+    #endregion*/
 }
