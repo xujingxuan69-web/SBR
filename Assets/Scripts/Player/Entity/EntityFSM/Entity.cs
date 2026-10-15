@@ -6,11 +6,8 @@ public class Entity : MonoBehaviour
 {
     public ulong playerId;
 
-
     #region Inspector
-    [Header("Movement Info")]
-    [SerializeField] protected float maxTurnSpeed = 150f;
-    [SerializeField] protected float minTurnSpeed = 40f;
+    [field: Header("Movement Info")]
     [field: SerializeField] public float maxForwardSpeed { get; protected set; } = 12f;
     [field: SerializeField] public float maxBackwardSpeed { get; protected set; } = 2f;
     [field: SerializeField] public float maxObstacleInFrontSpeed { get; protected set; } = 3f;
@@ -24,21 +21,16 @@ public class Entity : MonoBehaviour
     [Header("Jump Info")]
     [SerializeField] protected float jumpForce = 12f;
 
-    
+    [field: Header("Collider Detection")]
+    [field: SerializeField] public bool isGrounded { get; protected set; }
+    [field: SerializeField] public LayerMask groundLayer { get; protected set; }
 
-    [field: SerializeField] public bool isGrounded { get; protected set; } 
-    /*[SerializeField] protected Vector3 groundCheckOffset = new Vector3(0, 0f, 0f);
-    [field: SerializeField] public float groundCheckRadius { get; protected set; } = 0.3f;
-    [SerializeField] protected LayerMask groundLayerMask;
-    [SerializeField] protected float groundedStabilityTime = 0.1f;
-    private float _lastGroundedTime = -999f;*/
 
     [Header("Collider Detection Debug")]
     [SerializeField] protected bool showDebugBox = true;
     [SerializeField] protected Color normalColor = Color.green;
     [SerializeField] protected Color obstacleColor = Color.red;
 
-    [field: SerializeField] public LayerMask groundLayer { get; protected set; }
     #endregion
     #region Component
     public Animator anim { get; private set; }
@@ -47,8 +39,6 @@ public class Entity : MonoBehaviour
     #region Properties
     public bool IsMoving => Mathf.Abs(horizontalSpeed) > 0.1f;
     public bool IsGrounded => isGrounded;
-
-    protected CollisionFlags _lastCollisionFlags;
     #endregion
 
 
@@ -82,7 +72,7 @@ public class Entity : MonoBehaviour
         if ( horizontalSpeed > maxObstacleInFrontSpeed)
         {
             _acc = Mathf.Min(_acc, 0f);
-        }
+        }//!没看懂我这里为什么要这样
 
         horizontalSpeed += _acc * Time.fixedDeltaTime;
         horizontalSpeed = Mathf.Clamp(horizontalSpeed, -maxBackwardSpeed, maxForwardSpeed);
@@ -105,16 +95,7 @@ public class Entity : MonoBehaviour
     }
     #endregion
 
-    public virtual void Turn(float horizontalInput)
-    {
-        /*float speedRatio = Mathf.Abs(horizontalSpeed / maxForwardSpeed);
-        float turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio * speedRatio);
-
-        float direction = horizontalSpeed < 0 ? -1f : 1f;
-        onTurn?.Invoke(direction * horizontalInput);
-        transform.Rotate(0, horizontalInput * turnSpeed * direction * Time.fixedDeltaTime, 0);*/
-    }
-
+    
    /* protected virtual void ExecuteMovement()
     {
         Vector3 move = transform.forward * horizontalSpeed * Time.fixedDeltaTime;

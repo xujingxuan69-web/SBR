@@ -1,0 +1,14 @@
+{
+  "name": "Emo.InspectorInheritance.Runtime",
+  "rootNamespace": "Emo.InspectorInheritance",
+  "references": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

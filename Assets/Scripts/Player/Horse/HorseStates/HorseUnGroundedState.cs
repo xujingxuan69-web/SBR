@@ -23,19 +23,10 @@ public class HorseUnGroundedState : HorseState
         base.FixedUpdate();
 
 
-        if (player.IsGrounded && !player.IsSlopeFall() && !player.IsOnSlope())
+        if (player.IsGrounded)
         {
             stateMachine.ChangeState(player.groundedState);
             return;
-        }
-
-        if (!player.IsSlopeFall())
-        {
-            if (player.InputReader.CheckJumpPressed())
-            {
-                stateMachine.ChangeState(player.jumpState);
-                return;
-            }
         }
 
         player.AddVerticalSpeed();

@@ -33,21 +33,19 @@ public class HorseGroundedState : HorseState
         }
 
         
-        if (stateTimer < 0 || player.IsSlopeFall())
+        if (stateTimer < 0 /*|| player.IsSlopeFall()*/)
         {
             stateMachine.ChangeState(player.airState);
             return;
         }
 
-        if (!player.IsOnSlope())
-        {
-            if (player.InputReader.CheckJumpPressed()) //必须呈包含关系，否则跳跃会被提前消耗掉
-            {
-                stateMachine.ChangeState(player.jumpState);
-                return;
-            }
 
+        if (player.InputReader.CheckJumpPressed()) //必须呈包含关系，否则跳跃会被提前消耗掉
+        {
+            stateMachine.ChangeState(player.jumpState);
+            return;
         }
+
     }
 
     private void HandleMovement()

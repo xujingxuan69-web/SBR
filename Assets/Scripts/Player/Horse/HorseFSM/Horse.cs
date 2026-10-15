@@ -4,24 +4,14 @@ using UnityEngine;
 
 public class Horse : Entity
 {
-    #region State
-    public EntityStateMachine<Horse> stateMachine { get; private set; }
-
-    public HorseGroundedState groundedState { get; private set; }
-    public HorseJumpState jumpState { get; private set; }
-    public HorseAirState airState { get; private set; }
-    #endregion
-    #region Obstacle
-    public event System.Action onObstacleInFront;
-    public event System.Action onObstacleClear;
-
-    [Header("Collision Detection")]
-    [SerializeField] protected Vector3 checkSphereOffset = new Vector3(0, 0.5f, 0.8f);
-    [field: SerializeField] public float checkSphereRadius { get; protected set; } = 0.6f;
-    private Collider[] obstacleHitBuffer = new Collider[10];
-
-    #endregion
     #region Inspector
+    [field: MergeHeader("Movement Info")]
+    [field: SerializeField] protected float maxTurnSpeed { get; private set; } = 150f;
+    [field: SerializeField] protected float minTurnSpeed { get; private set; } = 40f;
+
+    [MergeHeader("Jump Info")]
+    [SerializeField] private float minJumpForceRate;
+
     /*#region Slide
     [Header("Slope Slide Settings")]
     [SerializeField, Range(0f, 89f)] private float maxWalkableSlopeAngle = 30f;
@@ -37,9 +27,25 @@ public class Horse : Entity
     private Vector3 groundNormal = Vector3.up;
     #endregion*/
 
-    [Header("Other")]
-    [SerializeField] private float minJumpForceRate;
+    [field: Header("Other")]
     [field: SerializeField] public HorseInputReader InputReader { get; private set; }
+    #endregion
+    #region Obstacle
+    public event System.Action onObstacleInFront;
+    public event System.Action onObstacleClear;
+
+    [Header("Collision Detection")]
+    [SerializeField] protected Vector3 checkSphereOffset = new Vector3(0, 0.5f, 0.8f);
+    [field: SerializeField] public float checkSphereRadius { get; protected set; } = 0.6f;
+    private Collider[] obstacleHitBuffer = new Collider[10];
+
+    #endregion
+    #region State
+    public EntityStateMachine<Horse> stateMachine { get; private set; }
+
+    public HorseGroundedState groundedState { get; private set; }
+    public HorseJumpState jumpState { get; private set; }
+    public HorseAirState airState { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -73,6 +79,18 @@ public class Horse : Entity
         float verticalSpeedRate = Mathf.Clamp(horizontalSpeed / maxForwardSpeed, minJumpForceRate, 1);
         verticalSpeed = jumpForce * verticalSpeedRate;
     }
+
+    public virtual void Turn(float horizontalInput)
+    {
+        /*float speedRatio = Mathf.Abs(horizontalSpeed / maxForwardSpeed);
+        float turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio * speedRatio);
+
+        float direction = horizontalSpeed < 0 ? -1f : 1f;
+        onTurn?.Invoke(direction * horizontalInput);
+        transform.Rotate(0, horizontalInput * turnSpeed * direction * Time.fixedDeltaTime, 0);*/
+    }
+
+
 
     /*protected override void ExecuteMovement()
     {
@@ -120,11 +138,11 @@ public class Horse : Entity
         return slopeSlideDirection.normalized * slopeSpeed;
     }*/
 
-   /* #region Controller Collider Hit
-    public bool IsOnSlope() => _slopeAngle > maxWalkableSlopeAngle;
+    /* #region Controller Collider Hit
+     public bool IsOnSlope() => _slopeAngle > maxWalkableSlopeAngle;
 
-    public bool IsSlopeFall() => _slopeAccumulatedTime > slopeBufferDuration;
-*/
+     public bool IsSlopeFall() => _slopeAccumulatedTime > slopeBufferDuration;
+ */
     /*protected virtual void OnControllerColliderHit(ControllerColliderHit hit)
     {
         bool isAirborne = stateMachine.currentState == jumpState
