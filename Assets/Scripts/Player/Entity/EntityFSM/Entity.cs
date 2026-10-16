@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KinematicCharacterController;
 
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour, ICharacterController
 {
     public ulong playerId;
 
@@ -34,7 +35,7 @@ public class Entity : MonoBehaviour
     #endregion
     #region Component
     public Animator anim { get; private set; }
-    public CharacterController cc { get; private set; }
+    protected KinematicCharacterMotor kcc;
     #endregion
     #region Properties
     public bool IsMoving => Mathf.Abs(horizontalSpeed) > 0.1f;
@@ -52,7 +53,7 @@ public class Entity : MonoBehaviour
     protected virtual void Start()
     {
         anim = GetComponent<Animator>();
-        cc = GetComponent<CharacterController>();
+        kcc = GetComponent<KinematicCharacterMotor>();
     }
 
     protected virtual void FixedUpdate()
@@ -93,53 +94,105 @@ public class Entity : MonoBehaviour
     {
         verticalSpeed = jumpForce;
     }
+
+    #endregion
+    #region KCC
+    public void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void BeforeCharacterUpdate(float deltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void PostGroundingUpdate(float deltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AfterCharacterUpdate(float deltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public bool IsColliderValidForCollisions(Collider coll)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnGroundHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ProcessHitStabilityReport(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, Vector3 atCharacterPosition, Quaternion atCharacterRotation, ref HitStabilityReport hitStabilityReport)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnDiscreteCollisionDetected(Collider hitCollider)
+    {
+        throw new System.NotImplementedException();
+    }
     #endregion
 
-    
-   /* protected virtual void ExecuteMovement()
-    {
-        Vector3 move = transform.forward * horizontalSpeed * Time.fixedDeltaTime;
-        move.y = verticalSpeed * Time.fixedDeltaTime;
 
-        _lastCollisionFlags = cc.Move(move);
-    }*/
+    /* protected virtual void ExecuteMovement()
+     {
+         Vector3 move = transform.forward * horizontalSpeed * Time.fixedDeltaTime;
+         move.y = verticalSpeed * Time.fixedDeltaTime;
 
-   
-   /* #region GroundedDetection
-    private void UpdateGroundedState()
-    {
-        bool isGroundedFromCollision = (_lastCollisionFlags & CollisionFlags.Below) != 0;
-        bool currentlyGrounded = isGroundedFromCollision || CheckIfGrounded();
+         _lastCollisionFlags = cc.Move(move);
+     }*/
 
-        if (currentlyGrounded)
-        {
-            _isGrounded = true;
-            _lastGroundedTime = Time.time;
-        }
-        else
-        {
-            if (Time.time - _lastGroundedTime < groundedStabilityTime)
-            {
-                _isGrounded = true;
-            }
-            else
-            {
-                _isGrounded = false;
-            }
-        }
-    }
 
-    private bool CheckIfGrounded()
-    {
-        if (cc == null) return false;
+    /* #region GroundedDetection
+     private void UpdateGroundedState()
+     {
+         bool isGroundedFromCollision = (_lastCollisionFlags & CollisionFlags.Below) != 0;
+         bool currentlyGrounded = isGroundedFromCollision || CheckIfGrounded();
 
-        Vector3 sphereCenter = transform.position
-                             + transform.forward * groundCheckOffset.z
-                             + transform.up * groundCheckOffset.y
-                             + transform.right * groundCheckOffset.x;
+         if (currentlyGrounded)
+         {
+             _isGrounded = true;
+             _lastGroundedTime = Time.time;
+         }
+         else
+         {
+             if (Time.time - _lastGroundedTime < groundedStabilityTime)
+             {
+                 _isGrounded = true;
+             }
+             else
+             {
+                 _isGrounded = false;
+             }
+         }
+     }
 
-        Collider[] hitColliders = Physics.OverlapSphere(sphereCenter, groundCheckRadius, groundLayerMask);
-        return hitColliders.Length > 0;
-    }
-    #endregion*/
+     private bool CheckIfGrounded()
+     {
+         if (cc == null) return false;
+
+         Vector3 sphereCenter = transform.position
+                              + transform.forward * groundCheckOffset.z
+                              + transform.up * groundCheckOffset.y
+                              + transform.right * groundCheckOffset.x;
+
+         Collider[] hitColliders = Physics.OverlapSphere(sphereCenter, groundCheckRadius, groundLayerMask);
+         return hitColliders.Length > 0;
+     }
+     #endregion*/
 }
