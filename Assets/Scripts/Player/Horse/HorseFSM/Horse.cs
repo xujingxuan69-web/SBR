@@ -12,33 +12,21 @@ public class Horse : Entity
     [MergeHeader("Jump Info")]
     [SerializeField] private float minJumpForceRate;
 
-    /*#region Slide
-    [Header("Slope Slide Settings")]
-    [SerializeField, Range(0f, 89f)] private float maxWalkableSlopeAngle = 30f;
-    [SerializeField] protected float slopeSpeed = 0f;
-    [SerializeField] protected float slopeBufferDuration = 0.3f;
-    private float _slopeAccumulatedTime = 0f;
-    private float _slopeAngle = 0f;
-
-    [field: SerializeField] public float maxSlopeSlideSpeed { get; protected set; } = 15f;
-    [field: SerializeField] public float slopeSlideAcceleration { get; protected set; } = 3f;
-    [SerializeField] private float groundStickSpeed = 2f;
-    private Vector3 slopeSlideDirection = Vector3.zero;
-    private Vector3 groundNormal = Vector3.up;
-    #endregion*/
+    [MergeHeader("Collision Detection")]
+    [SerializeField] private LayerMask obstacleLayer;
+    [SerializeField] private Vector3 obstacleCheckSphereOffset = new Vector3(0, 0.5f, 0.8f);
+    [field: SerializeField] public float obstacleCheckSphereRadius { get; private set; } = 0.6f;
 
     [field: Header("Other")]
     [field: SerializeField] public HorseInputReader InputReader { get; private set; }
     #endregion
-    #region Obstacle
+    #region RuntimeData
+    private Collider[] obstacleHitBuffer = new Collider[10];
+    #endregion
+    #region Action
     public event System.Action onObstacleInFront;
     public event System.Action onObstacleClear;
-
-    [Header("Collision Detection")]
-    [SerializeField] protected Vector3 checkSphereOffset = new Vector3(0, 0.5f, 0.8f);
-    [field: SerializeField] public float checkSphereRadius { get; protected set; } = 0.6f;
-    private Collider[] obstacleHitBuffer = new Collider[10];
-
+    public event System.Action<float> onTurn;
     #endregion
     #region State
     public EntityStateMachine<Horse> stateMachine { get; private set; }
@@ -61,7 +49,6 @@ public class Horse : Entity
     protected override void Start()
     {
         base.Start();
-        //cc.slopeLimit = maxWalkableSlopeAngle;
         stateMachine.Initialize(groundedState);
     }
 
@@ -70,9 +57,6 @@ public class Horse : Entity
         stateMachine.currentState.FixedUpdate();
         base.FixedUpdate();
     }
-    
-
-    
 
     public override void SetVerticalSpeed()
     {
@@ -80,7 +64,18 @@ public class Horse : Entity
         verticalSpeed = jumpForce * verticalSpeedRate;
     }
 
-    public virtual void Turn(float horizontalInput)
+    public override void ChangeHorizontalSpeedBy(float _acc)
+    {
+        if (IsObstacleInFront() && horizontalSpeed > maxObstacleInFrontSpeed)
+        {
+            _acc = Mathf.Min(_acc, 0f);
+        }
+
+        horizontalSpeed += _acc * Time.fixedDeltaTime;
+        horizontalSpeed = Mathf.Clamp(horizontalSpeed, -maxBackwardSpeed, maxForwardSpeed);
+    }
+
+    public void Turn(float horizontalInput)
     {
         /*float speedRatio = Mathf.Abs(horizontalSpeed / maxForwardSpeed);
         float turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio * speedRatio);
@@ -90,130 +85,19 @@ public class Horse : Entity
         transform.Rotate(0, horizontalInput * turnSpeed * direction * Time.fixedDeltaTime, 0);*/
     }
 
-
-
-    /*protected override void ExecuteMovement()
+    public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
-        Vector3 horizontalVelocity = transform.forward * horizontalSpeed;
-        Vector3 velocity = horizontalVelocity + GetSlopeSlideVelocity();
+        base.UpdateRotation(ref currentRotation, deltaTime);
 
-        bool isAirborne = stateMachine.currentState == jumpState
-                       || stateMachine.currentState == airState;
+    }
 
-        if (isAirborne)
-        {
-            velocity.y = verticalSpeed;
-        }
-        else
-        {
-            // CharacterController does not project horizontal motion onto a slope
-            // automatically. Keep the slope-following horizontal direction, but
-            // force the final vertical component downward. Otherwise the upward
-            // component created while climbing can cancel the stick force.
-            velocity = Vector3.ProjectOnPlane(velocity, groundNormal);
-            velocity.y = -groundStickSpeed;
-        }
-
-        _lastCollisionFlags = cc.Move(velocity * Time.fixedDeltaTime);
-        isGrounded = (_lastCollisionFlags & CollisionFlags.Below) != 0;
-    }*/
-
-    /*private Vector3 GetSlopeSlideVelocity()
+    public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
-        if (!IsSlopeFall() || slopeSlideDirection == Vector3.zero)
-        {
-            slopeSpeed = 0f;
-            return Vector3.zero;
-        }
-
-        float gravityComponent = Mathf.Abs(Physics.gravity.y)
-                               * Mathf.Sin(_slopeAngle * Mathf.Deg2Rad);
-        float acceleration = gravityComponent * 0.5f + slopeSlideAcceleration;
-
-        slopeSpeed = Mathf.MoveTowards(
-            slopeSpeed,
-            maxSlopeSlideSpeed,
-            acceleration * Time.fixedDeltaTime);
-
-        return slopeSlideDirection.normalized * slopeSpeed;
-    }*/
-
-    /* #region Controller Collider Hit
-     public bool IsOnSlope() => _slopeAngle > maxWalkableSlopeAngle;
-
-     public bool IsSlopeFall() => _slopeAccumulatedTime > slopeBufferDuration;
- */
-    /*protected virtual void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        bool isAirborne = stateMachine.currentState == jumpState
-                       || stateMachine.currentState == airState;
-
-        if (hit.normal.y < -0.5f)
-        {
-            if (isAirborne && verticalSpeed > 0f)
-                verticalSpeed = 0f;
-            return;
-        }
-
-        // Treat near-vertical contacts as walls; sloped surfaces remain available
-        // to the existing slope handling below.
-        if (Mathf.Abs(hit.normal.y) <= 0.2f)
-        {
-            Vector3 horizontalVelocity = transform.forward * horizontalSpeed;
-            if (isAirborne && Vector3.Dot(horizontalVelocity, hit.normal) < 0f)
-                horizontalSpeed = 0f;
-            return;
-        }
-
-        if (hit.normal.y <= 0f) return;
-
-        // moveDirection.y is unreliable while descending a slope; use the contact normal.
-        Vector3 normal = hit.normal;
-        groundNormal = normal;
-        _slopeAngle = Vector3.Angle(normal, Vector3.up);
-        if (_slopeAngle > maxWalkableSlopeAngle)
-        {
-           
-
-            Vector3 slopeDown = Vector3.ProjectOnPlane(Vector3.down, normal).normalized;
-            slopeSlideDirection = slopeDown;
-
-            _slopeAccumulatedTime += Time.fixedDeltaTime;
-        }
-        else
-        {
-            _slopeAccumulatedTime = 0f;
-            slopeSlideDirection = Vector3.zero;
-        }
-    }*/
-
-    private void OnDrawGizmos()
-    {
-        if (!showDebugBox) return;
-
-        Vector3 center = GetObstacleDetectCenter();
-
-        Gizmos.color = normalColor;
-        Gizmos.DrawWireSphere(center, checkSphereRadius);
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(center, 0.08f);
-
-        /*if (cc != null)
-        {
-            Vector3 groundCenter = transform.position
-                                 + transform.forward * groundCheckOffset.z
-                                 + transform.up * groundCheckOffset.y
-                                 + transform.right * groundCheckOffset.x;
-
-            Gizmos.color = IsGrounded ? Color.green : Color.red;
-            Gizmos.DrawWireSphere(groundCenter, groundCheckRadius);
-            Gizmos.color = Color.gray;
-            Gizmos.DrawLine(transform.position, groundCenter);
-        }*/
+        base.UpdateVelocity(ref currentVelocity, deltaTime);
     }
 
     #region ObstacleDetection
-    public int GetObstacleInFront() => Physics.OverlapSphereNonAlloc(GetObstacleDetectCenter(), checkSphereRadius, obstacleHitBuffer, groundLayer);
+    public int GetObstacleInFront() => Physics.OverlapSphereNonAlloc(GetObstacleDetectCenter(), obstacleCheckSphereRadius, obstacleHitBuffer, obstacleLayer);
     public bool IsObstacleInFront()
     {
         int count = GetObstacleInFront();
@@ -229,8 +113,19 @@ public class Horse : Entity
         }
     }
     public Collider[] GetObstacleHitBuffer() => obstacleHitBuffer;
-    public Vector3 GetObstacleDetectCenter() => transform.position + transform.forward * checkSphereOffset.z
-                                       + transform.up * checkSphereOffset.y
-                                       + transform.right * checkSphereOffset.x;
+    public Vector3 GetObstacleDetectCenter() => transform.position + transform.forward * obstacleCheckSphereOffset.z
+                                       + transform.up * obstacleCheckSphereOffset.y
+                                       + transform.right * obstacleCheckSphereOffset.x;
     #endregion
+
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        Vector3 center = GetObstacleDetectCenter();
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(center, obstacleCheckSphereRadius);
+        Gizmos.DrawSphere(center, 0.08f);
+    }
 }

@@ -62,7 +62,7 @@ public class HorseHeadController : MonoBehaviour
         Vector3 closestPoint = nearest.ClosestPoint(sphereCenter);
         float distance = Vector3.Distance(sphereCenter, closestPoint);
 
-        float maxCheckDistance = player.checkSphereRadius;
+        float maxCheckDistance = player.obstacleCheckSphereRadius;
         float t = 1f - Mathf.Clamp01(distance / maxCheckDistance);
         float offsetMagnitude = t * maxMoveDistance;
 

@@ -24,14 +24,9 @@ public class Entity : MonoBehaviour, ICharacterController
 
     [field: Header("Collider Detection")]
     [field: SerializeField] public bool isGrounded { get; protected set; }
-    [field: SerializeField] public LayerMask groundLayer { get; protected set; }
-
 
     [Header("Collider Detection Debug")]
     [SerializeField] protected bool showDebugBox = true;
-    [SerializeField] protected Color normalColor = Color.green;
-    [SerializeField] protected Color obstacleColor = Color.red;
-
     #endregion
     #region Component
     public Animator anim { get; private set; }
@@ -43,8 +38,6 @@ public class Entity : MonoBehaviour, ICharacterController
     #endregion
 
 
-    public event System.Action<float> onTurn;
-
 
     protected virtual void Awake()
     {
@@ -54,12 +47,11 @@ public class Entity : MonoBehaviour, ICharacterController
     {
         anim = GetComponent<Animator>();
         kcc = GetComponent<KinematicCharacterMotor>();
+        kcc.CharacterController = this;
     }
 
     protected virtual void FixedUpdate()
     {
-        //UpdateGroundedState();
-        //ExecuteMovement();
     }
 
     #region HorizontalSpeed
@@ -70,11 +62,6 @@ public class Entity : MonoBehaviour, ICharacterController
 
     public virtual void ChangeHorizontalSpeedBy(float _acc)
     {
-        if ( horizontalSpeed > maxObstacleInFrontSpeed)
-        {
-            _acc = Mathf.Min(_acc, 0f);
-        }//!没看懂我这里为什么要这样
-
         horizontalSpeed += _acc * Time.fixedDeltaTime;
         horizontalSpeed = Mathf.Clamp(horizontalSpeed, -maxBackwardSpeed, maxForwardSpeed);
     }
@@ -97,102 +84,53 @@ public class Entity : MonoBehaviour, ICharacterController
 
     #endregion
     #region KCC
-    public void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
+    public virtual void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
-        throw new System.NotImplementedException();
     }
 
-    public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
+    public virtual void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
-        throw new System.NotImplementedException();
+        currentVelocity = transform.forward * horizontalSpeed;
+        currentVelocity.y = verticalSpeed;
     }
 
-    public void BeforeCharacterUpdate(float deltaTime)
+    public virtual void BeforeCharacterUpdate(float deltaTime)
     {
-        throw new System.NotImplementedException();
     }
 
-    public void PostGroundingUpdate(float deltaTime)
+    public virtual void PostGroundingUpdate(float deltaTime)
     {
-        throw new System.NotImplementedException();
+        isGrounded = kcc.GroundingStatus.IsStableOnGround;
     }
 
-    public void AfterCharacterUpdate(float deltaTime)
+    public virtual void AfterCharacterUpdate(float deltaTime)
     {
-        throw new System.NotImplementedException();
     }
 
-    public bool IsColliderValidForCollisions(Collider coll)
+    public virtual bool IsColliderValidForCollisions(Collider coll)
     {
-        throw new System.NotImplementedException();
+        return true;
     }
 
-    public void OnGroundHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
+    public virtual void OnGroundHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
-        throw new System.NotImplementedException();
     }
 
-    public void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
+    public virtual void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
-        throw new System.NotImplementedException();
     }
 
-    public void ProcessHitStabilityReport(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, Vector3 atCharacterPosition, Quaternion atCharacterRotation, ref HitStabilityReport hitStabilityReport)
+    public virtual void ProcessHitStabilityReport(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, Vector3 atCharacterPosition, Quaternion atCharacterRotation, ref HitStabilityReport hitStabilityReport)
     {
-        throw new System.NotImplementedException();
     }
 
-    public void OnDiscreteCollisionDetected(Collider hitCollider)
+    public virtual void OnDiscreteCollisionDetected(Collider hitCollider)
     {
-        throw new System.NotImplementedException();
     }
     #endregion
 
-
-    /* protected virtual void ExecuteMovement()
-     {
-         Vector3 move = transform.forward * horizontalSpeed * Time.fixedDeltaTime;
-         move.y = verticalSpeed * Time.fixedDeltaTime;
-
-         _lastCollisionFlags = cc.Move(move);
-     }*/
-
-
-    /* #region GroundedDetection
-     private void UpdateGroundedState()
-     {
-         bool isGroundedFromCollision = (_lastCollisionFlags & CollisionFlags.Below) != 0;
-         bool currentlyGrounded = isGroundedFromCollision || CheckIfGrounded();
-
-         if (currentlyGrounded)
-         {
-             _isGrounded = true;
-             _lastGroundedTime = Time.time;
-         }
-         else
-         {
-             if (Time.time - _lastGroundedTime < groundedStabilityTime)
-             {
-                 _isGrounded = true;
-             }
-             else
-             {
-                 _isGrounded = false;
-             }
-         }
-     }
-
-     private bool CheckIfGrounded()
-     {
-         if (cc == null) return false;
-
-         Vector3 sphereCenter = transform.position
-                              + transform.forward * groundCheckOffset.z
-                              + transform.up * groundCheckOffset.y
-                              + transform.right * groundCheckOffset.x;
-
-         Collider[] hitColliders = Physics.OverlapSphere(sphereCenter, groundCheckRadius, groundLayerMask);
-         return hitColliders.Length > 0;
-     }
-     #endregion*/
+    protected virtual void OnDrawGizmos()
+    {
+        if (!showDebugBox) return;
+    }
 }
