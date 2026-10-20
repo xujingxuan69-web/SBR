@@ -21,6 +21,9 @@ public class Horse : Entity
     [field: SerializeField] public HorseInputReader InputReader { get; private set; }
     #endregion
     #region RuntimeData
+    private float turnSpeed = 0f;
+    private float turnInput = 0f;
+
     private Collider[] obstacleHitBuffer = new Collider[10];
     #endregion
     #region Action
@@ -73,23 +76,20 @@ public class Horse : Entity
 
         horizontalSpeed += _acc * Time.fixedDeltaTime;
         horizontalSpeed = Mathf.Clamp(horizontalSpeed, -maxBackwardSpeed, maxForwardSpeed);
+
+        float speedRatio = Mathf.Clamp01(Mathf.Abs(horizontalSpeed) / maxForwardSpeed);
+        float turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio);
     }
 
-    public void Turn(float horizontalInput)
-    {
-        /*float speedRatio = Mathf.Abs(horizontalSpeed / maxForwardSpeed);
-        float turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio * speedRatio);
+    public void SetTurnInput(float _turnInput) => turnInput = Mathf.Clamp(_turnInput, -1f, 1f);
 
-        float direction = horizontalSpeed < 0 ? -1f : 1f;
-        onTurn?.Invoke(direction * horizontalInput);
-        transform.Rotate(0, horizontalInput * turnSpeed * direction * Time.fixedDeltaTime, 0);*/
-    }
-
+    #region KCC
     public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
         base.UpdateRotation(ref currentRotation, deltaTime);
 
     }
+    #endregion
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {

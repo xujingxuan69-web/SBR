@@ -24,21 +24,17 @@ public class HorseGroundedState : HorseState
     {
         base.FixedUpdate();
         HandleMovement();
-        
+        player.SetTurnInput(horizontalInput);
+
         if (player.IsGrounded)
         {
-            stateTimer = 0.1f;
             player.ResetVerticalSpeed();
             player.InputReader.SetGroundedTime();
         }
-
-        
-        if (stateTimer < 0 /*|| player.IsSlopeFall()*/)
+        else
         {
             stateMachine.ChangeState(player.airState);
-            return;
         }
-
 
         if (player.InputReader.CheckJumpPressed()) //必须呈包含关系，否则跳跃会被提前消耗掉
         {
@@ -66,15 +62,11 @@ public class HorseGroundedState : HorseState
             }
         }
 
-        bool isOpposite = Mathf.Sign(verticalInput) != Mathf.Sign(player.horizontalSpeed)  //相反按键急停
-                          && Mathf.Abs(verticalInput) > 0.1f
-                          && player.IsMoving;
+        bool isOpposite = Mathf.Sign(verticalInput) != Mathf.Sign(player.horizontalSpeed) && player.IsMoving; //相反按键急停
 
         if (isOpposite) acc *= 2f;
 
         player.ChangeHorizontalSpeedBy(acc);
-
-        player.Turn(horizontalInput);  //转向控制
 
         player.anim.SetFloat("GroundSpeed", Mathf.Abs(player.horizontalSpeed / player.maxForwardSpeed));
     }
