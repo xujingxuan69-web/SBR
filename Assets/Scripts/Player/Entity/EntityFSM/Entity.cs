@@ -30,7 +30,7 @@ public class Entity : MonoBehaviour, ICharacterController
     #endregion
     #region Component
     public Animator anim { get; private set; }
-    protected KinematicCharacterMotor kcc;
+    public KinematicCharacterMotor kcc { get; private set; }
     #endregion
     #region Properties
     public bool IsMoving => Mathf.Abs(horizontalSpeed) > 0.1f;
@@ -72,14 +72,24 @@ public class Entity : MonoBehaviour, ICharacterController
         verticalSpeed = 0f;
     }
 
-    public virtual void AddVerticalSpeed()
+    public virtual void ApplyGravityToVerticalSpeed()
     {
         verticalSpeed += Physics.gravity.y * Time.fixedDeltaTime;
     }
 
-    public virtual void SetVerticalSpeed()
+    public virtual void SetJumpToVerticalSpeed()
     {
         verticalSpeed = jumpForce;
+    }
+
+    public virtual void AddVerticalSpeed(float _verticalSpeed)
+    {
+        verticalSpeed += _verticalSpeed;
+    }
+
+    public virtual void SetVerticalSpeed(float _verticalSpeed)
+    {
+        verticalSpeed = _verticalSpeed;
     }
 
     #endregion

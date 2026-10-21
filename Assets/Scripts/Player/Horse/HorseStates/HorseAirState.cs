@@ -21,5 +21,11 @@ public class HorseAirState : HorseUnGroundedState
     public override void FixedUpdate()
     {
         base.FixedUpdate();
+
+        if (player.InputReader.CheckJumpPressed())
+        {
+            stateMachine.ChangeState(player.jumpState);
+            return;
+        }
     }
 }

@@ -11,7 +11,8 @@ public class HorseJumpState : HorseUnGroundedState
     public override void Enter()
     {
         base.Enter();
-        player.SetVerticalSpeed();
+        player.SetJumpToVerticalSpeed();
+        player.kcc.ForceUnground(); //跳跃需要暂时去除KCC锁地，否则马匹会卡在地面上
     }
 
     public override void Exit()

@@ -21,7 +21,7 @@ public class HorseUnGroundedState : HorseState
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-
+        player.SetTurnInput(horizontalInput * 0.3f);    //控制空中旋转速度
 
         if (player.IsGrounded)
         {
@@ -29,7 +29,7 @@ public class HorseUnGroundedState : HorseState
             return;
         }
 
-        player.AddVerticalSpeed();
+        player.ApplyGravityToVerticalSpeed();
         player.anim.SetFloat("AirSpeed", player.verticalSpeed);
 
         player.IsObstacleInFront(); //后续要更改逻辑，因为撞墙的头部逻辑不同

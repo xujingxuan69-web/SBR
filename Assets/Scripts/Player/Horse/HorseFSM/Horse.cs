@@ -21,7 +21,6 @@ public class Horse : Entity
     [field: SerializeField] public HorseInputReader InputReader { get; private set; }
     #endregion
     #region RuntimeData
-    private float turnSpeed = 0f;
     private float turnInput = 0f;
 
     private Collider[] obstacleHitBuffer = new Collider[10];
@@ -61,7 +60,7 @@ public class Horse : Entity
         base.FixedUpdate();
     }
 
-    public override void SetVerticalSpeed()
+    public override void SetJumpToVerticalSpeed()
     {
         float verticalSpeedRate = Mathf.Clamp(horizontalSpeed / maxForwardSpeed, minJumpForceRate, 1);
         verticalSpeed = jumpForce * verticalSpeedRate;
@@ -77,8 +76,7 @@ public class Horse : Entity
         horizontalSpeed += _acc * Time.fixedDeltaTime;
         horizontalSpeed = Mathf.Clamp(horizontalSpeed, -maxBackwardSpeed, maxForwardSpeed);
 
-        float speedRatio = Mathf.Clamp01(Mathf.Abs(horizontalSpeed) / maxForwardSpeed);
-        float turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio);
+        
     }
 
     public void SetTurnInput(float _turnInput) => turnInput = Mathf.Clamp(_turnInput, -1f, 1f);
@@ -87,15 +85,36 @@ public class Horse : Entity
     public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
         base.UpdateRotation(ref currentRotation, deltaTime);
+        currentRotation = UpdateTurnRotation(currentRotation, deltaTime);
+
+        if (IsGrounded)
+        {
+            Vector3 groundNomal = kcc.GroundingStatus.GroundNormal; //表面的朝外法线方向
+
+
+        }
 
     }
-    #endregion
+
+    private Quaternion UpdateTurnRotation(Quaternion currentRotation, float deltaTime)
+    {
+        float speedRatio = Mathf.Clamp01(Mathf.Abs(horizontalSpeed) / maxForwardSpeed);
+        float turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio);
+
+        float turnDirection = turnInput * (horizontalSpeed < -0.1f ? -1 : 1); //后退需要反转旋转方向
+        float yaw = turnDirection * turnSpeed * deltaTime;  //当前帧需要旋转的角度大小
+
+        currentRotation *= Quaternion.AngleAxis(yaw, Vector3.up);
+
+        onTurn?.Invoke(turnDirection);
+        return currentRotation;
+    }
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
         base.UpdateVelocity(ref currentVelocity, deltaTime);
     }
-
+    #endregion
     #region ObstacleDetection
     public int GetObstacleInFront() => Physics.OverlapSphereNonAlloc(GetObstacleDetectCenter(), obstacleCheckSphereRadius, obstacleHitBuffer, obstacleLayer);
     public bool IsObstacleInFront()
