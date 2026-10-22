@@ -11209,6 +11209,10 @@ PrefabInstance:
       propertyPath: obstacleCheckSphereOffset.z
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 357649649005269068, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
+      propertyPath: <minTurnSpeed>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2334430532726646419, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
       propertyPath: m_Enabled
       value: 0

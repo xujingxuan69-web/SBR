@@ -68,6 +68,9 @@ public class HorseGroundedState : HorseState
 
         player.ChangeHorizontalSpeedBy(acc);
 
-        player.anim.SetFloat("GroundSpeed", Mathf.Abs(player.horizontalSpeed / player.maxForwardSpeed));
+        float animRate = Mathf.Clamp01(Mathf.Abs(player.horizontalSpeed) / player.maxForwardSpeed + Mathf.Abs(horizontalInput) * 0.1f);
+
+
+        player.anim.SetFloat("GroundSpeed", animRate);
     }
 }
