@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HorseGroundedState : HorseState
 {
+    float smoothedAnimRate;
+    float targetAnimRate;
+
     public HorseGroundedState(Horse _player, EntityStateMachine<Horse> _stateMachine, string _animBoolName)
         : base(_player, _stateMachine, _animBoolName)
     {
@@ -68,8 +71,9 @@ public class HorseGroundedState : HorseState
 
         player.ChangeHorizontalSpeedBy(acc);
 
-        float animRate = Mathf.Clamp01(Mathf.Abs(player.horizontalSpeed) / player.maxForwardSpeed + Mathf.Abs(horizontalInput) * 0.1f);
-
+        targetAnimRate = 0.1f * Mathf.Abs(horizontalInput);
+        smoothedAnimRate = Mathf.Lerp(smoothedAnimRate,targetAnimRate, Time.fixedDeltaTime); 
+        float animRate = Mathf.Clamp01(Mathf.Abs(player.horizontalSpeed) / player.maxForwardSpeed + smoothedAnimRate);
 
         player.anim.SetFloat("GroundSpeed", animRate);
     }

@@ -17,13 +17,18 @@ public class Horse : Entity
     [SerializeField] private Vector3 obstacleCheckSphereOffset = new Vector3(0, 0.5f, 0.8f);
     [field: SerializeField] public float obstacleCheckSphereRadius { get; private set; } = 0.6f;
 
+    [Header("Ground Rotation")]
+    [SerializeField] private float groundRotationRatio = 5f;
+
     [field: Header("Other")]
     [field: SerializeField] public HorseInputReader InputReader { get; private set; }
     #endregion
     #region RuntimeData
     private float turnInput = 0f;
+    private float groundRotationSpeed = 0f;
 
     private Collider[] obstacleHitBuffer = new Collider[10];
+
     #endregion
     #region Action
     public event System.Action onObstacleInFront;
@@ -91,7 +96,7 @@ public class Horse : Entity
         {
             Vector3 groundNomal = kcc.GroundingStatus.GroundNormal; //表面的朝外法线方向
 
-
+            
         }
 
     }
