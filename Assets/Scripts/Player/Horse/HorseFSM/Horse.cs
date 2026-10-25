@@ -95,6 +95,8 @@ public class Horse : Entity
         if (IsGrounded)
         {
             Vector3 groundNomal = kcc.GroundingStatus.GroundNormal; //表面的朝外法线方向
+            Vector3 currentForward = currentRotation * Vector3.forward; //四元数*向量-根据四元数旋转向量，这里Vector3.forward是人物头部的朝向
+            //所以currentForward是用于获取马匹当前的前方在世界坐标下的朝向
 
             
         }
@@ -109,7 +111,13 @@ public class Horse : Entity
         float turnDirection = turnInput * (horizontalSpeed < -0.1f ? -1 : 1); //后退需要反转旋转方向
         float yaw = turnDirection * turnSpeed * deltaTime;  //当前帧需要旋转的角度大小
 
-        currentRotation *= Quaternion.AngleAxis(yaw, Vector3.up);
+        currentRotation = Quaternion.AngleAxis(yaw, Vector3.up) * currentRotation;
+        //四元数Quaternion表示旋转的行为，如这里的Quaternion.AngleAxis就表示根据Vector3.up所在的Y轴，旋转yaw度，也就是在XZ平面顺时针旋转yaw度
+        //四元数相乘，就表示旋转的叠加，但是旋转顺序的不同，就会导致结果不同
+        //举个例子，空间坐标系如下：朝前是X轴，朝右是Y轴，朝上是Z轴
+        //目前一个向量从原点出发朝向X轴，即(1,0,0)，现在有两个动作：①绕Y轴逆时针旋转90°；②绕X轴逆时针旋转90°
+        //这两个动作的叠加，如果①*②，会出现(0,1,0)，如果是②*①，则会出现(0,0,1)
+        //
 
         onTurn?.Invoke(turnDirection);
         return currentRotation;
