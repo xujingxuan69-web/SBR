@@ -11193,37 +11193,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 357649649005269068, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      propertyPath: obstacleLayer.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 357649649005269068, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      propertyPath: obstacleCheckSphereOffset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 357649649005269068, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      propertyPath: obstacleCheckSphereOffset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 357649649005269068, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      propertyPath: obstacleCheckSphereOffset.z
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 357649649005269068, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      propertyPath: <minTurnSpeed>k__BackingField
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2334430532726646419, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4030675305915913923, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
       propertyPath: m_Name
       value: Horse
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030675305915913923, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4369623556992978041, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11268,16 +11240,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4030675305915913923, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1363708630}
-    - targetCorrespondingSourceObject: {fileID: 4030675305915913923, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1363708629}
-    - targetCorrespondingSourceObject: {fileID: 4030675305915913923, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1363708631}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
 --- !u!4 &535999677 stripped
 Transform:
@@ -29500,103 +29463,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362223173}
   m_Mesh: {fileID: 4300000, guid: 8ff8d641e32922b46af689259eba176b, type: 3}
---- !u!1 &1363708621 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4030675305915913923, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
-  m_PrefabInstance: {fileID: 535999676}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1363708629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363708621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d1bc5515e3ab954e80599c538834774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Capsule: {fileID: 1363708630}
-  CapsuleRadius: 0.72
-  CapsuleHeight: 2.6
-  CapsuleYOffset: 1.36
-  CapsulePhysicsMaterial: {fileID: 0}
-  GroundDetectionExtraDistance: 0
-  MaxStableSlopeAngle: 60
-  StableGroundLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  DiscreteCollisionEvents: 0
-  StepHandling: 1
-  MaxStepHeight: 0.6
-  AllowSteppingWithoutStableGrounding: 0
-  MinRequiredStepDepth: 0.1
-  LedgeAndDenivelationHandling: 1
-  MaxStableDistanceFromLedge: 0.5
-  MaxVelocityForLedgeSnap: 0
-  MaxStableDenivelationAngle: 180
-  InteractiveRigidbodyHandling: 1
-  RigidbodyInteractionType: 1
-  SimulatedCharacterMass: 1
-  PreserveAttachedRigidbodyMomentum: 1
-  HasPlanarConstraint: 0
-  PlanarConstraintAxis: {x: 0, y: 0, z: 1}
-  MaxMovementIterations: 5
-  MaxDecollisionIterations: 1
-  CheckMovementInitialOverlaps: 1
-  KillVelocityWhenExceedMaxMovementIterations: 1
-  KillRemainingMovementWhenExceedMaxMovementIterations: 1
---- !u!136 &1363708630
-CapsuleCollider:
-  m_ObjectHideFlags: 8
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363708621}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.72
-  m_Height: 2.6
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.36, z: 0}
---- !u!54 &1363708631
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363708621}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1367105968
 GameObject:
   m_ObjectHideFlags: 0

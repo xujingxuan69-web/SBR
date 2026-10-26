@@ -17,18 +17,15 @@ public class Horse : Entity
     [SerializeField] private Vector3 obstacleCheckSphereOffset = new Vector3(0, 0.5f, 0.8f);
     [field: SerializeField] public float obstacleCheckSphereRadius { get; private set; } = 0.6f;
 
-    [Header("Ground Rotation")]
-    [SerializeField] private float groundRotationRatio = 5f;
-
     [field: Header("Other")]
     [field: SerializeField] public HorseInputReader InputReader { get; private set; }
     #endregion
     #region RuntimeData
     private float turnInput = 0f;
-    private float groundRotationSpeed = 0f;
 
     private Collider[] obstacleHitBuffer = new Collider[10];
 
+    public Quaternion shareRotation { get; private set; }
     #endregion
     #region Action
     public event System.Action onObstacleInFront;
@@ -80,8 +77,6 @@ public class Horse : Entity
 
         horizontalSpeed += _acc * Time.fixedDeltaTime;
         horizontalSpeed = Mathf.Clamp(horizontalSpeed, -maxBackwardSpeed, maxForwardSpeed);
-
-        
     }
 
     public void SetTurnInput(float _turnInput) => turnInput = Mathf.Clamp(_turnInput, -1f, 1f);
@@ -90,20 +85,12 @@ public class Horse : Entity
     public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
         base.UpdateRotation(ref currentRotation, deltaTime);
-        currentRotation = UpdateTurnRotation(currentRotation, deltaTime);
-
-        if (IsGrounded)
-        {
-            Vector3 groundNomal = kcc.GroundingStatus.GroundNormal; //表面的朝外法线方向
-            Vector3 currentForward = currentRotation * Vector3.forward; //四元数*向量-根据四元数旋转向量，这里Vector3.forward是人物头部的朝向
-            //所以currentForward是用于获取马匹当前的前方在世界坐标下的朝向
-
-            
-        }
-
+        UpdateTurnRotation(ref currentRotation, deltaTime);
+        shareRotation = currentRotation;
     }
 
-    private Quaternion UpdateTurnRotation(Quaternion currentRotation, float deltaTime)
+
+    private void UpdateTurnRotation(ref Quaternion currentRotation, float deltaTime)
     {
         float speedRatio = Mathf.Clamp01(Mathf.Abs(horizontalSpeed) / maxForwardSpeed);
         float turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio);
@@ -117,10 +104,10 @@ public class Horse : Entity
         //举个例子，空间坐标系如下：朝前是X轴，朝右是Y轴，朝上是Z轴
         //目前一个向量从原点出发朝向X轴，即(1,0,0)，现在有两个动作：①绕Y轴逆时针旋转90°；②绕X轴逆时针旋转90°
         //这两个动作的叠加，如果①*②，会出现(0,1,0)，如果是②*①，则会出现(0,0,1)
-        //
+        //这里把currentRotation放右边，就是先按照初始的当前坐标轴（世界坐标轴）进行左右旋转，再叠加自身的旋转
+        //如果是currentRotation * Quaternion.AngleAxis(yaw, Vector3.up)，则是在自身的旋转上叠加当前坐标轴旋转，这样可能导致旋转错误
 
         onTurn?.Invoke(turnDirection);
-        return currentRotation;
     }
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
@@ -128,6 +115,7 @@ public class Horse : Entity
         base.UpdateVelocity(ref currentVelocity, deltaTime);
     }
     #endregion
+
     #region ObstacleDetection
     public int GetObstacleInFront() => Physics.OverlapSphereNonAlloc(GetObstacleDetectCenter(), obstacleCheckSphereRadius, obstacleHitBuffer, obstacleLayer);
     public bool IsObstacleInFront()

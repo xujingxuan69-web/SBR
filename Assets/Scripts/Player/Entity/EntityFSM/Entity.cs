@@ -8,6 +8,10 @@ public class Entity : MonoBehaviour, ICharacterController
     public ulong playerId;
 
     #region Inspector
+    [field: Header("Component")]
+    [field: SerializeField] public Animator anim { get; private set; }
+    [field: SerializeField] public KinematicCharacterMotor kcc { get; private set; }
+
     [field: Header("Movement Info")]
     [field: SerializeField] public float maxForwardSpeed { get; protected set; } = 12f;
     [field: SerializeField] public float maxBackwardSpeed { get; protected set; } = 2f;
@@ -28,10 +32,6 @@ public class Entity : MonoBehaviour, ICharacterController
     [Header("Collider Detection Debug")]
     [SerializeField] protected bool showDebugBox = true;
     #endregion
-    #region Component
-    public Animator anim { get; private set; }
-    public KinematicCharacterMotor kcc { get; private set; }
-    #endregion
     #region Properties
     public bool IsMoving => Mathf.Abs(horizontalSpeed) > 0.1f;
     public bool IsGrounded => isGrounded;
@@ -45,8 +45,6 @@ public class Entity : MonoBehaviour, ICharacterController
 
     protected virtual void Start()
     {
-        anim = GetComponent<Animator>();
-        kcc = GetComponent<KinematicCharacterMotor>();
         kcc.CharacterController = this;
     }
 
