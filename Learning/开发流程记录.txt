@@ -1,3 +1,5 @@
+2026/10/26 使用KCC实现角色控制与贴地上下，对滑落的逻辑进行研究
+
 2026/10/12 角色控制器从CharacterController改用KCC(Kinematic Character Controller)
 
 2026/8/28-2026/9/5 使用new Input System，完成输入优化，包括预输入、土狼时间

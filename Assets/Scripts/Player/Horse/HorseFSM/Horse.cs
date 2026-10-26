@@ -12,6 +12,10 @@ public class Horse : Entity
     [MergeHeader("Jump Info")]
     [SerializeField] private float minJumpForceRate;
 
+    [Header("Slope Movement")]
+    [SerializeField, Min(0f)] private float groundVelocitySharpness = 15f;
+    [SerializeField, Min(0f)] private float steepSlopeBrake = 30f;
+
     [MergeHeader("Collision Detection")]
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private Vector3 obstacleCheckSphereOffset = new Vector3(0, 0.5f, 0.8f);
@@ -22,6 +26,7 @@ public class Horse : Entity
     #endregion
     #region RuntimeData
     private float turnInput = 0f;
+    private bool jumpVelocityPending;
 
     private Collider[] obstacleHitBuffer = new Collider[10];
 
@@ -66,6 +71,7 @@ public class Horse : Entity
     {
         float verticalSpeedRate = Mathf.Clamp(horizontalSpeed / maxForwardSpeed, minJumpForceRate, 1);
         verticalSpeed = jumpForce * verticalSpeedRate;
+        jumpVelocityPending = true;
     }
 
     public override void ChangeHorizontalSpeedBy(float _acc)
@@ -89,11 +95,10 @@ public class Horse : Entity
         shareRotation = currentRotation;
     }
 
-
     private void UpdateTurnRotation(ref Quaternion currentRotation, float deltaTime)
     {
         float speedRatio = Mathf.Clamp01(Mathf.Abs(horizontalSpeed) / maxForwardSpeed);
-        float turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio);
+        float turnSpeed = IsGrounded ? Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio) : minTurnSpeed * 0.5f;
 
         float turnDirection = turnInput * (horizontalSpeed < -0.1f ? -1 : 1); //后退需要反转旋转方向
         float yaw = turnDirection * turnSpeed * deltaTime;  //当前帧需要旋转的角度大小
@@ -112,7 +117,41 @@ public class Horse : Entity
 
     public override void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
-        base.UpdateVelocity(ref currentVelocity, deltaTime);
+        var grounding = kcc.GroundingStatus;
+        bool justJumped = jumpVelocityPending;
+
+        if (justJumped)
+        {
+            currentVelocity = transform.forward * horizontalSpeed;
+            currentVelocity.y = verticalSpeed;
+            jumpVelocityPending = false;
+        }
+
+        if (!justJumped && grounding.IsStableOnGround)
+        {
+            Vector3 targetVelocity = kcc.GetDirectionTangentToSurface(
+                transform.forward, grounding.GroundNormal) * horizontalSpeed;
+
+            if (currentVelocity.sqrMagnitude > 0.0001f)
+            {
+                currentVelocity = kcc.GetDirectionTangentToSurface(
+                    currentVelocity, grounding.GroundNormal) * currentVelocity.magnitude;
+            }
+
+            float blend = 1f - Mathf.Exp(-groundVelocitySharpness * deltaTime);
+            currentVelocity = Vector3.Lerp(currentVelocity, targetVelocity, blend);
+            verticalSpeed = 0f;
+            return;
+        }
+
+        if (!justJumped && grounding.FoundAnyGround &&
+            Vector3.Dot(transform.forward * horizontalSpeed, grounding.GroundNormal) < 0f)
+        {
+            horizontalSpeed = Mathf.MoveTowards(horizontalSpeed, 0f, steepSlopeBrake * deltaTime);
+        }
+
+        currentVelocity += Physics.gravity * deltaTime;
+        verticalSpeed = currentVelocity.y;
     }
     #endregion
 

@@ -29,7 +29,6 @@ public class HorseUnGroundedState : HorseState
             return;
         }
 
-        player.ApplyGravityToVerticalSpeed();
         player.anim.SetFloat("AirSpeed", player.verticalSpeed);
 
         player.IsObstacleInFront(); //后续要更改逻辑，因为撞墙的头部逻辑不同

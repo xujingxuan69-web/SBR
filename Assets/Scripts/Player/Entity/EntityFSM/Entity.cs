@@ -37,8 +37,6 @@ public class Entity : MonoBehaviour, ICharacterController
     public bool IsGrounded => isGrounded;
     #endregion
 
-
-
     protected virtual void Awake()
     {
     }
