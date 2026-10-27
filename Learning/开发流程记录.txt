@@ -1,4 +1,6 @@
-2026/10/26 使用KCC实现角色控制与贴地上下，对滑落的逻辑进行研究
+2026/10/27 
+
+2026/10/26 使用KCC实现角色控制与贴地上下，对滑落的逻辑进行研究，滑落暂时使用了ai帮我参考KCC官方案例实现，搁置，先研究脚部IK
 
 2026/10/12 角色控制器从CharacterController改用KCC(Kinematic Character Controller)
 

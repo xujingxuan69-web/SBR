@@ -27,14 +27,16 @@ public class Entity : MonoBehaviour, ICharacterController
     [SerializeField] protected float jumpForce = 12f;
 
     [field: Header("Collider Detection")]
-    [field: SerializeField] public bool isGrounded { get; protected set; }
+    [field: SerializeField] public bool isStableGrounded { get; protected set; }
+    [field: SerializeField] public bool isUnstableGrounded { get; protected set; }
 
     [Header("Collider Detection Debug")]
     [SerializeField] protected bool showDebugBox = true;
     #endregion
     #region Properties
     public bool IsMoving => Mathf.Abs(horizontalSpeed) > 0.1f;
-    public bool IsGrounded => isGrounded;
+    public bool IsStableGrounded => isStableGrounded;
+    public bool IsUnstableGrounded => isUnstableGrounded;
     #endregion
 
     protected virtual void Awake()
@@ -106,7 +108,9 @@ public class Entity : MonoBehaviour, ICharacterController
 
     public virtual void PostGroundingUpdate(float deltaTime)
     {
-        isGrounded = kcc.GroundingStatus.IsStableOnGround;
+        var grounding = kcc.GroundingStatus;
+        isStableGrounded = grounding.IsStableOnGround;
+        isUnstableGrounded = grounding.FoundAnyGround && !grounding.IsStableOnGround;
     }
 
     public virtual void AfterCharacterUpdate(float deltaTime)

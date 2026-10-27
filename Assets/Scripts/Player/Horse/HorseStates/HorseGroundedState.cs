@@ -29,10 +29,14 @@ public class HorseGroundedState : HorseState
         HandleMovement();
         player.SetTurnInput(horizontalInput);
 
-        if (player.IsGrounded)
+        if (player.IsStableGrounded)
         {
             player.ResetVerticalSpeed();
             player.InputReader.SetGroundedTime();
+        }
+        else if (player.IsUnstableGrounded)
+        {
+            stateMachine.ChangeState(player.unstableState);
         }
         else
         {

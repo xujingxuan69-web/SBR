@@ -37,7 +37,7 @@ public class HorseBodyController : MonoBehaviour
 
         float targetPitchAngle;
 
-        if (player.IsGrounded)
+        if (player.IsStableGrounded)
         {
             Vector3 groundNormal = motor.GroundingStatus.GroundNormal; //表面的朝外法线方向
 

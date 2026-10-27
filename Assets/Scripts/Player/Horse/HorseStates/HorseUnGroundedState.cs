@@ -23,9 +23,14 @@ public class HorseUnGroundedState : HorseState
         base.FixedUpdate();
         player.SetTurnInput(horizontalInput * 0.3f);    //控制空中旋转速度
 
-        if (player.IsGrounded)
+        if (player.IsStableGrounded)
         {
             stateMachine.ChangeState(player.groundedState);
+            return;
+        }
+        else if (player.IsUnstableGrounded)
+        {
+            stateMachine.ChangeState(player.unstableState);
             return;
         }
 

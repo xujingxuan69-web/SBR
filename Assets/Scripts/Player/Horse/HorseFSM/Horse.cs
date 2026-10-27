@@ -41,6 +41,7 @@ public class Horse : Entity
     public EntityStateMachine<Horse> stateMachine { get; private set; }
 
     public HorseGroundedState groundedState { get; private set; }
+    public HorseUnstableState unstableState { get; private set; }
     public HorseJumpState jumpState { get; private set; }
     public HorseAirState airState { get; private set; }
     #endregion
@@ -51,6 +52,7 @@ public class Horse : Entity
         stateMachine = new EntityStateMachine<Horse>();
 
         groundedState = new HorseGroundedState(this, stateMachine, "Grounded");
+        unstableState = new HorseUnstableState(this, stateMachine, "Grounded");
         jumpState = new HorseJumpState(this, stateMachine, "Air");
         airState = new HorseAirState(this, stateMachine, "Air");
     }
@@ -98,7 +100,7 @@ public class Horse : Entity
     private void UpdateTurnRotation(ref Quaternion currentRotation, float deltaTime)
     {
         float speedRatio = Mathf.Clamp01(Mathf.Abs(horizontalSpeed) / maxForwardSpeed);
-        float turnSpeed = IsGrounded ? Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio) : minTurnSpeed * 0.5f;
+        float turnSpeed = IsStableGrounded ? Mathf.Lerp(minTurnSpeed, maxTurnSpeed, speedRatio) : minTurnSpeed * 0.5f;
 
         float turnDirection = turnInput * (horizontalSpeed < -0.1f ? -1 : 1); //后退需要反转旋转方向
         float yaw = turnDirection * turnSpeed * deltaTime;  //当前帧需要旋转的角度大小
