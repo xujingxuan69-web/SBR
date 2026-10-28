@@ -81,6 +81,8 @@ public class HorseFootPoseReaderJobBinder : AnimationJobBinder<HorseFootPoseRead
 [AddComponentMenu("Animation Rigging/Horse Foot Pose Reader")]
 public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFootPoseReaderData, HorseFootPoseReaderJobBinder> //约束组件
 {
+    [SerializeField] private bool turnOnDebug;
+
     [SerializeField] private bool showDebugGizmos = true;
     private NativeArray<Vector3> output;
     private readonly Vector3[] sampledPositions = new Vector3[5];
@@ -112,7 +114,8 @@ public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFo
         if (Application.isPlaying && Time.unscaledTime >= nextGizmoDiagnosticTime)
         {
             nextGizmoDiagnosticTime = Time.unscaledTime + 1f;
-            Debug.Log($"[HorseFootPoseReader Gizmo:{name}#{GetInstanceID()}] source=sampledPositions, outputCreated={output.IsCreated}, " +
+            
+            if (turnOnDebug) Debug.Log($"[HorseFootPoseReader Gizmo:{name}#{GetInstanceID()}] source=sampledPositions, outputCreated={output.IsCreated}, " +
                       $"leftFront={sampledPositions[0]:F3}, rightFront={sampledPositions[1]:F3}, " +
                       $"leftRear={sampledPositions[2]:F3}, rightRear={sampledPositions[3]:F3}, " +
                       $"leftRearBinding={(data.GetFoot(2) ? data.GetFoot(2).position.ToString("F3") : "<null>")}", this);

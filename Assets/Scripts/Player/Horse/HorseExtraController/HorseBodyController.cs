@@ -12,6 +12,8 @@ public class HorseBodyController : MonoBehaviour
     private KinematicCharacterMotor motor;
     
     private float pitchAngle = 0f;
+    private Vector3 lastGroundNormal = Vector3.up;
+    private bool hasGroundNormal;
 
     private void Start()
     {
@@ -37,31 +39,33 @@ public class HorseBodyController : MonoBehaviour
 
         float targetPitchAngle;
 
-        if (player.IsStableGrounded)
+        var grounding = motor.GroundingStatus;
+        bool foundGroundNormal = grounding.FoundAnyGround && grounding.GroundNormal.sqrMagnitude > 0.0001f;
+        if (foundGroundNormal)
         {
-            Vector3 groundNormal = motor.GroundingStatus.GroundNormal; //表面的朝外法线方向
+            lastGroundNormal = grounding.GroundNormal.normalized;
+            hasGroundNormal = true;
+        }
 
+        bool keepGroundPitch = foundGroundNormal ||
+            ((player.HasGroundingGrace || player.IsBlockedBySteepSlope) && hasGroundNormal);
+        if (keepGroundPitch)
+        {
+            Vector3 groundNormal = foundGroundNormal ? grounding.GroundNormal.normalized : lastGroundNormal;
             float normalUp = Vector3.Dot(groundNormal, Vector3.up);
             float normalForward = Vector3.Dot(groundNormal, flatForward);
-
             Vector3 slopeForward = (normalUp * flatForward - Vector3.up * normalForward).normalized;
-            //计算沿马匹方向的斜坡向上方向，因为groundNormal是法线，所以是高才是实际上的长，而长的分量应当反转
-
             targetPitchAngle = Vector3.SignedAngle(currentForward, slopeForward, currentRight);
-            //以currentRight为轴，获取马匹正前方向量和斜坡向上向量之间的夹角
-            //注意 这里存在正负，所以能判定正在上坡还是下坡
-
         }
         else
         {
             targetPitchAngle = Vector3.SignedAngle(currentForward, flatForward, currentRight);
-            //当马不在地面时，只要让马逐渐恢复原本的角度即可
         }
-
         pitchAngle = Mathf.LerpAngle(pitchAngle, targetPitchAngle, pitchBlend);
 
         currentRotation = Quaternion.AngleAxis(pitchAngle, currentRight) * currentRotation;
 
+        player.SetBodyRotation(currentRotation);
         modelRoot.localRotation = Quaternion.Inverse(player.transform.rotation) * currentRotation;
     }
 }

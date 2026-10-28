@@ -30,6 +30,8 @@ public sealed class HorseGroundFootIK : MonoBehaviour
     [SerializeField] private bool drawRays = true;
     private float nextDiagnosticTime;
 
+    [SerializeField] private bool turnOnDebug;
+
     private void LateUpdate()
     {
         if (feet == null) return;
@@ -65,9 +67,10 @@ public sealed class HorseGroundFootIK : MonoBehaviour
             if (hitGround)
             {
                 targetAtGround = hit.point + hit.normal * footHeight + (fallback - probePosition);
-                groundDecision = groundDistance <= maxGroundDistance ? "apply" : "too-far";
+                groundDecision = groundDistance <= maxGroundDistance ? "would-apply-disabled" : "too-far";
             }
 
+            /* Ground correction temporarily disabled for isolation testing.
             if (hitGround && groundDistance <= maxGroundDistance)
             {
                 foot.ikTarget.position = Vector3.Lerp(fallback, targetAtGround, weight);
@@ -79,6 +82,9 @@ public sealed class HorseGroundFootIK : MonoBehaviour
                 foot.ikTarget.position = fallback;
                 foot.ikTarget.rotation = foot.animatedFoot.rotation;
             }
+            */
+            foot.ikTarget.position = fallback;
+            foot.ikTarget.rotation = foot.animatedFoot.rotation;
 
             if (i == 0)
             {
@@ -99,7 +105,7 @@ public sealed class HorseGroundFootIK : MonoBehaviour
     {
         if (Time.unscaledTime < nextDiagnosticTime) return;
         nextDiagnosticTime = Time.unscaledTime + 1f;
-        Debug.Log($"[HorseGroundFootIK:{name}] enabled={enabled}, active={gameObject.activeInHierarchy}, {message}", this);
+        if(turnOnDebug)Debug.Log($"[HorseGroundFootIK:{name}] enabled={enabled}, active={gameObject.activeInHierarchy}, {message}", this);
     }
 
     private void OnDrawGizmosSelected()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KinematicCharacterController;
 
 public class Horse : Entity
 {
@@ -14,7 +15,8 @@ public class Horse : Entity
 
     [Header("Slope Movement")]
     [SerializeField, Min(0f)] private float groundVelocitySharpness = 15f;
-    [SerializeField, Min(0f)] private float steepSlopeBrake = 30f;
+    [SerializeField, Min(0f)] private float steepSlopeContactGraceTime = 0.12f;
+    [SerializeField, Min(0f)] private float groundedStateGraceTime = 0.12f;
 
     [MergeHeader("Collision Detection")]
     [SerializeField] private LayerMask obstacleLayer;
@@ -27,6 +29,10 @@ public class Horse : Entity
     #region RuntimeData
     private float turnInput = 0f;
     private bool jumpVelocityPending;
+    private Vector3 steepSlopeUphillDirection;
+    private float lastSteepSlopeContactTime = float.NegativeInfinity;
+    private float lastGroundContactTime = float.NegativeInfinity;
+    private Quaternion bodyRotation;
 
     private Collider[] obstacleHitBuffer = new Collider[10];
 
@@ -41,18 +47,25 @@ public class Horse : Entity
     public EntityStateMachine<Horse> stateMachine { get; private set; }
 
     public HorseGroundedState groundedState { get; private set; }
-    public HorseUnstableState unstableState { get; private set; }
     public HorseJumpState jumpState { get; private set; }
     public HorseAirState airState { get; private set; }
     #endregion
 
+    public bool IsBlockedBySteepSlope =>
+        stateMachine != null && stateMachine.currentState != jumpState &&
+        Time.time - lastSteepSlopeContactTime <= steepSlopeContactGraceTime;
+
+    public bool HasGroundingGrace =>
+        stateMachine != null && stateMachine.currentState != jumpState &&
+        Time.time - lastGroundContactTime <= groundedStateGraceTime;
+
     protected override void Awake()
     {
         base.Awake();
+        bodyRotation = transform.rotation;
         stateMachine = new EntityStateMachine<Horse>();
 
         groundedState = new HorseGroundedState(this, stateMachine, "Grounded");
-        unstableState = new HorseUnstableState(this, stateMachine, "Grounded");
         jumpState = new HorseJumpState(this, stateMachine, "Air");
         airState = new HorseAirState(this, stateMachine, "Air");
     }
@@ -89,6 +102,42 @@ public class Horse : Entity
 
     public void SetTurnInput(float _turnInput) => turnInput = Mathf.Clamp(_turnInput, -1f, 1f);
 
+    public void SetBodyRotation(Quaternion rotation) => bodyRotation = rotation;
+
+    public override void PostGroundingUpdate(float deltaTime)
+    {
+        base.PostGroundingUpdate(deltaTime);
+
+        if (stateMachine.currentState != jumpState &&
+            (IsStableGrounded || IsUnstableGrounded || IsBlockedBySteepSlope))
+        {
+            lastGroundContactTime = Time.time;
+        }
+    }
+
+    public override void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint,
+        ref HitStabilityReport hitStabilityReport)
+    {
+        base.OnMovementHit(hitCollider, hitNormal, hitPoint, ref hitStabilityReport);
+        /*if (stateMachine != null && stateMachine.currentState == jumpState)
+            return;
+
+        float slopeAngle = Vector3.Angle(kcc.CharacterUp, hitNormal);
+        if (slopeAngle <= kcc.MaxStableSlopeAngle || slopeAngle >= 89f)
+            return;
+
+        Vector3 horizontalNormal = Vector3.ProjectOnPlane(hitNormal, kcc.CharacterUp);
+        if (horizontalNormal.sqrMagnitude <= 0.0001f)
+            return;
+
+        Vector3 uphillDirection = -horizontalNormal.normalized;
+        if (Vector3.Dot(kcc.BaseVelocity, uphillDirection) <= 0.01f)
+            return;
+
+        steepSlopeUphillDirection = uphillDirection;
+        lastSteepSlopeContactTime = Time.time;*/
+    }
+
     #region KCC
     public override void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
@@ -121,6 +170,7 @@ public class Horse : Entity
     {
         var grounding = kcc.GroundingStatus;
         bool justJumped = jumpVelocityPending;
+        bool blockedBySteepSlope = !justJumped && IsBlockedBySteepSlope;
 
         if (justJumped)
         {
@@ -129,7 +179,7 @@ public class Horse : Entity
             jumpVelocityPending = false;
         }
 
-        if (!justJumped && grounding.IsStableOnGround)
+        if (!justJumped && grounding.IsStableOnGround && !blockedBySteepSlope)
         {
             Vector3 targetVelocity = kcc.GetDirectionTangentToSurface(
                 transform.forward, grounding.GroundNormal) * horizontalSpeed;
@@ -146,10 +196,27 @@ public class Horse : Entity
             return;
         }
 
-        if (!justJumped && grounding.FoundAnyGround &&
-            Vector3.Dot(transform.forward * horizontalSpeed, grounding.GroundNormal) < 0f)
+        bool unstableGround = grounding.FoundAnyGround && !grounding.IsStableOnGround;
+        if (!justJumped && (unstableGround || blockedBySteepSlope))
         {
-            horizontalSpeed = Mathf.MoveTowards(horizontalSpeed, 0f, steepSlopeBrake * deltaTime);
+            Vector3 uphillDirection = blockedBySteepSlope
+                ? steepSlopeUphillDirection
+                : -Vector3.ProjectOnPlane(grounding.GroundNormal, kcc.CharacterUp).normalized;
+
+            if (uphillDirection.sqrMagnitude > 0.0001f)
+            {
+                uphillDirection.Normalize();
+                float verticalVelocity = Vector3.Dot(currentVelocity, kcc.CharacterUp);
+                if (blockedBySteepSlope && verticalVelocity > 0f)
+                    verticalVelocity = 0f;
+                Vector3 desiredVelocity = transform.forward * horizontalSpeed;
+                float uphillVelocity = Vector3.Dot(desiredVelocity, uphillDirection);
+                if (uphillVelocity > 0f)
+                    desiredVelocity -= uphillDirection * uphillVelocity;
+
+                currentVelocity = desiredVelocity + kcc.CharacterUp * verticalVelocity;
+            }
+
         }
 
         currentVelocity += Physics.gravity * deltaTime;
@@ -158,7 +225,28 @@ public class Horse : Entity
     #endregion
 
     #region ObstacleDetection
-    public int GetObstacleInFront() => Physics.OverlapSphereNonAlloc(GetObstacleDetectCenter(), obstacleCheckSphereRadius, obstacleHitBuffer, obstacleLayer);
+    public int GetObstacleInFront()
+    {
+        int hitCount = Physics.OverlapSphereNonAlloc(
+            GetObstacleDetectCenter(), obstacleCheckSphereRadius, obstacleHitBuffer, obstacleLayer);
+        int supportedCount = 0;
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            Collider hit = obstacleHitBuffer[i];
+            if (!SupportsClosestPoint(hit))
+                continue;
+
+            obstacleHitBuffer[supportedCount++] = hit;
+        }
+
+        return supportedCount;
+    }
+
+    private static bool SupportsClosestPoint(Collider collider) =>
+        collider is BoxCollider || collider is SphereCollider || collider is CapsuleCollider ||
+        collider is MeshCollider meshCollider && meshCollider.convex;
+
     public bool IsObstacleInFront()
     {
         int count = GetObstacleInFront();
@@ -174,9 +262,7 @@ public class Horse : Entity
         }
     }
     public Collider[] GetObstacleHitBuffer() => obstacleHitBuffer;
-    public Vector3 GetObstacleDetectCenter() => transform.position + transform.forward * obstacleCheckSphereOffset.z
-                                       + transform.up * obstacleCheckSphereOffset.y
-                                       + transform.right * obstacleCheckSphereOffset.x;
+    public Vector3 GetObstacleDetectCenter() => transform.position + bodyRotation * obstacleCheckSphereOffset;
     #endregion
 
     protected override void OnDrawGizmos()

@@ -46670,6 +46670,10 @@ PrefabInstance:
       propertyPath: CapsuleHeight
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 744924052578877337, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
+      propertyPath: MaxStableSlopeAngle
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 1472723717824223712, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
       propertyPath: m_Height
       value: 2.5
@@ -46748,7 +46752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4944997035984129960, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
       propertyPath: m_UpdateMode
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5123327886749981188, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -46758,9 +46762,21 @@ PrefabInstance:
       propertyPath: groundRotationRatio
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7615643380419764357, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1965733796939631575}
+    - target: {fileID: 8404936483162223579, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
+      propertyPath: poseIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8404936483162223579, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
       propertyPath: targetSmoothingSharpness
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470519835073605082, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
+      propertyPath: turnOnDebug
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -46773,6 +46789,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3301845148113316781, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
   m_PrefabInstance: {fileID: 1965733796939631567}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1965733796939631575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4012138628122119775, guid: 6963183600ca3ff448cf2c176110295e, type: 3}
+  m_PrefabInstance: {fileID: 1965733796939631567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dd1c8db2f7d1f4fa5aa464134cf1ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!81 &5509052267740542277
 AudioListener:
   m_ObjectHideFlags: 0

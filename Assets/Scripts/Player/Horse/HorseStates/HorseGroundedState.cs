@@ -34,13 +34,10 @@ public class HorseGroundedState : HorseState
             player.ResetVerticalSpeed();
             player.InputReader.SetGroundedTime();
         }
-        else if (player.IsUnstableGrounded)
-        {
-            stateMachine.ChangeState(player.unstableState);
-        }
-        else
+        else if (!player.IsUnstableGrounded && !player.IsBlockedBySteepSlope && !player.HasGroundingGrace)
         {
             stateMachine.ChangeState(player.airState);
+            return;
         }
 
         if (player.InputReader.CheckJumpPressed()) //必须呈包含关系，否则跳跃会被提前消耗掉
