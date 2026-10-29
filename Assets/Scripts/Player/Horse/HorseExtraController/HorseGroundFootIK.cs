@@ -31,6 +31,8 @@ public sealed class HorseGroundFootIK : MonoBehaviour
     private float nextDiagnosticTime;
 
     [SerializeField] private bool turnOnDebug;
+    [SerializeField] private bool showTargetDebug = true;
+    private float nextTargetDiagnosticTime;
 
     private void LateUpdate()
     {
@@ -45,8 +47,7 @@ public sealed class HorseGroundFootIK : MonoBehaviour
                 continue;
             }
 
-            // Read the animation pose before Two Bone IK. Using animatedFoot.position
-            // here can read the previous IK result and create a feedback loop.
+            // This is the pose captured from the animation stream before Two Bone IK.
             Vector3 fallback = poseReader
                 ? poseReader.GetSampledPosition(poseIndex)
                 : foot.animatedFoot.position;
@@ -83,8 +84,16 @@ public sealed class HorseGroundFootIK : MonoBehaviour
                 foot.ikTarget.rotation = foot.animatedFoot.rotation;
             }
             */
-            foot.ikTarget.position = fallback;
-            foot.ikTarget.rotation = foot.animatedFoot.rotation;
+            if (i == 0 && showTargetDebug && Time.unscaledTime >= nextTargetDiagnosticTime)
+            {
+                nextTargetDiagnosticTime = Time.unscaledTime + 0.5f;
+                Vector3 jobTarget = poseReader ? poseReader.GetAnimationJobIKTargetPosition() : Vector3.zero;
+                Debug.Log($"[HorseGroundFootIK Target:{name}] sample={fallback:F3}, jobTarget={jobTarget:F3}, " +
+                          $"animatedFoot={foot.animatedFoot.position:F3}, target={foot.ikTarget.position:F3}, " +
+                          $"sampleToTarget={Vector3.Distance(fallback, foot.ikTarget.position):F3}m, " +
+                          $"jobToTarget={Vector3.Distance(jobTarget, foot.ikTarget.position):F3}m, " +
+                          $"hit={hitGround}, correction=disabled, targetWrittenBy=AnimationJob", this);
+            }
 
             if (i == 0)
             {

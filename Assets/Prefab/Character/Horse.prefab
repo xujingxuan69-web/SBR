@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   headTrackingTarget: {fileID: 3374946957873630165}
-  player: {fileID: 0}
+  player: {fileID: 4012138628122119775}
   turnMoveDistance: 1.5
   maxMoveDistance: 10
   turnSmoothSpeed: 0.5
@@ -573,7 +573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 907396267007186554}
-  - component: {fileID: 4223699159967155557}
+  - component: {fileID: 752195519566904259}
   m_Layer: 0
   m_Name: LeftRearTracking
   m_TagString: Untagged
@@ -596,7 +596,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 380146691921770979}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4223699159967155557
+--- !u!114 &752195519566904259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -614,7 +614,7 @@ MonoBehaviour:
     m_Mid: {fileID: 1896577369807192787}
     m_Tip: {fileID: 7834571492568141496}
     m_Target: {fileID: 6151977508227485526}
-    m_Hint: {fileID: 5123327886749981188}
+    m_Hint: {fileID: 3185975581868344157}
     m_TargetPositionWeight: 1
     m_TargetRotationWeight: 0
     m_HintWeight: 1
@@ -860,7 +860,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.72
-  m_Height: 2.6
+  m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 1.36, z: 0}
 --- !u!114 &744924052578877337
@@ -877,11 +877,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Capsule: {fileID: 1472723717824223712}
   CapsuleRadius: 0.72
-  CapsuleHeight: 2.6
+  CapsuleHeight: 2.5
   CapsuleYOffset: 1.36
   CapsulePhysicsMaterial: {fileID: 0}
   GroundDetectionExtraDistance: 0
-  MaxStableSlopeAngle: 60
+  MaxStableSlopeAngle: 45
   StableGroundLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -929,11 +929,15 @@ MonoBehaviour:
   <horizontalSpeed>k__BackingField: 0
   <verticalSpeed>k__BackingField: 0
   jumpForce: 12
-  <isGrounded>k__BackingField: 0
+  <isStableGrounded>k__BackingField: 0
+  <isUnstableGrounded>k__BackingField: 0
   showDebugBox: 1
   <maxTurnSpeed>k__BackingField: 150
   <minTurnSpeed>k__BackingField: 50
-  minJumpForceRate: 0.6
+  minJumpForceRate: 0.5
+  groundVelocitySharpness: 15
+  steepSlopeContactGraceTime: 0.12
+  groundedStateGraceTime: 0.12
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1146,7 +1150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &380146691921770979
 Transform:
   m_ObjectHideFlags: 0
@@ -1194,9 +1198,15 @@ MonoBehaviour:
   m_Data:
     leftFront: {fileID: 3611925137227518039}
     rightFront: {fileID: 2769574431364649698}
+    leftRearLeg1: {fileID: 1406657681174129931}
+    leftRearLeg2: {fileID: 1896577369807192787}
     leftRear: {fileID: 7834571492568141496}
+    leftRearFoot: {fileID: 5584790487050404475}
+    leftRearIKTarget: {fileID: 6151977508227485526}
     rightRear: {fileID: 5222408580255353999}
     leftRearGroundProbe: {fileID: 5584790487050404475}
+  turnOnDebug: 0
+  showAnimationJobDebug: 1
   showDebugGizmos: 1
 --- !u!114 &8404936483162223579
 MonoBehaviour:
@@ -1225,6 +1235,8 @@ MonoBehaviour:
   footHeight: 0.02
   weight: 1
   drawRays: 1
+  turnOnDebug: 0
+  showTargetDebug: 1
 --- !u!1 &3608344805180699397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,40 +1669,8 @@ Transform:
   m_Children:
   - {fileID: 1326011885728964357}
   - {fileID: 3185975581868344157}
-  - {fileID: 5123327886749981188}
   m_Father: {fileID: 8671748634540136930}
   m_LocalEulerAnglesHint: {x: 1.9752716, y: -170.98544, z: -4.771508}
---- !u!1 &5249239488775509574
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5123327886749981188}
-  m_Layer: 0
-  m_Name: Bone_LeftRearLeg_IKPose_Opposite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5123327886749981188
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5249239488775509574}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 526564641273418626}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5299864421280102875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,7 +1836,7 @@ Transform:
   m_GameObject: {fileID: 5732085835406482111}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: -0}
+  m_LocalPosition: {x: 0, y: -1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2008,7 +1988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4012138628122119775}
   modelRoot: {fileID: 6805592825128743869}
-  groundRotationRatio: 1.5
+  groundRotationRatio: 2
 --- !u!1 &6676534545655489097
 GameObject:
   m_ObjectHideFlags: 0
