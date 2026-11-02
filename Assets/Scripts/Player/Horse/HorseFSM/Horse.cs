@@ -91,12 +91,16 @@ public class Horse : Entity
 
     public override void ChangeHorizontalSpeedBy(float _acc)
     {
-        if (IsObstacleInFront() && horizontalSpeed > maxObstacleInFrontSpeed)
+        _acc *= Time.fixedDeltaTime;
+
+        if (IsObstacleInFront() && horizontalSpeed >= maxObstacleInFrontSpeed)
         {
-            _acc = Mathf.Min(_acc, 0f);
+            float backAcc = backwardAcceleration * Time.fixedDeltaTime;
+            _acc = (horizontalSpeed > maxObstacleInFrontSpeed + _acc) ? 
+                Mathf.Min(_acc, -backAcc) : maxObstacleInFrontSpeed - horizontalSpeed;
         }
 
-        horizontalSpeed += _acc * Time.fixedDeltaTime;
+        horizontalSpeed += _acc;
         horizontalSpeed = Mathf.Clamp(horizontalSpeed, -maxBackwardSpeed, maxForwardSpeed);
     }
 
