@@ -12,6 +12,7 @@ public class Horse : Entity
 
     [MergeHeader("Jump Info")]
     [SerializeField] private float minJumpForceRate;
+    [SerializeField, Min(0f)] private float airVelocitySharpness = 4f;
 
     [Header("Slope Movement")]
     [SerializeField, Min(0f)] private float groundVelocitySharpness = 15f;
@@ -221,6 +222,18 @@ public class Horse : Entity
                 currentVelocity = desiredVelocity + kcc.CharacterUp * verticalVelocity;
             }
 
+        }
+
+        if (!justJumped && !unstableGround && !blockedBySteepSlope)
+        {
+            Vector3 up = kcc.CharacterUp;
+            Vector3 forward = Vector3.ProjectOnPlane(kcc.CharacterForward, up).normalized;
+            Vector3 horizontalVelocity = Vector3.ProjectOnPlane(currentVelocity, up);
+            Vector3 targetHorizontalVelocity = forward * horizontalSpeed;
+            float airSteerBlend = 1f - Mathf.Exp(-airVelocitySharpness * deltaTime);
+
+            horizontalVelocity = Vector3.Lerp(horizontalVelocity, targetHorizontalVelocity, airSteerBlend);
+            currentVelocity = horizontalVelocity + Vector3.Project(currentVelocity, up);
         }
 
         currentVelocity += Physics.gravity * deltaTime;

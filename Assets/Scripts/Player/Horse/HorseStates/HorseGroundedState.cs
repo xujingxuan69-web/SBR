@@ -27,6 +27,7 @@ public class HorseGroundedState : HorseState
     {
         base.FixedUpdate();
         HandleMovement();
+        UpdateGroundAnim();
         player.SetTurnInput(horizontalInput);
 
         if (player.IsStableGrounded)
@@ -71,9 +72,13 @@ public class HorseGroundedState : HorseState
         if (isOpposite) acc *= 2f;
 
         player.ChangeHorizontalSpeedBy(acc);
+        
+    }
 
+    private void UpdateGroundAnim()
+    {
         targetAnimRate = 0.1f * Mathf.Abs(horizontalInput);
-        smoothedAnimRate = Mathf.Lerp(smoothedAnimRate,targetAnimRate, Time.fixedDeltaTime); 
+        smoothedAnimRate = Mathf.Lerp(smoothedAnimRate, targetAnimRate, Time.fixedDeltaTime);
         float animRate = Mathf.Clamp01(Mathf.Abs(player.horizontalSpeed) / player.maxForwardSpeed + smoothedAnimRate);
 
         player.anim.SetFloat("GroundSpeed", animRate);
