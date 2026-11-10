@@ -11,9 +11,14 @@ public sealed class HorseGroundFootIK : MonoBehaviour
     [SerializeField, Min(0.01f)] private float maxGroundDistance = 0.1f;
     [SerializeField] private float footHeight = 0.02f;
     [SerializeField, Range(0f, 1f)] private float weight = 1f;
-    [SerializeField] private bool drawRays = true;
-    [SerializeField] private bool turnOnDebug;
-    [SerializeField] private bool showTargetDebug = true;
+    [SerializeField] private bool debugOnPoseReader;
+    [SerializeField] private bool debugOnFootIK;
+    [SerializeField] private bool debugOnFootIKTarget = true;
+    [SerializeField] private bool gizmosOnPoseReader = true;
+    [SerializeField] private bool gizmosOnFootIK = true;
+
+    public bool DebugOnPoseReader => debugOnPoseReader;
+    public bool GizmosOnPoseReader => gizmosOnPoseReader;
 
     private float nextDiagnosticTime;
     private float nextTargetDiagnosticTime;
@@ -65,7 +70,7 @@ public sealed class HorseGroundFootIK : MonoBehaviour
             }
             */
 
-            if (i == 0 && showTargetDebug && Time.unscaledTime >= nextTargetDiagnosticTime)
+            if (i == 0 && debugOnFootIKTarget && Time.unscaledTime >= nextTargetDiagnosticTime)
             {
                 nextTargetDiagnosticTime = Time.unscaledTime + 0.5f;
                 Debug.Log($"[HorseGroundFootIK Target:{name}] foot={foot.name}, sample={fallback:F3}, " +
@@ -84,14 +89,14 @@ public sealed class HorseGroundFootIK : MonoBehaviour
 
     private void LogDiagnostic(string message)
     {
-        if (!turnOnDebug || Time.unscaledTime < nextDiagnosticTime) return;
+        if (!debugOnFootIK || Time.unscaledTime < nextDiagnosticTime) return;
         nextDiagnosticTime = Time.unscaledTime + 1f;
         Debug.Log($"[HorseGroundFootIK:{name}] enabled={enabled}, active={gameObject.activeInHierarchy}, {message}", this);
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (!drawRays || feet == null) return;
+        if (!gizmosOnFootIK || feet == null) return;
 
         Gizmos.color = Color.yellow;
         foreach (HorseFootPoseReader foot in feet)

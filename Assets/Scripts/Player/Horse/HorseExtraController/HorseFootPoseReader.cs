@@ -122,17 +122,14 @@ public class HorseFootPoseReaderJobBinder : AnimationJobBinder<HorseFootPoseRead
 [AddComponentMenu("Animation Rigging/Horse Foot Pose Reader")]
 public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFootPoseReaderData, HorseFootPoseReaderJobBinder>
 {
-    [SerializeField] private bool turnOnDebug;
-    [SerializeField] private bool showAnimationJobDebug = true;
-    [SerializeField] private bool showDebugGizmos = true;
-
     private NativeArray<Vector3> output;
     private NativeArray<HorseFootPoseDebugSnapshot> debugSnapshots;
     private NativeArray<int> processCallCount;
     private readonly Vector3[] sampledPositions = new Vector3[2];
     private bool hasSampledPose;
-    private float nextGizmoDiagnosticTime;
+    private float nextSampleDiagnosticTime;
     private float nextPoseDiagnosticTime;
+    private HorseGroundFootIK debugController;
 
     internal NativeArray<Vector3> Output => output;
     internal NativeArray<HorseFootPoseDebugSnapshot> DebugSnapshots => debugSnapshots;
@@ -145,6 +142,19 @@ public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFo
     public Vector3 SampledLeg3Position => sampledPositions[0];
     public Vector3 SampledFootPosition => sampledPositions[1];
     public Vector3 AnimationJobIKTargetPosition => output.IsCreated ? output[2] : Vector3.zero;
+
+    private HorseGroundFootIK DebugController
+    {
+        get
+        {
+            if (!debugController)
+                debugController = GetComponentInParent<HorseGroundFootIK>();
+            return debugController;
+        }
+    }
+
+    private bool DebugOnPoseReader => DebugController && DebugController.DebugOnPoseReader;
+    private bool GizmosOnPoseReader => DebugController && DebugController.GizmosOnPoseReader;
 
     internal void InitializeOutput()
     {
@@ -160,7 +170,7 @@ public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFo
 
     private void OnEnable()
     {
-        if (showAnimationJobDebug)
+        if (DebugOnPoseReader)
             Debug.Log($"[HorseFootPoseReader:{name}#{GetInstanceID()}] OnEnable, active={isActiveAndEnabled}, " +
                       $"dataValid={IsValid()}, bindings=[leg1={(data.Leg1 ? data.Leg1.name : "null")}, " +
                       $"leg2={(data.Leg2 ? data.Leg2.name : "null")}, leg3={(data.Leg3 ? data.Leg3.name : "null")}, " +
@@ -177,7 +187,15 @@ public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFo
             hasSampledPose = true;
         }
 
-        if (!showAnimationJobDebug || Time.unscaledTime < nextPoseDiagnosticTime) return;
+        if (DebugOnPoseReader && Time.unscaledTime >= nextSampleDiagnosticTime)
+        {
+            nextSampleDiagnosticTime = Time.unscaledTime + 1f;
+            Debug.Log($"[HorseFootPoseReader:{name}#{GetInstanceID()}] samples: " +
+                      $"leg3={sampledPositions[0]:F3}, foot={sampledPositions[1]:F3}, " +
+                      $"ikTarget={(output.IsCreated ? output[2].ToString("F3") : "not initialized")}", this);
+        }
+
+        if (!DebugOnPoseReader || Time.unscaledTime < nextPoseDiagnosticTime) return;
         nextPoseDiagnosticTime = Time.unscaledTime + 0.5f;
 
         int calls = processCallCount.IsCreated ? processCallCount[0] : -1;
@@ -228,16 +246,7 @@ public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFo
 
     private void OnDrawGizmos()
     {
-        if (!showDebugGizmos) return;
-
-        if (Application.isPlaying && Time.unscaledTime >= nextGizmoDiagnosticTime)
-        {
-            nextGizmoDiagnosticTime = Time.unscaledTime + 1f;
-            if (turnOnDebug)
-                Debug.Log($"[HorseFootPoseReader:{name}#{GetInstanceID()}] samples: " +
-                          $"leg3={sampledPositions[0]:F3}, foot={sampledPositions[1]:F3}, " +
-                          $"ikTarget={(output.IsCreated ? output[2].ToString("F3") : "not initialized")}", this);
-        }
+        if (!GizmosOnPoseReader) return;
 
         Gizmos.color = Color.cyan;
         Gizmos.DrawSphere(Application.isPlaying ? sampledPositions[0] : data.Leg3 ? data.Leg3.position : Vector3.zero, 0.035f);
