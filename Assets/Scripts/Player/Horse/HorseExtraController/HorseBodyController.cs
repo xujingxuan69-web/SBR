@@ -8,6 +8,7 @@ public class HorseBodyController : MonoBehaviour
     [SerializeField] private Horse player;
     [SerializeField] private Transform modelRoot;
     [SerializeField, Min(0f)] private float groundRotationRatio = 5f;
+    [SerializeField, Min(0f)] private float maxRotationAngle = 45f;
 
     private KinematicCharacterMotor motor;
     
@@ -61,7 +62,9 @@ public class HorseBodyController : MonoBehaviour
         {
             targetPitchAngle = Vector3.SignedAngle(currentForward, flatForward, currentRight);
         }
-        pitchAngle = Mathf.LerpAngle(pitchAngle, targetPitchAngle, pitchBlend);
+        pitchAngle = Mathf.Max(
+            Mathf.LerpAngle(pitchAngle, targetPitchAngle, pitchBlend),
+            -maxRotationAngle);
 
         currentRotation = Quaternion.AngleAxis(pitchAngle, currentRight) * currentRotation;
 

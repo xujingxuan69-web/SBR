@@ -4,40 +4,25 @@ using UnityEngine.Animations;
 using UnityEngine.Animations.Rigging;
 
 [System.Serializable]
-public struct HorseFootPoseReaderData : IAnimationJobData   //JobData-数据容器
+public struct HorseFootPoseReaderData : IAnimationJobData
 {
-    [SerializeField] private Transform leftFront;
-    [SerializeField] private Transform rightFront;
-    [SerializeField] private Transform leftRearLeg1;
-    [SerializeField] private Transform leftRearLeg2;
-    [SerializeField] private Transform leftRear;
-    [SerializeField] private Transform leftRearFoot;
-    [SerializeField] private Transform leftRearIKTarget;
-    [SerializeField] private Transform rightRear;
-    [SerializeField] private Transform leftRearGroundProbe;
+    [SerializeField] private Transform leg1;
+    [SerializeField] private Transform leg2;
+    [SerializeField] private Transform leg3;
+    [SerializeField] private Transform foot;
+    [SerializeField] private Transform ikTarget;
 
-    public Transform GetFoot(int index) => index switch
-    {
-        0 => leftFront,
-        1 => rightFront,
-        2 => leftRear,
-        3 => rightRear,
-        _ => null
-    };
+    public Transform Leg1 => leg1;
+    public Transform Leg2 => leg2;
+    public Transform Leg3 => leg3;
+    public Transform Foot => foot;
+    public Transform IKTarget => ikTarget;
 
-    public Transform LeftRearLeg1 => leftRearLeg1;
-    public Transform LeftRearLeg2 => leftRearLeg2;
-    public Transform LeftRearFoot => leftRearFoot;
-    public Transform LeftRearIKTarget => leftRearIKTarget;
-    public Transform LeftRearGroundProbe => leftRearGroundProbe;
+    bool IAnimationJobData.IsValid() => leg1 && leg2 && leg3 && foot && ikTarget;
 
-    bool IAnimationJobData.IsValid() => leftFront && rightFront && leftRearLeg1 && leftRearLeg2 && leftRear &&
-                                        leftRearFoot && leftRearIKTarget && rightRear && leftRearGroundProbe;
     void IAnimationJobData.SetDefaultValues()
     {
-        leftFront = rightFront = leftRearLeg1 = leftRearLeg2 = leftRear = leftRearFoot =
-            leftRearIKTarget = rightRear = null;
-        leftRearGroundProbe = null;
+        leg1 = leg2 = leg3 = foot = ikTarget = null;
     }
 }
 
@@ -50,17 +35,13 @@ public struct HorseFootPoseDebugSnapshot
     public int handleValid;
 }
 
-public struct HorseFootPoseReaderJob : IWeightedAnimationJob    //Job-读取动画流中的数据
+public struct HorseFootPoseReaderJob : IWeightedAnimationJob
 {
-    public TransformStreamHandle leftFront;
-    public TransformStreamHandle rightFront;
-    public TransformStreamHandle leftRearLeg1;
-    public TransformStreamHandle leftRearLeg2;
-    public TransformStreamHandle leftRear;
-    public TransformStreamHandle leftRearFoot;
-    public TransformStreamHandle leftRearIKTarget;
-    public TransformStreamHandle rightRear;
-    public TransformStreamHandle leftRearGroundProbe;
+    public TransformStreamHandle leg1;
+    public TransformStreamHandle leg2;
+    public TransformStreamHandle leg3;
+    public TransformStreamHandle foot;
+    public TransformStreamHandle ikTarget;
     public NativeArray<Vector3> positions;
     public NativeArray<HorseFootPoseDebugSnapshot> debugSnapshots;
     public NativeArray<int> processCallCount;
@@ -71,24 +52,22 @@ public struct HorseFootPoseReaderJob : IWeightedAnimationJob    //Job-读取动�
     public void ProcessAnimation(AnimationStream stream)
     {
         processCallCount[0]++;
-        positions[0] = leftFront.GetPosition(stream);
-        positions[1] = rightFront.GetPosition(stream);
-        positions[2] = leftRear.GetPosition(stream);
-        positions[3] = rightRear.GetPosition(stream);
-        positions[4] = leftRearGroundProbe.GetPosition(stream);
 
-        // Update the goal in this animation evaluation, before the downstream Two Bone IK job.
-        if (leftRearIKTarget.IsValid(stream))
+        positions[0] = leg3.GetPosition(stream);
+        positions[1] = foot.GetPosition(stream);
+
+        if (ikTarget.IsValid(stream))
         {
-            leftRearIKTarget.SetPosition(stream, positions[2]);
-            positions[5] = leftRearIKTarget.GetPosition(stream);
+            float weight = jobWeight.Get(stream);
+            Vector3 targetPosition = ikTarget.GetPosition(stream);
+            ikTarget.SetPosition(stream, Vector3.Lerp(targetPosition, positions[0], weight));
+            positions[2] = ikTarget.GetPosition(stream);
         }
 
-        // Capture the animation pose before downstream IK constraints modify the chain.
-        debugSnapshots[0] = ReadAnimatedPose(stream, leftRearLeg1);
-        debugSnapshots[1] = ReadAnimatedPose(stream, leftRearLeg2);
-        debugSnapshots[2] = WriteAnimatedPose(stream, leftRear);
-        debugSnapshots[3] = ReadAnimatedPose(stream, leftRearFoot);
+        debugSnapshots[0] = ReadAnimatedPose(stream, leg1);
+        debugSnapshots[1] = ReadAnimatedPose(stream, leg2);
+        debugSnapshots[2] = ReadAnimatedPose(stream, leg3);
+        debugSnapshots[3] = ReadAnimatedPose(stream, foot);
     }
 
     private static HorseFootPoseDebugSnapshot ReadAnimatedPose(AnimationStream stream, TransformStreamHandle bone)
@@ -96,38 +75,20 @@ public struct HorseFootPoseReaderJob : IWeightedAnimationJob    //Job-读取动�
         if (!bone.IsValid(stream))
             return new HorseFootPoseDebugSnapshot { handleValid = 0 };
 
-        var pose = new HorseFootPoseDebugSnapshot
+        Vector3 position = bone.GetLocalPosition(stream);
+        Quaternion rotation = bone.GetLocalRotation(stream);
+        return new HorseFootPoseDebugSnapshot
         {
-            beforePosition = bone.GetLocalPosition(stream),
-            beforeRotation = bone.GetLocalRotation(stream),
+            beforePosition = position,
+            beforeRotation = rotation,
+            afterPosition = position,
+            afterRotation = rotation,
             handleValid = 1
         };
-        pose.afterPosition = pose.beforePosition;
-        pose.afterRotation = pose.beforeRotation;
-        return pose;
-    }
-
-    private static HorseFootPoseDebugSnapshot WriteAnimatedPose(AnimationStream stream, TransformStreamHandle bone)
-    {
-        if (!bone.IsValid(stream))
-            return new HorseFootPoseDebugSnapshot { handleValid = 0 };
-
-        var snapshot = new HorseFootPoseDebugSnapshot
-        {
-            beforePosition = bone.GetLocalPosition(stream),
-            beforeRotation = bone.GetLocalRotation(stream),
-            handleValid = 1
-        };
-
-        bone.SetLocalPosition(stream, snapshot.beforePosition);
-        bone.SetLocalRotation(stream, snapshot.beforeRotation);
-        snapshot.afterPosition = bone.GetLocalPosition(stream);
-        snapshot.afterRotation = bone.GetLocalRotation(stream);
-        return snapshot;
     }
 }
 
-public class HorseFootPoseReaderJobBinder : AnimationJobBinder<HorseFootPoseReaderJob, HorseFootPoseReaderData> //JobBinder-把JobData和Job连接起来，同时管理Job的生命周期
+public class HorseFootPoseReaderJobBinder : AnimationJobBinder<HorseFootPoseReaderJob, HorseFootPoseReaderData>
 {
     public override HorseFootPoseReaderJob Create(Animator animator, ref HorseFootPoseReaderData data, Component component)
     {
@@ -136,15 +97,11 @@ public class HorseFootPoseReaderJobBinder : AnimationJobBinder<HorseFootPoseRead
 
         return new HorseFootPoseReaderJob
         {
-            leftFront = animator.BindStreamTransform(data.GetFoot(0)),
-            rightFront = animator.BindStreamTransform(data.GetFoot(1)),
-            leftRearLeg1 = animator.BindStreamTransform(data.LeftRearLeg1),
-            leftRearLeg2 = animator.BindStreamTransform(data.LeftRearLeg2),
-            leftRear = animator.BindStreamTransform(data.GetFoot(2)),
-            leftRearFoot = animator.BindStreamTransform(data.LeftRearFoot),
-            leftRearIKTarget = animator.BindStreamTransform(data.LeftRearIKTarget),
-            rightRear = animator.BindStreamTransform(data.GetFoot(3)),
-            leftRearGroundProbe = animator.BindStreamTransform(data.LeftRearGroundProbe),
+            leg1 = animator.BindStreamTransform(data.Leg1),
+            leg2 = animator.BindStreamTransform(data.Leg2),
+            leg3 = animator.BindStreamTransform(data.Leg3),
+            foot = animator.BindStreamTransform(data.Foot),
+            ikTarget = animator.BindStreamTransform(data.IKTarget),
             positions = reader.Output,
             debugSnapshots = reader.DebugSnapshots,
             processCallCount = reader.ProcessCallCount
@@ -163,16 +120,17 @@ public class HorseFootPoseReaderJobBinder : AnimationJobBinder<HorseFootPoseRead
 }
 
 [AddComponentMenu("Animation Rigging/Horse Foot Pose Reader")]
-public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFootPoseReaderData, HorseFootPoseReaderJobBinder> //约束组件
+public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFootPoseReaderData, HorseFootPoseReaderJobBinder>
 {
     [SerializeField] private bool turnOnDebug;
     [SerializeField] private bool showAnimationJobDebug = true;
-
     [SerializeField] private bool showDebugGizmos = true;
+
     private NativeArray<Vector3> output;
     private NativeArray<HorseFootPoseDebugSnapshot> debugSnapshots;
     private NativeArray<int> processCallCount;
-    private readonly Vector3[] sampledPositions = new Vector3[5];
+    private readonly Vector3[] sampledPositions = new Vector3[2];
+    private bool hasSampledPose;
     private float nextGizmoDiagnosticTime;
     private float nextPoseDiagnosticTime;
 
@@ -180,16 +138,20 @@ public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFo
     internal NativeArray<HorseFootPoseDebugSnapshot> DebugSnapshots => debugSnapshots;
     internal NativeArray<int> ProcessCallCount => processCallCount;
 
-    public Vector3 GetSampledPosition(int footIndex) => sampledPositions[footIndex];
-    public Vector3 GetSampledLeftRearGroundProbePosition() => sampledPositions[4];
-    public Vector3 GetAnimationJobIKTargetPosition() => output.IsCreated ? output[5] : Vector3.zero;
+    public Transform Leg3Transform => data.Leg3;
+    public Transform FootTransform => data.Foot;
+    public Transform IKTarget => data.IKTarget;
+    public bool HasSampledPose => hasSampledPose;
+    public Vector3 SampledLeg3Position => sampledPositions[0];
+    public Vector3 SampledFootPosition => sampledPositions[1];
+    public Vector3 AnimationJobIKTargetPosition => output.IsCreated ? output[2] : Vector3.zero;
 
     internal void InitializeOutput()
     {
-        if (output.IsCreated && output.Length != 6)
+        if (output.IsCreated && output.Length != 3)
             output.Dispose();
         if (!output.IsCreated)
-            output = new NativeArray<Vector3>(6, Allocator.Persistent);
+            output = new NativeArray<Vector3>(3, Allocator.Persistent);
         if (!debugSnapshots.IsCreated)
             debugSnapshots = new NativeArray<HorseFootPoseDebugSnapshot>(4, Allocator.Persistent);
         if (!processCallCount.IsCreated)
@@ -199,25 +161,20 @@ public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFo
     private void OnEnable()
     {
         if (showAnimationJobDebug)
-            Debug.Log($"[HorseFootPoseReader Job:{name}#{GetInstanceID()}] OnEnable, " +
-                      $"active={isActiveAndEnabled}, dataValid={IsValid()}, " +
-                      $"bindings=[frontLeft={(data.GetFoot(0) ? data.GetFoot(0).name : "null")}, " +
-                      $"frontRight={(data.GetFoot(1) ? data.GetFoot(1).name : "null")}, " +
-                      $"rear1={(data.LeftRearLeg1 ? data.LeftRearLeg1.name : "null")}, " +
-                      $"rear2={(data.LeftRearLeg2 ? data.LeftRearLeg2.name : "null")}, " +
-                      $"rear3={(data.GetFoot(2) ? data.GetFoot(2).name : "null")}, " +
-                      $"foot={(data.LeftRearFoot ? data.LeftRearFoot.name : "null")}, " +
-                      $"ikTarget={(data.LeftRearIKTarget ? data.LeftRearIKTarget.name : "null")}, " +
-                      $"rearRight={(data.GetFoot(3) ? data.GetFoot(3).name : "null")}, " +
-                      $"probe={(data.LeftRearGroundProbe ? data.LeftRearGroundProbe.name : "null")}]", this);
+            Debug.Log($"[HorseFootPoseReader:{name}#{GetInstanceID()}] OnEnable, active={isActiveAndEnabled}, " +
+                      $"dataValid={IsValid()}, bindings=[leg1={(data.Leg1 ? data.Leg1.name : "null")}, " +
+                      $"leg2={(data.Leg2 ? data.Leg2.name : "null")}, leg3={(data.Leg3 ? data.Leg3.name : "null")}, " +
+                      $"foot={(data.Foot ? data.Foot.name : "null")}, " +
+                      $"ikTarget={(data.IKTarget ? data.IKTarget.name : "null")}]", this);
     }
 
     private void LateUpdate()
     {
         if (output.IsCreated)
         {
-            for (int i = 0; i < sampledPositions.Length; i++)
-                sampledPositions[i] = output[i];
+            sampledPositions[0] = output[0];
+            sampledPositions[1] = output[1];
+            hasSampledPose = true;
         }
 
         if (!showAnimationJobDebug || Time.unscaledTime < nextPoseDiagnosticTime) return;
@@ -225,16 +182,15 @@ public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFo
 
         int calls = processCallCount.IsCreated ? processCallCount[0] : -1;
         string poseInfo = debugSnapshots.IsCreated
-            ? $"Leg1 {FormatPose(0, data.LeftRearLeg1)}, Leg2 {FormatPose(1, data.LeftRearLeg2)}, " +
-              $"Leg3 {FormatPose(2, data.GetFoot(2))}, Foot {FormatPose(3, data.LeftRearFoot)}"
+            ? $"Leg1 {FormatPose(0, data.Leg1)}, Leg2 {FormatPose(1, data.Leg2)}, " +
+              $"Leg3 {FormatPose(2, data.Leg3)}, Foot {FormatPose(3, data.Foot)}"
             : "poseSnapshots=<not initialized>";
 
-        Debug.Log($"[HorseFootPoseReader Job:{name}#{GetInstanceID()}] LateUpdate=running, " +
-                  $"active={isActiveAndEnabled}, outputCreated={output.IsCreated}, " +
-                  $"dataValid={IsValid()}, rigBuilder={GetRigBuilderState()}, " +
-                  $"debugSnapshotsCreated={debugSnapshots.IsCreated}, calls={calls}, " +
-                  $"ikTargetStream={(output.IsCreated ? output[5].ToString("F3") : "n/a")}, " +
-                  $"ikTargetScene={(data.LeftRearIKTarget ? data.LeftRearIKTarget.position.ToString("F3") : "missing")}, " +
+        Debug.Log($"[HorseFootPoseReader:{name}#{GetInstanceID()}] LateUpdate=running, " +
+                  $"active={isActiveAndEnabled}, outputCreated={output.IsCreated}, dataValid={IsValid()}, " +
+                  $"rigBuilder={GetRigBuilderState()}, calls={calls}, " +
+                  $"ikTargetStream={(output.IsCreated ? output[2].ToString("F3") : "n/a")}, " +
+                  $"ikTargetScene={(data.IKTarget ? data.IKTarget.position.ToString("F3") : "missing")}, " +
                   $"{poseInfo}", this);
     }
 
@@ -277,27 +233,15 @@ public class HorseFootPoseReader : RigConstraint<HorseFootPoseReaderJob, HorseFo
         if (Application.isPlaying && Time.unscaledTime >= nextGizmoDiagnosticTime)
         {
             nextGizmoDiagnosticTime = Time.unscaledTime + 1f;
-            
-            if (turnOnDebug) Debug.Log($"[HorseFootPoseReader Gizmo:{name}#{GetInstanceID()}] source=sampledPositions, outputCreated={output.IsCreated}, " +
-                      $"leftFront={sampledPositions[0]:F3}, rightFront={sampledPositions[1]:F3}, " +
-                      $"leftRear={sampledPositions[2]:F3}, rightRear={sampledPositions[3]:F3}, " +
-                      $"leftRearBinding={(data.GetFoot(2) ? data.GetFoot(2).position.ToString("F3") : "<null>")}", this);
+            if (turnOnDebug)
+                Debug.Log($"[HorseFootPoseReader:{name}#{GetInstanceID()}] samples: " +
+                          $"leg3={sampledPositions[0]:F3}, foot={sampledPositions[1]:F3}, " +
+                          $"ikTarget={(output.IsCreated ? output[2].ToString("F3") : "not initialized")}", this);
         }
 
         Gizmos.color = Color.cyan;
-        for (int i = 0; i < 4; i++)
-        {
-            Transform foot = data.GetFoot(i);
-            if (Application.isPlaying)
-                Gizmos.DrawSphere(sampledPositions[i], 0.035f);
-            else if (foot)
-                Gizmos.DrawSphere(foot.position, 0.035f);
-        }
-
+        Gizmos.DrawSphere(Application.isPlaying ? sampledPositions[0] : data.Leg3 ? data.Leg3.position : Vector3.zero, 0.035f);
         Gizmos.color = Color.magenta;
-        if (Application.isPlaying)
-            Gizmos.DrawSphere(sampledPositions[4], 0.035f);
-        else if (data.LeftRearGroundProbe)
-            Gizmos.DrawSphere(data.LeftRearGroundProbe.position, 0.035f);
+        Gizmos.DrawSphere(Application.isPlaying ? sampledPositions[1] : data.Foot ? data.Foot.position : Vector3.zero, 0.035f);
     }
 }

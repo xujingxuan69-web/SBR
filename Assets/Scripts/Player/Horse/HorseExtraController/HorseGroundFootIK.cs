@@ -1,26 +1,10 @@
-using System;
 using UnityEngine;
 
-/// <summary>
-/// Moves Two Bone IK targets to the ground. The IK constraints do the actual
-/// leg solve; this component never writes to animated bones.
-/// </summary>
+/// <summary>Applies ground checks to the foot targets supplied by each pose reader.</summary>
 [DefaultExecutionOrder(10000)]
 public sealed class HorseGroundFootIK : MonoBehaviour
 {
-    [Serializable]
-    private struct Foot
-    {
-        // The transform used as the Two Bone IK tip.
-        public Transform animatedFoot;
-        // The animation-space point used for ground detection (e.g. the heel).
-        public Transform groundProbe;
-        public Transform ikTarget;
-    }
-
-    [SerializeField] private Foot[] feet = new Foot[4];
-    [SerializeField] private HorseFootPoseReader poseReader;
-    [SerializeField, Range(0, 3)] private int poseIndex = 2;
+    [SerializeField] private HorseFootPoseReader[] feet = new HorseFootPoseReader[4];
     [SerializeField] private LayerMask groundMask = 1;
     [SerializeField, Min(0.01f)] private float rayStartHeight = 0.5f;
     [SerializeField, Min(0.01f)] private float rayLength = 1.5f;
@@ -28,10 +12,10 @@ public sealed class HorseGroundFootIK : MonoBehaviour
     [SerializeField] private float footHeight = 0.02f;
     [SerializeField, Range(0f, 1f)] private float weight = 1f;
     [SerializeField] private bool drawRays = true;
-    private float nextDiagnosticTime;
-
     [SerializeField] private bool turnOnDebug;
     [SerializeField] private bool showTargetDebug = true;
+
+    private float nextDiagnosticTime;
     private float nextTargetDiagnosticTime;
 
     private void LateUpdate()
@@ -40,24 +24,19 @@ public sealed class HorseGroundFootIK : MonoBehaviour
 
         for (int i = 0; i < feet.Length; i++)
         {
-            Foot foot = feet[i];
-            if (!foot.animatedFoot || !foot.ikTarget)
+            HorseFootPoseReader foot = feet[i];
+            if (!foot || !foot.Leg3Transform || !foot.FootTransform || !foot.IKTarget)
             {
-                LogDiagnostic($"foot[{i}] missing reference: animatedFoot={foot.animatedFoot}, target={foot.ikTarget}");
+                LogDiagnostic($"foot[{i}] reader or bone reference is missing");
                 continue;
             }
 
-            // This is the pose captured from the animation stream before Two Bone IK.
-            Vector3 fallback = poseReader
-                ? poseReader.GetSampledPosition(poseIndex)
-                : foot.animatedFoot.position;
-            if (poseReader && fallback == Vector3.zero && foot.animatedFoot.position != Vector3.zero)
-                fallback = foot.animatedFoot.position;
-            Vector3 probePosition = poseReader && i == 0
-                ? poseReader.GetSampledLeftRearGroundProbePosition()
-                : foot.groundProbe ? foot.groundProbe.position : fallback;
-            if (probePosition == Vector3.zero && foot.groundProbe && foot.groundProbe.position != Vector3.zero)
-                probePosition = foot.groundProbe.position;
+            Vector3 fallback = foot.HasSampledPose
+                ? foot.SampledLeg3Position
+                : foot.Leg3Transform.position;
+            Vector3 probePosition = foot.HasSampledPose
+                ? foot.SampledFootPosition
+                : foot.FootTransform.position;
             Vector3 origin = probePosition + transform.up * rayStartHeight;
 
             bool hitGround = Physics.Raycast(origin, -transform.up, out RaycastHit hit, rayLength, groundMask,
@@ -71,50 +50,43 @@ public sealed class HorseGroundFootIK : MonoBehaviour
                 groundDecision = groundDistance <= maxGroundDistance ? "would-apply-disabled" : "too-far";
             }
 
-            /* Ground correction temporarily disabled for isolation testing.
+            // Ground correction remains disabled during the current isolation test.
+            /*
             if (hitGround && groundDistance <= maxGroundDistance)
             {
-                foot.ikTarget.position = Vector3.Lerp(fallback, targetAtGround, weight);
-                foot.ikTarget.rotation = Quaternion.FromToRotation(transform.up, hit.normal)
-                                         * foot.animatedFoot.rotation;
+                foot.IKTarget.position = Vector3.Lerp(fallback, targetAtGround, weight);
+                foot.IKTarget.rotation = Quaternion.FromToRotation(transform.up, hit.normal)
+                                         * foot.Leg3Transform.rotation;
             }
             else
             {
-                foot.ikTarget.position = fallback;
-                foot.ikTarget.rotation = foot.animatedFoot.rotation;
+                foot.IKTarget.position = fallback;
+                foot.IKTarget.rotation = foot.Leg3Transform.rotation;
             }
             */
+
             if (i == 0 && showTargetDebug && Time.unscaledTime >= nextTargetDiagnosticTime)
             {
                 nextTargetDiagnosticTime = Time.unscaledTime + 0.5f;
-                Vector3 jobTarget = poseReader ? poseReader.GetAnimationJobIKTargetPosition() : Vector3.zero;
-                Debug.Log($"[HorseGroundFootIK Target:{name}] sample={fallback:F3}, jobTarget={jobTarget:F3}, " +
-                          $"animatedFoot={foot.animatedFoot.position:F3}, target={foot.ikTarget.position:F3}, " +
-                          $"sampleToTarget={Vector3.Distance(fallback, foot.ikTarget.position):F3}m, " +
-                          $"jobToTarget={Vector3.Distance(jobTarget, foot.ikTarget.position):F3}m, " +
-                          $"hit={hitGround}, correction=disabled, targetWrittenBy=AnimationJob", this);
+                Debug.Log($"[HorseGroundFootIK Target:{name}] foot={foot.name}, sample={fallback:F3}, " +
+                          $"jobTarget={foot.AnimationJobIKTargetPosition:F3}, target={foot.IKTarget.position:F3}, " +
+                          $"hit={hitGround}, correction=disabled", this);
             }
 
-            if (i == 0)
-            {
-                Vector3 cyanPosition = poseReader ? poseReader.GetSampledPosition(poseIndex) : Vector3.zero;
-                LogDiagnostic($"reader={(poseReader ? $"{poseReader.name}#{poseReader.GetInstanceID()}" : "<null>")}, index={poseIndex}, " +
-                              $"cyan={cyanPosition:F3}, animatedFoot={foot.animatedFoot.position:F3}, sample={fallback:F3}, " +
-                              $"probe={probePosition:F3}, rayOrigin={origin:F3}, rayDir={-transform.up:F3}, " +
-                              $"hit={hitGround}, hitPoint={(hitGround ? hit.point.ToString("F3") : "n/a")}, " +
-                              $"normal={(hitGround ? hit.normal.ToString("F3") : "n/a")}, distance={groundDistance:F3}, " +
-                              $"threshold={maxGroundDistance:F3}, decision={groundDecision}, " +
-                              $"groundTarget={targetAtGround:F3}, target={foot.ikTarget.position:F3}, " +
-                              $"correction={(foot.ikTarget.position - fallback):F3}, weight={weight:F2}, mask={groundMask.value}");
-            }
+            LogDiagnostic($"foot[{i}] reader={foot.name}, sample={fallback:F3}, probe={probePosition:F3}, " +
+                          $"rayOrigin={origin:F3}, rayDir={-transform.up:F3}, hit={hitGround}, " +
+                          $"hitPoint={(hitGround ? hit.point.ToString("F3") : "n/a")}, " +
+                          $"distance={groundDistance:F3}, threshold={maxGroundDistance:F3}, " +
+                          $"decision={groundDecision}, target={foot.IKTarget.position:F3}, " +
+                          $"groundTarget={targetAtGround:F3}, weight={weight:F2}, mask={groundMask.value}");
         }
     }
 
     private void LogDiagnostic(string message)
     {
-        if (Time.unscaledTime < nextDiagnosticTime) return;
+        if (!turnOnDebug || Time.unscaledTime < nextDiagnosticTime) return;
         nextDiagnosticTime = Time.unscaledTime + 1f;
-        if(turnOnDebug)Debug.Log($"[HorseGroundFootIK:{name}] enabled={enabled}, active={gameObject.activeInHierarchy}, {message}", this);
+        Debug.Log($"[HorseGroundFootIK:{name}] enabled={enabled}, active={gameObject.activeInHierarchy}, {message}", this);
     }
 
     private void OnDrawGizmosSelected()
@@ -122,20 +94,13 @@ public sealed class HorseGroundFootIK : MonoBehaviour
         if (!drawRays || feet == null) return;
 
         Gizmos.color = Color.yellow;
-        for (int i = 0; i < feet.Length; i++)
+        foreach (HorseFootPoseReader foot in feet)
         {
-            if (!feet[i].animatedFoot) continue;
+            if (!foot || !foot.FootTransform) continue;
 
-            Vector3 position = poseReader
-                ? poseReader.GetSampledPosition(poseIndex)
-                : feet[i].animatedFoot.position;
-            if (poseReader && position == Vector3.zero && feet[i].animatedFoot.position != Vector3.zero)
-                position = feet[i].animatedFoot.position;
-            Vector3 probePosition = poseReader && i == 0
-                ? poseReader.GetSampledLeftRearGroundProbePosition()
-                : feet[i].groundProbe ? feet[i].groundProbe.position : position;
-            if (probePosition == Vector3.zero && feet[i].groundProbe && feet[i].groundProbe.position != Vector3.zero)
-                probePosition = feet[i].groundProbe.position;
+            Vector3 probePosition = Application.isPlaying && foot.HasSampledPose
+                ? foot.SampledFootPosition
+                : foot.FootTransform.position;
             Vector3 origin = probePosition + transform.up * rayStartHeight;
             Gizmos.DrawLine(origin, origin - transform.up * rayLength);
         }

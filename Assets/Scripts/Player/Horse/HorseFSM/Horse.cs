@@ -184,6 +184,13 @@ public class Horse : Entity
             jumpVelocityPending = false;
         }
 
+        // Slope-following velocity can contain upward Y; discard it when walking off a slope.
+        if (!justJumped && kcc.LastGroundingStatus.IsStableOnGround && !grounding.IsStableOnGround &&
+            currentVelocity.y > 0f)
+        {
+            currentVelocity.y = 0f;
+        }
+
         if (!justJumped && grounding.IsStableOnGround && !blockedBySteepSlope)
         {
             Vector3 targetVelocity = kcc.GetDirectionTangentToSurface(

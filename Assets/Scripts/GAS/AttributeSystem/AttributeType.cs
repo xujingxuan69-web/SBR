@@ -2,20 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 namespace SBR.GAS
 {
+    [CreateAssetMenu(menuName = "SBR/GAS/Attribute")]
     public class AttributeType : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
+        [SerializeField] private float initialValue;
+        public float InitialValue => initialValue;
     }
 }

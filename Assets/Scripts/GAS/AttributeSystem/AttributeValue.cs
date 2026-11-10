@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace SBR.GAS
 {
+    [System.Serializable]   //显式结构体
     public struct AttributeValue
     {
         public float BaseValue { get; set; }
