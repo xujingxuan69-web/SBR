@@ -1,1 +1,14 @@
-delegate-定义
+delegate-声明固定回调方法格式(参数、返回类型)的委托，该委托只能订阅该固定格式的方法
+
+使用示例
+	public delegate void Function(int a, float b);
+	//该委托Function只能订阅以void为返回类型，以(int a,float b)为声明参数的方法
+
+同理的，以该委托Function声明的事件ExampleEvent也只能订阅同样参数的方法
+	public event Function ExampleEvent;
+
+事实上，.Net有我们平常使用的内置委托/事件的声明 using System + Action/System.Action
+	public System.Action<int, float> Function;
+	public event System.Action<int, float> ExampleEvent;
+在平常的使用中，两种方法几乎没有区别，甚至可以说Action方法更加简易
+但是，Action固定订阅方法的返回值为void，在这一点上，自定义委托/事件更灵活
