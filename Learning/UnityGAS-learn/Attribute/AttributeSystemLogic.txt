@@ -1,0 +1,7 @@
+AttributeSystem
+
+AttributeValueCalculator-定义计算接口，声明初始化和当前值的计算规则
+
+AttributeSO-定义属性，选择具体的初始化和当前值的计算规则，因为不同规则可能有不同的计算方式，当然，我的项目里并没有特殊的计算规则，所以使用的是AttributeValueCalculator声明的默认规则
+
+AttributeSystemBehaviour-
