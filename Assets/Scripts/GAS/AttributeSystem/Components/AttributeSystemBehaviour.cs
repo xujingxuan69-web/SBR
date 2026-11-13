@@ -1,8 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SBR.GAS
+using SBR.GAS.AttributeSystem.ScriptableObjects;
+
+namespace SBR.GAS.AttributeSystem.Components
 {
     public class AttributeSystemBehaviour : MonoBehaviour
     {
@@ -18,5 +19,7 @@ namespace SBR.GAS
 
         [SerializeField] private bool _initOnAwake = true;
 
+        [SerializeField, Tooltip("")]
+        private List<AttributesEventBase> _attributeEvents = new();
     }
 }

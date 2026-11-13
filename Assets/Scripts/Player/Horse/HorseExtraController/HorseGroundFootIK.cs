@@ -1,7 +1,6 @@
 using UnityEngine;
 
-/// <summary>Applies ground checks to the foot targets supplied by each pose reader.</summary>
-[DefaultExecutionOrder(10000)]
+[DefaultExecutionOrder(10000)]  //延后执行，保证不出错
 public sealed class HorseGroundFootIK : MonoBehaviour
 {
     [SerializeField] private HorseFootPoseReader[] feet = new HorseFootPoseReader[4];

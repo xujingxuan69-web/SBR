@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using SBR.GAS.AttributeSystem.Components;
 
-namespace SBR.GAS
+namespace SBR.GAS.AttributeSystem
 {
     public interface IAttributeValueCalculator  //定义计算接口
     {

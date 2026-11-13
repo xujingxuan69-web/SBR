@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace SBR.GAS
+
+namespace SBR.GAS.AttributeSystem
 {
     [System.Serializable]   //显式结构体
     public struct AttributeValue
