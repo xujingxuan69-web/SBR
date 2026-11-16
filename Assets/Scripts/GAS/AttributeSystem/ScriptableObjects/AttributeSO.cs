@@ -2,18 +2,19 @@ using UnityEngine;
 
 namespace SBR.GAS.AttributeSystem.ScriptableObjects
 {
-    [CreateAssetMenu(menuName = "SBR/GAS/Attribute")]
+    [CreateAssetMenu(menuName = "SBR/GAS/Attributes/Attribute")]
     public class AttributeSO : ScriptableObject
-    {   //¶¨ÒåÊôĞÔ£¬ÒÔ¼°ÉùÃ÷³õÊ¼»¯Óëµ±Ç°ÖµµÄ¼ÆËã¹æÔò
+    {
+        [field: SerializeField, TextArea, Tooltip("å±æ€§æè¿°ï¼Œä»…ä¾›æŸ¥çœ‹ï¼Œä¸å‚ä¸æ¸¸æˆé€»è¾‘")]
+        public string description { get; private set; }
 
-        [SerializeField, TextArea, Tooltip("ÊôĞÔÃèÊö")]
-        private string description; //ÊôĞÔµÄÃèÊö£¬·½±ãºóĞø¿´
+        [field: SerializeReference, SubclassSelector, Tooltip("é€‰æ‹©åˆé€‚çš„åˆå§‹å€¼è®¡ç®—è§„åˆ™")]
+        //SerializeReference-å­˜å‚¨åºåˆ—åŒ–å­—æ®µï¼Œä½†ä¸æä¾›Inspectoré€‰ä¸­åŠŸèƒ½
+        //SubclassSelector-å¼€æºé¡¹ç›®Unity SerializeReference Extensionsæä¾›
+        //ä¸º[SerializeReference]å­—æ®µåœ¨Inspectorä¸­æä¾›é€‰æ‹©ä¸‹æ‹‰æ¡†
+        public IAttributeValueCalculator initialValueCalculator { get; private set; } = new InitialAttributeValueCalculator();
 
-
-        [field: SerializeReference] //ÓÃÓÚÖ¸¶¨¶ÔÓ¦½Ó¿Ú
-        private IAttributeValueCalculator initialValueCalculator;
-
-        [field: SerializeReference]
-        private IAttributeValueCalculator currentValueCalculator;
+        [field: SerializeReference, SubclassSelector, Tooltip("é€‰æ‹©åˆé€‚çš„å½“å‰å€¼è®¡ç®—è§„åˆ™")]
+        public IAttributeValueCalculator currentValueCalculator { get; private set; } = new CurrentAttributeValueCalculator();
     }
 }

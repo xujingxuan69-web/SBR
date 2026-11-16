@@ -1,0 +1,8 @@
+概述
+MergeHeader 用于合并父类与子类中标题相同的 Inspector 分组。标题比较不区分大小写。
+
+用法
+在字段上添加 [MergeHeader]；如果是属性，则使用 [field: MergeHeader]。
+
+场景
+适用于子类需要在父类已有分组中添加字段的情况。相同标题的字段会显示在同一分组下，使 Inspector 层级更清晰。

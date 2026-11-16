@@ -1,6 +1,6 @@
 {
 	"name": "SBR.GAS",
 	"rootNamespace" : "SBR.GAS",
-	"references" : [],
+	"references" : ["MackySoft.SerializeReferenceExtensions"],
 	"autoReferenced" : true
 }

@@ -1,0 +1,2136 @@
+
+### 本科毕业论文(设计)任务书.docx
+P0: 本科毕业论文(设计)任务书
+TABLE 0 6x4
+R0: 学  院 | 中医药人工智能学院 | 专  业 | 
+R1: 姓  名 |  | 学  号 | 
+R2: 指导老师 |  | 职  称 | 
+R3: 合作老师 |  | 职  称 | 
+R4: 题  目 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现
+R5: 一、课题的内容和任务要求 / 课题内容（研究意义、研究现状、拟解决的问题） / 本课题面向游戏中高速动画驱动四足角色在坡地、台阶及起伏地表上出现的足端悬空、穿地、支撑滑移和躯干姿态不协调等问题，研究以既有关键帧/骨骼动画为基础的地形适配方法。结合Unity项目中马匹角色、状态机、Kinematic Character Controller（KCC）移动控制与Animation Rigging骨骼结构，分析足端动画采样、地面查询、支撑相识别、足端目标修正及身体姿态补偿之间的时序关系。重点探索适用于高速运动的支撑足目标稳定策略，并通过同场景对照验证其相对基础射线检测与逐帧目标跟随方案的改善情况。 / 任务要求（学生需完成的主要任务及检验指标） / 1. 梳理四足角色动画驱动、足部IK、支撑相检测及复杂地形适配的相关研究，完成不少于15篇参考文献的综述，其中英文文献比例不低于30%。 / 2. 对现有Unity工程进行结构分析，说明模型骨骼、动画Rig、足端采样、地面检测、运动控制和更新顺序；不得将尚未启用的地面纠正描述为已完成成果。 / 3. 设计并实现基线方案和支撑目标稳定方案，至少覆盖平地、连续起伏、上/下坡、台阶及高速转向等场景。 / 4. 采用统一动画、速度、地形和帧率条件进行对照测试，记录足端与地面距离误差、支撑期滑移距离、穿地/悬空帧比例、躯干姿态变化及单帧耗时；结果据实填写，不预设数值。 / 5. 完成系统设计、实现过程、实验方法、结果分析、结论与参考文献；提交可复现的场景、参数和测试记录。 /  /  /  /  /  /  /  /  /  /  /  /  | 一、课题的内容和任务要求 / 课题内容（研究意义、研究现状、拟解决的问题） / 本课题面向游戏中高速动画驱动四足角色在坡地、台阶及起伏地表上出现的足端悬空、穿地、支撑滑移和躯干姿态不协调等问题，研究以既有关键帧/骨骼动画为基础的地形适配方法。结合Unity项目中马匹角色、状态机、Kinematic Character Controller（KCC）移动控制与Animation Rigging骨骼结构，分析足端动画采样、地面查询、支撑相识别、足端目标修正及身体姿态补偿之间的时序关系。重点探索适用于高速运动的支撑足目标稳定策略，并通过同场景对照验证其相对基础射线检测与逐帧目标跟随方案的改善情况。 / 任务要求（学生需完成的主要任务及检验指标） / 1. 梳理四足角色动画驱动、足部IK、支撑相检测及复杂地形适配的相关研究，完成不少于15篇参考文献的综述，其中英文文献比例不低于30%。 / 2. 对现有Unity工程进行结构分析，说明模型骨骼、动画Rig、足端采样、地面检测、运动控制和更新顺序；不得将尚未启用的地面纠正描述为已完成成果。 / 3. 设计并实现基线方案和支撑目标稳定方案，至少覆盖平地、连续起伏、上/下坡、台阶及高速转向等场景。 / 4. 采用统一动画、速度、地形和帧率条件进行对照测试，记录足端与地面距离误差、支撑期滑移距离、穿地/悬空帧比例、躯干姿态变化及单帧耗时；结果据实填写，不预设数值。 / 5. 完成系统设计、实现过程、实验方法、结果分析、结论与参考文献；提交可复现的场景、参数和测试记录。 /  /  /  /  /  /  /  /  /  /  /  /  | 一、课题的内容和任务要求 / 课题内容（研究意义、研究现状、拟解决的问题） / 本课题面向游戏中高速动画驱动四足角色在坡地、台阶及起伏地表上出现的足端悬空、穿地、支撑滑移和躯干姿态不协调等问题，研究以既有关键帧/骨骼动画为基础的地形适配方法。结合Unity项目中马匹角色、状态机、Kinematic Character Controller（KCC）移动控制与Animation Rigging骨骼结构，分析足端动画采样、地面查询、支撑相识别、足端目标修正及身体姿态补偿之间的时序关系。重点探索适用于高速运动的支撑足目标稳定策略，并通过同场景对照验证其相对基础射线检测与逐帧目标跟随方案的改善情况。 / 任务要求（学生需完成的主要任务及检验指标） / 1. 梳理四足角色动画驱动、足部IK、支撑相检测及复杂地形适配的相关研究，完成不少于15篇参考文献的综述，其中英文文献比例不低于30%。 / 2. 对现有Unity工程进行结构分析，说明模型骨骼、动画Rig、足端采样、地面检测、运动控制和更新顺序；不得将尚未启用的地面纠正描述为已完成成果。 / 3. 设计并实现基线方案和支撑目标稳定方案，至少覆盖平地、连续起伏、上/下坡、台阶及高速转向等场景。 / 4. 采用统一动画、速度、地形和帧率条件进行对照测试，记录足端与地面距离误差、支撑期滑移距离、穿地/悬空帧比例、躯干姿态变化及单帧耗时；结果据实填写，不预设数值。 / 5. 完成系统设计、实现过程、实验方法、结果分析、结论与参考文献；提交可复现的场景、参数和测试记录。 /  /  /  /  /  /  /  /  /  /  /  /  | 一、课题的内容和任务要求 / 课题内容（研究意义、研究现状、拟解决的问题） / 本课题面向游戏中高速动画驱动四足角色在坡地、台阶及起伏地表上出现的足端悬空、穿地、支撑滑移和躯干姿态不协调等问题，研究以既有关键帧/骨骼动画为基础的地形适配方法。结合Unity项目中马匹角色、状态机、Kinematic Character Controller（KCC）移动控制与Animation Rigging骨骼结构，分析足端动画采样、地面查询、支撑相识别、足端目标修正及身体姿态补偿之间的时序关系。重点探索适用于高速运动的支撑足目标稳定策略，并通过同场景对照验证其相对基础射线检测与逐帧目标跟随方案的改善情况。 / 任务要求（学生需完成的主要任务及检验指标） / 1. 梳理四足角色动画驱动、足部IK、支撑相检测及复杂地形适配的相关研究，完成不少于15篇参考文献的综述，其中英文文献比例不低于30%。 / 2. 对现有Unity工程进行结构分析，说明模型骨骼、动画Rig、足端采样、地面检测、运动控制和更新顺序；不得将尚未启用的地面纠正描述为已完成成果。 / 3. 设计并实现基线方案和支撑目标稳定方案，至少覆盖平地、连续起伏、上/下坡、台阶及高速转向等场景。 / 4. 采用统一动画、速度、地形和帧率条件进行对照测试，记录足端与地面距离误差、支撑期滑移距离、穿地/悬空帧比例、躯干姿态变化及单帧耗时；结果据实填写，不预设数值。 / 5. 完成系统设计、实现过程、实验方法、结果分析、结论与参考文献；提交可复现的场景、参数和测试记录。 /  /  /  /  /  /  /  /  /  /  /  / 
+TABLE 1 1x1
+R0: 二、进度安排（起止时间：按学院最终进度计划填写） / 阶段一：文献检索与方案细化，完成开题报告、文献综述和外文资料选择。 / 阶段二：梳理并修正现有马匹动画Rig、足端姿态读取和地面检测流程，建立平地及复杂地形测试场景。 / 阶段三：实现基线足端修正与支撑目标稳定策略，完成参数调试和异常情况处理。 / 阶段四：按控制变量开展对照实验，整理误差、滑移、姿态和性能数据，完成论文初稿及修改。 / 阶段五：依据导师意见定稿，准备答辩材料并归档工程与实验记录。 / [1] Skrba L, Reveret L, Hétroy F, Cani M-P, O’Sullivan C. Animating Quadrupeds: Methods and Applications[J]. Computer Graphics Forum, 2009, 28(6):1541-1560. DOI:10.1111/j.1467-8659.2008.01312.x. / [2] Burdka Ł, Rohleder P. Applied Inverse Kinematics for Bipedal Characters Moving on the Diverse Terrain[J]. Machine Graphics & Vision, 2017, 26(1/4): 1-15. DOI:10.22630/MGV.2017.26.1.1. / [3] Glardon P, Boulic R, Thalmann D. Robust On-line Adaptive Footplant Detection and Enforcement for Locomotion[J]. The Visual Computer, 2006, 22(3):194-209. DOI:10.1007/s00371-006-0376-9. / [4] Miller M, Holden D, Al-Ashqar R, et al. Carpet Unrolling for Character Control on Uneven Terrain[C]//MIG 2015. New York: ACM, 2015:193-198. DOI:10.1145/2822013.2822031. / [5] Abdul Karim A, Gaudin T, Meyer A, et al. Procedural Locomotion of Multilegged Characters in Dynamic Environments[J]. Computer Animation and Virtual Worlds, 2013, 24(1):3-15. DOI:10.1002/cav.1467. / [6] Zhang H, Starke S, Komura T, et al. Mode-Adaptive Neural Networks for Quadruped Motion Control[J]. ACM Transactions on Graphics, 2018, 37(4):145. DOI:10.1145/3197517.3201366. / [7] Alvarado E, Paliard C, Rohmer D, et al. Real-Time Locomotion on Soft Grounds With Dynamic Footprints[J]. Frontiers in Virtual Reality, 2022, 3:801856. DOI:10.3389/frvir.2022.801856. / [8] Alvarado E, Argudo O, Rohmer D, et al. TRAIL: Simulating the Impact of Human Locomotion on Natural Landscapes[J]. The Visual Computer, 2024, 40: 1-20. DOI:10.1007/s00371-024-03506-z. / [9] Aristidou A, Lasenby J, Chrysanthou Y, et al. Inverse Kinematics Techniques in Computer Graphics: A Survey[J]. Computer Graphics Forum, 2018, 37(6):35-58. DOI:10.1111/cgf.13310. / [10] Raibert M H, Hodgins J K. Animation of Dynamic Legged Locomotion[J]. Computer Graphics, 1991, 25(4):349-358. DOI:10.1145/127719.122738 / [11] Kovar L, Gleicher M, Pighin F. Motion Graphs[J]. ACM Transactions on Graphics, 2002, 21(3):473-482. DOI:10.1145/566654.566605. / [12] Gleicher M. Retargetting Motion to New Characters[C]//Proceedings of SIGGRAPH 1998. New York: ACM, 1998:33-42. DOI:10.1145/280814.280820. / [13] Kwon T, Lee Y, van de Panne M. Fast and Flexible Multilegged Locomotion Using Learned Centroidal Dynamics[J]. ACM Transactions on Graphics, 2020, 39(4):46. DOI:10.1145/3386569.3392432. / [14] Kwiatkowski A, Alvarado E, Kalogeiton V, et al. A Survey on Reinforcement Learning Methods in Character Animation[J]. Computer Graphics Forum, 2022, 41(2):613-639. DOI:10.1111/cgf.14504. / [15] Zordan V B, Hodgins J K. Motion Capture-Driven Simulations That Hit and React[C]//Proceedings of the 2002 ACM SIGGRAPH/Eurographics Symposium on Computer Animation. 2002:89-96. DOI:10.1145/545261.545276. / [16] Unity Technologies. Animation Rigging: Two Bone IK Constraint[EB/OL]. Unity Manual. https://docs.unity3d.com/Packages/com.unity.animation.rigging@1.2/manual/constraints/TwoBoneIKConstraint.html. / 签名栏： / 学生：                指导老师：                专业负责人： / 注意： / 1．任务书由指导老师填写、专业负责人审核，学生、指导老师、专业负责人均应签字。 / 2．此任务书要求在毕业论文（设计）工作开始前下达。
+
+### 本科毕业论文(设计)外文翻译.docx
+P0: 本科毕业论文（设计）外文翻译
+P1: 译文一：软地面上的实时运动与动态足迹（选译）
+P2: 原文：Alvarado E, Paliard C, Rohmer D, Cani M-P. Real-Time Locomotion on Soft Grounds With Dynamic Footprints. Frontiers in Virtual Reality, 2022, 3:801856. DOI:10.3389/frvir.2022.801856. 原文作者单位为法国巴黎综合理工学院及Télécom Paris；原文采用CC BY 4.0许可。以下为原文摘要、第3节及第7节相关内容的中文选译。
+P3: 摘要与研究动机
+当人在雪地、沙地或泥地上行走时，地面会在脚下发生形变，并立即影响行走步态。本文提出一种基于物理的实时交互模型，只需虚拟角色的运动学动画即可计算角色与软地面之间的作用。足部接触地面时产生的作用力根据角色重量、当前平衡状态、接触瞬间的足部速度以及地面材料估计。研究采用标准应力—应变关系计算土壤在作用力下的动态形变；压缩量和材料侧向位移分别由土壤的杨氏模量与泊松比参数控制。随后，系统通过程序化方式对细分地形块施加形变，生成足迹。研究还在运动学角色上增加了简单控制器，使地面下陷对角色步态产生影响。实验结果显示，生成的足迹能够增强画面真实感，地面压缩也会引起一致的角色运动变化。该模型可用于多种步态和软土材料，适用于游戏与虚拟现实中的户外场景。
+P4: 动画输入与分层控制
+该方法输入一个由常见游戏引擎提供的动画角色：角色包含网格、绑定骨骼、预制动画以及作用于足部骨骼的IK系统，同时配有用于平衡控制和碰撞处理的简化代理几何体与刚体。此类传统模型虽能让角色在平地和斜坡上移动，却无法根据地面坡度变化动态改变步态，因此动作显得机械，也无法描述角色与环境之间的双向影响。为此，研究在动画模型之外加入一个整体动态行为：将角色近似为一个与包围胶囊相关联的刚体，其质心放在角色根关节附近，并根据静止姿态下的几何形状预先计算惯性张量。这个简化物理模型用于粗略碰撞检测，使角色质量、质心位置和胶囊尺寸能够直接影响整体运动。
+P5: 代理刚体的位置与朝向由前向动力学模拟随时间更新，输入包括运动学动画的速度和外加力矩。模拟得到的胶囊再用于确定骨架根关节的新位置和朝向。之后才对四肢进行局部修正：首先沿用输入动画的正向运动学关节角，再通过逆向运动学让足部满足地面接触条件。由此形成多层控制结构：全局层控制粗略碰撞体的位置和姿态；局部层通过动态射线查询求取足端目标，精确放置脚部。不同层级各自承担不同精度的任务。为了让角色适应非平地，作者在粗略刚体模型上增加倾斜与摆动控制项。
+P6: 倾斜与摆动控制
+角色整体控制器随时间对代理刚体施加力矩，以模拟角色在陡坡上主动稳定自身的需求；附加的动态摆动则表现出角色为保持平衡并向前移动所作的努力。与直接比较某个肢体当前角度和目标角度的传统控制器不同，这个高层控制器关注质心。它尝试使质心沿重力方向投影到由支撑足形成的支撑区域内。由于目标是模拟沿速度方向发生的倾斜，研究将问题简化为二维平面：平面由重力方向和角色当前速度共同确定，并穿过角色质心。在该平面内，支撑区域由各足部在地面上的投影构成，控制目标是使质心投影靠近支撑线段的中点。
+P7: 控制器据质心投影与目标投影之间的距离，以及刚体绕平面法线方向的角速度，计算类似比例—微分控制的力矩。参数α调节角色偏离理想平衡姿态的自由度，参数β调节允许的动态摆动幅度。作者指出，这些参数可依据环境性质调整。该控制器无需为不同角色形态逐一重新设置，即可在不同坡面和不同角色质心高度下产生适应性摆动。为提高足端定位精度并避免滑步，研究还通过一个小幅位置偏移修正角色整体，使其与动画IK的目标相匹配。
+P8: 讨论与结论
+研究把简单的运动学步态转换成实时动态动画，并实现角色与软地面之间的双向交互。基于物理的接触力驱动局部足迹生成，地面压缩又反过来改变角色步态。该方案的主要特点是计算较轻，可在Unity一类游戏引擎中交互运行。作者同时说明模型包含若干近似：从运动学输入估计接触力时只考虑足部速度变化，并把角色近似为整体下落的刚体，没有考虑角色内部肌肉主动调整；因此对于踢腿或舞蹈等空中肢体动量快速变化的动作，压力估计不够准确。地面模型也以整体材料参数近似颗粒土壤，部分变形时间只在一定质量和速度范围内有效。未来可纳入各身体部位的动量、逐关节控制与优化，并扩展到四足角色；要实现四足应用，还需正确分配多个接触点上的总质量。对本课题的启示是：可以参考其“整体姿态控制与局部足端IK分层”的思路，但论文中的物理交互结果不能直接作为本项目的实验结论。
+P9: 分层控制对本课题的借鉴
+该研究的整体动态层不是直接改变每一条腿的关节角，而是先更新代理刚体的位置和朝向，再把足端误差交给局部IK处理。这样的分工使全局姿态和局部接触能够分别调节。对动画驱动角色而言，可将已有动画根运动视为期望运动，将身体倾斜作为幅度受限的补偿，再把足端目标限制在骨骼可达范围内。研究中的姿态控制使用质心投影、支撑区域和角速度构造力矩，因此能够随坡度改变倾斜和摆动。作者还指出，为减少足端滑移，可在整体控制器中加入小幅位置偏置，使角色根部适配足部IK目标。该调整说明“脚部目标误差”有时不能只由腿部承担。
+
+实验结果与适用范围
+论文报告的结果显示，不同坡度下的角色会产生不同程度的前后摆动，角色质心位置改变时，控制器也能自动适配形态；软地面压缩还会进一步改变步态。该结论来自论文所实现的物理控制与地形模型，不能直接推断到本项目的四足马匹。作者强调其力模型依据动画输入作了简化，忽略内部肌肉作用，且地面材料参数只在一定质量和速度范围内有效。作者提出未来扩展到四足时必须重新考虑多个支撑点对总质量的分配。本研究因此只借鉴其分层控制、质心/支撑关系和足端目标校正思路，仍需通过马匹动画下的独立对照实验评价。
+P10: 译文二：自然地形中人体运动的影响模拟（选译）
+P11: 原文：Alvarado E, Argudo O, Rohmer D, Cani M-P, Pelechano N. TRAIL: Simulating the Impact of Human Locomotion on Natural Landscapes. The Visual Computer, 2024, 40(7):5029-5041. DOI:10.1007/s00371-024-03506-z. 原文作者来自德国马克斯·普朗克信息学研究所、巴塞罗那理工大学及法国研究机构；原文采用CC BY 4.0许可。以下为原文摘要、第1节、第3节及结论相关内容的中文选译。
+P12: 摘要与研究目标
+人在自然地形中的存在会留下运动影响，从足迹到被压倒的草木均可体现。本文提出一种模拟虚拟角色对自然地形影响的方法，重点研究人体行走造成的作用。该方法通过轻量级流程，在不平地面上计算足部位置，并从运动学动画和角色质量估计动态足部压力。地面与植被模型共同模拟软土和植物随时间发生的局部变化，形成可见路径。实验通过现实世界数据验证多种土壤材料与植被类型的参数化设置。作者指出，这种方法能够提升自然场景中虚拟人群的真实感和临场感。
+P13: 研究动机
+生物的运动会改变环境。海滩上的脚印可能很快被海水冲走，而在草地上反复经过会损伤植物、减少植被覆盖，并压实土壤，最后形成可见小径。本文关注这种短期或即时影响，与考虑多年植物恢复的长期变化相区别。游戏通常用纹理绘制脚印，并在角色附近程序化弯曲草叶，但往往忽略持续的物理改变；路径多由美术人员预先制作，而不是根据角色真实运动轨迹生成。研究希望建立足步与路径形成之间的因果关系，并以轻量物理方法获得可信效果，同时保持实时性能。模拟结果可输出为图像数据，也可以整合进纹理工作流，用于更大场景。
+P14: 作者采用整体模拟框架来描述人体运动对自然场景的影响。模型包括足部、可变形植物和可塑性地面。足部模型分为脚跟和脚尖，用以估计在平地或坡地行走时施加的作用；植物模型具有弯曲、退化和恢复能力，以模拟脚步造成的损伤；土壤模型则模拟压缩、材料堆积和稳定过程。植被还会减轻地面对角色的冲击并增加土壤内聚力。该模型通过参数化，可在不同土壤与植被条件下呈现脚步累积造成的动态变化。
+P15: 相关工作与技术背景
+早期角色动画通常针对平坦、坚硬地面，采用需要设计运动控制器的物理模型，或采用较轻量的运动学约束模拟角色与场景的交互。数据驱动方法后来被用于不平地形运动，但通常没有处理会变形的软地面；深度强化学习也被用于学习运动控制器，不过相关角色尚未在可变形地面上训练。真实自然场景还要求描述角色与环境的双向影响。逆向运动学已被扩展到复杂环境中的人物和多足角色，通过专门的足部放置策略适配地形。但已有模型可能只考虑单一足部位置，没有计算脚跟和脚尖各自的朝向，因此难以准确模拟脚掌与坡面接触。另有软地面运动研究尝试让步态适应环境，不过若力的估计没有考虑斜坡上的足部位置，所得接触力会不够准确。
+P16: 足端定位方法
+研究利用脚跟和脚尖两个局部部分描述脚掌，并分别为其设置空间位置和四元数朝向。对每个部分，系统将动画原始朝向与一个顺应地面的朝向进行球面线性插值。插值权重由该部分距地面的高度决定：足部离地较远时保留动画姿态；接近地面时逐渐增加地面校正；达到设定影响距离后，校正达到最大。这样可使足部朝向随接触距离连续变化，而不是在某一帧突然切换。特别是当脚尖先于脚跟接触地面时，分开处理两个部分可更合理地描述脚掌姿态。足部位置和朝向得到修正后，研究再根据角色质量和运动状态计算其施加于植被与地面的作用。
+P17: 主要贡献与局限
+本文提出轻量物理系统以改善软地面上的足部放置并计算接触作用；提出可逐渐受损和恢复的动态植物模型；构建考虑植被覆盖率的足—土相互作用模型；并提供可定制的实时模拟器来生成局部地表变化数据。研究当前聚焦于双足角色，作者认为该方法未来可以扩展到野生动物，但四足扩展需要按照变化的接触点数量重新分配角色总质量。
+P18: 讨论与结论
+研究把简单的运动学步态转换成实时动态动画，并实现角色与软地面之间的双向交互。基于物理的接触力驱动局部足迹生成，地面压缩又反过来改变角色步态。该方案的主要特点是计算较轻，可在Unity一类游戏引擎中交互运行。作者同时说明模型包含若干近似：从运动学输入估计接触力时只考虑足部速度变化，并把角色近似为整体下落的刚体，没有考虑角色内部肌肉主动调整；因此对于踢腿或舞蹈等空中肢体动量快速变化的动作，压力估计不够准确。地面模型也以整体材料参数近似颗粒土壤，部分变形时间只在一定质量和速度范围内有效。未来可纳入各身体部位的动量、逐关节控制与优化，并扩展到四足角色；要实现四足应用，还需正确分配多个接触点上的总质量。对本课题的启示是：可以参考其“整体姿态控制与局部足端IK分层”的思路，但论文中的物理交互结果不能直接作为本项目的实验结论。
+P19: 模型输入与地面朝向插值
+脚部被划分为脚跟和脚尖，二者分别具有位置与旋转。研究在角色动画产生的原始旋转与适应地面的旋转之间进行球面插值。令d表示某一脚部部分距地面的距离，dmax表示影响范围，则插值权重可写成 w=clamp(1−d/dmax,0,1)。当距离大于影响范围时，w为零，保留动画旋转；靠近地面时，w逐渐增大；达到地面时，脚部朝向充分对齐地面。由于脚跟和脚尖分开计算，这种处理能够应对脚尖先接触、脚跟仍在空中的情形。其核心是让校正权重随距离连续变化，从而减轻接触瞬间的姿态跳变。
+
+足部接触力和评价
+研究从运动学动画和行走者质量推算足部在接触期间施加于地面和植被的力，并据此模拟植物弯曲、退化与恢复，以及土壤压缩、材料堆积和稳定过程。植被覆盖会改变地面响应。作者使用不同地表参数开展测试，并将模拟足迹、土壤形变和植被损伤与现实数据进行比较。其系统把足部适配、接触作用与地表变化串联起来，说明动画驱动不妨碍环境侧的物理近似。需要注意的是，这篇研究将主体对象限定为双足行走角色，并未直接评价马匹奔跑、四足支撑相同步或高速转弯，因此对本项目只提供足部对齐和连续权重的设计参考。
+P20: 原文一（全文文本）
+P21: Real-Time Locomotion on Soft Grounds With Dynamic Footprints
+P22: Eduardo Alvarado, Chloé Paliard, Damien Rohmer, Marie-Paule Cani. Frontiers in Virtual Reality, 2022, 3:801856. DOI:10.3389/frvir.2022.801856. Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+P23: Real-Time Locomotion on Soft
+Grounds With Dynamic Footprints
+Eduardo Alvarado 1*, Chloé Paliard 2, Damien Rohmer 1 and Marie-Paule Cani 1
+1LIX, Ecole Polytechnique/CNRS, Institut Polytechnique de Paris, Palaiseau, France, 2LTCI, Télécom Paris, Institut Polytechnique
+de Paris, Palaiseau, France
+When we move on snow, sand, or mud, the ground deforms under our feet, immediately
+affecting our gait. We propose a physically based model for computing such interactions in
+real time, from only the kinematic motion of a virtual character. The force applied by each
+foot on the ground during contact is estimated from the weight of the character, its current
+balance, the foot speed at the time of contact, and the nature of the ground. We rely on a
+standard stress-strain relationship to compute the dynamic deformation of the soil under
+this force, where the amount of compression and lateral displacement of material are,
+respectively, parameterized by the soil ’s Young modulus and Poisson ratio. The resulting
+footprint is ef ﬁciently applied to the terrain through procedural deformations of re ﬁned
+terrain patches, while the addition of a simple controller on top of a kinematic character
+enables capturing the effect of ground deformation on the character ’s gait. As our results
+show, the resulting footprints greatly improve visual realism, while ground compression
+results in consistent changes in the character ’s motion. Readily applicable to any
+locomotion gait and soft soil material, our real-time model is ideal for enhancing the
+visual realism of outdoor scenes in video games and virtual reality applications.
+Keywords: character animation, kinematics, natural phenomenon, terrain deformation, real time
+1 INTRODUCTION
+Natural environments present a major challenge when it comes to animating characters in real time,
+e.g., for video games or virtual-reality applications. Indeed, the diverse conditions that characters
+may encounter when they move in such environments, from different soil types such as sand or snow
+to additional ﬂexible elements such as vegetation, give rise to a wide range of possible reactions from
+the environment and deeply affect characters ’ motion. Often neglected, this two-way interaction is a
+major source of non-realism in current applications.
+Although considerable efforts have recently been devoted to the use of modern learning methods
+(deep learning and/or reinforcement learning) to improve character animation, motion usually takes
+place on rigid grounds. Indeed, the high-dimensional data needed to capture the interaction with
+various soft grounds would be much more dif ﬁcult to acquire, and the training of the animation
+model would be much more intricate in the context of such a dynamic environment.
+While standard simulation methods for soft materials could, in theory, be used to solve the two-
+way interaction between a character and soft grounds in a predictive way, such methods would only
+be applicable to simulated, physically based characters and may not be usable in real-time
+applications.
+In this work, we address the problem of generating real-time character animation on dynamic,
+soft grounds, such as sand, snow, soil, or mud. In order to achieve this, two challenges need to be
+solved: enhancing a standard, kinematic locomotion model to make it adaptive to non- ﬂat terrains
+Edited by:
+Steve Tonneau,
+University of Edinburgh,
+United Kingdom
+Reviewed by:
+Taku Komura,
+University of Edinburgh,
+United Kingdom
+Jason Chemin,
+Laboratoire d’analyse et d’architecture
+Des Systèmes (LAAS), France
+Daeun Song,
+Ewha Womans University, South
+Korea
+*Correspondence:
+Eduardo Alvarado
+eduardo.alvarado-pinero@
+polytechnique.edu
+Specialty section:
+This article was submitted to
+Technologies for VR,
+a section of the journal
+Frontiers in Virtual Reality
+Received: 25 October 2021
+Accepted: 28 February 2022
+Published: 28 March 2022
+Citation:
+Alvarado E, Paliard C, Rohmer D and
+Cani M-P (2022) Real-Time
+Locomotion on Soft Grounds With
+Dynamic Footprints.
+Front. Virtual Real. 3:801856.
+doi: 10.3389/frvir.2022.801856
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 8018561
+ORIGINAL RESEARCH
+published: 28 March 2022
+doi: 10.3389/frvir.2022.801856
+and providing a light yet generic ground model, able to react in
+real time to local interactions while capturing a wide variety of
+ground behaviors (compressible or not, wet or dry, etc.). Our
+solution is therefore twofold: we enhance the locomotion model
+with a global controller that a ffects a high level, rigid body
+representation of the character and adds balancing and tilting
+behaviors to the prede ﬁned, forward kinematic animation and
+we introduce a minimal, physically based model for soft
+grounds based on a linear strain-stress relationship,
+associated with a novel way to c onvert the kinematic state of
+the character when a foot hits the ground into a plausible
+interaction force over time. Computing the right interaction
+force, the function of both foot velocity and the portion of the
+character weight put there yie lds the right amount of ground
+compression and directly leads to a plausible change of
+subsequent character motion. Moreover, the visually
+plausible footprints resulting from this interaction are
+generated without disrupting real-time performance.
+We claim the following contributions:
+ An enhanced real-time locomotion model that combines a
+global controller, enabling tilting and balancing behaviors,
+to an input IK animation, making it adaptable to non- ﬂat
+terrains (note that we already introduced this model in
+Paliard et al. (2021) .
+ A lightweight force model for feet-to-ground contact, driven
+by the kinematics of the input motion and the nature of the
+terrain.
+ A versatile model based on Hooke ’s law for ground
+deformation, parameterized by the Young modulus in
+compression and the Poisson ratio in lateral material
+displacement.
+We use a real-time implementation in the Unity system to test
+and validate our method. Our results show that our method gives
+visually plausible results for a variety of ground types and
+character gaits and that the interaction forces we compute
+compare well with real, acquired data for Ground Reaction
+Forces (GRF).
+2 RELATED WORK
+Our work is related to both real-time animation models for
+characters, enabling them to adapt to a dynamic environment
+and the simulation of soft grounds.
+2.1 Real-Time Characters Interacting With
+Their Environment
+Modeling plausible character motion is a complex problem that
+couples behavioral intents with physics-based equilibrium
+constraints. Fully kinematic models were explored in early
+work ( Sun and Metaxas, 2001) , leading to real-time adaptation
+of walking cycles to uneven terrains, at the price of lacking
+dynamic response to terrain changes. Coupling preset gaits
+with dynamic events were handled through the help of
+animation controllers ( Yin et al., 2007) that convert
+differences between the actual pose and the prescribed one as
+torques, which are then fed into a physically based simulation
+computing dynamic state changes. Sources of uncertainty can
+also be included in the control strategy to adapt the motion to
+unknown situations ( Wang et al., 2010) . Coupled with
+reinforcement learning ( Peng et al., 2018) and/or adapted
+reward functions ( Kwon et al., 2020) , these approaches can
+model a wide range of plausible complex motions up to
+acrobatic effects ( Won et al., 2020) . These motions
+automatically adapt to their simulated environment at the
+price of their high computational cost and indirect control
+and thus cannot be directly applied to loose deforming
+terrains in standard game engines. In reverse, gathering and
+processing large pre-recorded motion databases allow for the
+use of deep-learning methods ( Holden et al., 2017) , which, once
+learned, can achieve real-time performance. Still, the need for an
+extensive motion database would not scale well to the variety of
+loose environments targeted in this work.
+Closer to our goals, simple dynamic models applying forces to
+the center of mass to control the general balance of a character
+seen as an inverted pendulum ( Kwon and Hodgins, 2010) allow
+for a good high-level tradeoff between ef ﬁciency and plausibility.
+Mitake et al. (2009) proposed a high-level representation of an
+oscillating proxy volume, triggering pre-recorded detailed
+animations (walking, running, falling). This work achieves
+real-time animation but is restricted to preset animations on
+ﬂat grounds. Other works modeled the adaptation of a character’s
+gait to more complex environments. Carensac et al. (2015)
+studied the locomotion of characters partly immersed in a
+liquid. Bermudez et al. (2018) used drag forces to adapt the
+character’s gait to a ﬂuid environment. Similar to ours, these
+approaches rely on high-level controllers, but they only take into
+account the in ﬂuence of the environment on the character ’s gait
+rather than modeling two-way interactions. Moreover, they are
+restricted to locomotion in a ﬂuid.
+2.2 Soft Grounds
+Terrain deformation is a well-studied area in geoscience and
+computer graphics (CG) ( Galin et al., 2019) . At a large scale,
+terrains are subject to diverse natural phenomena, from the
+erosion due to sun and water that break and transport ground
+material ( Cordonnier et al., 2017) to the action of wind that
+piles up sand dunes ( Beneš and Toney Roa, 2004) and snow
+deposit, which creates smooth landscapes ( Cordonnier et al.,
+2018). The effect of moving characters was little studied at such
+scale, with the exception of skie rs leaving tracks and causing
+avalanches in snow-covered landscapes ( Cordonnier et al.,
+2018) and of the generation of eroded trails due to fauna
+(Ecormier-Nocca et al., 2021) .I nb o t hc a s e s ,s i m p l et e x t u r e s
+were used as track models, and none of these works studied the
+two-way interaction between a deforming ground and a moving
+creature.
+At smaller scales, extensive CG work studied physically based
+simulation of snow (Stomakhin et al., 2013) and granular material
+such as dry ( Zhu and Bridson, 2005 ; Ihmsen et al., 2013 ; Daviet
+and Bertails-Descoubes, 2016) or wet sand ( Lenaerts and Dutré,
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 8018562
+Alvarado et al. Real-Time Locomotion on Soft Grounds
+2009). Some of these models speci ﬁcally addressed the two-way
+coupling of sand simulation with rigid or elastic solids ( Narain
+et al., 2010 ; Klár et al., 2016) . While being able to capture small-
+scale phenomena, these models are only applicable to a speci ﬁc
+type of ground. Moreover, being computationally intensive, they
+are not applicable to our problem of real time, two-way
+interactions between characters and soft grounds.
+More versatile, approximate models were proposed for real-
+time applications. Sumner et al. (1999) introduced the ﬁrst
+uniﬁed model for sand, mud, and snow. They generated foot
+tracks left by walking characters using a ﬂexible procedural
+method to move soil material (represented by a hight ﬁeld in a
+2D terrain grid) away from the intersection area between a foot
+model and the ground. Onoue and Nishita (2005) introduced a
+more focused appearance-based approach for granular materials,
+able to move and accumulate sand on top of colliding bodies.
+Zeng et al. (2007) further improved this method using Newtonian
+physics to calculate the deformation. Similar to our work, these
+two methods cast rays for collision detection between ground and
+moving bodies and use the impulse experienced by the ground to
+compute its deformation. However, they did not take the velocity
+and mass of the colliding bodies into account, thus neglecting the
+resulting momentum. A more generic, approximate terrain
+model, composed of a plastic layer on top of an elastic layer,
+was introduced for simulating ground-vehicle interaction in real
+time (Zhu et al., 2011) . The computation of the interaction force
+was inspired by Bekker ’s terramechanics theory ( Bekker, 1962) ,
+enabling different approximations for snow, grass, sand, and
+mud. Although our ground model also involves Hooke ’s low,
+we make use of a single viscoplastic ground layer, which can be
+parameterized for different terrain responses. Lastly, Zhu et al.
+(2019) used a GPU simulation over a 2D grid to achieve sand-
+vehicle interaction at interactive rates. While their solution is
+more accurate than ours, it only captures granular materials and
+provides lower frame rates than our simpler CPU
+implementation in Unity.
+To our best knowledge, the only method that addressed two-
+way interaction between virtual characters and soft grounds in
+real time is our recent work ( Paliard et al., 2021) . An input,
+kinematic character animation was enhanced with adaptive
+tilting and dynamic balancing mechanisms thanks to a simple,
+global controller, leading to automatic gait changes on non- ﬂat
+terrains. The character poses were driven by inverse kinematics
+(IK), and ray casting was used to detect collisions between the feet
+and the ground, enabling the generated footprints to impact the
+subsequent character ’s motion. Unfortunately, fully-geometric
+deformations based on the intersection between the feet
+geometry and the terrain were used to compute footprints.
+This method, therefore, failed to account for the dynamics of
+the interaction, such as the character ’s quantity of motion, a
+combination of applied weight and velocity. As a result, a heavy
+jumping character and a light walking one with similar feet sizes
+generated the same tracks. While it reuses the same motion
+controller, our new model includes a physical force model and
+stress-strain relationships for the soft ground, which, in
+combination, enables overcoming these strong limitations.
+3 AN ADAPTIVE MODEL FOR CHARACTER
+LOCOMOTION
+3.1 Input Locomotion Model
+Our method takes as input an animated character model from a
+standard game engine, such as a mesh geometry, a rigged skeleton
+with preset animations, and an IK system applied to feet bones,
+on top of a simple proxy-geometry and rigid body used for
+balance control and collision processing. While it allows
+characters to walk on both ﬂat and sloppy terrains, such
+models do not allow them to dynamically adapt their gait to
+varying ground slopes, leading to robotic-looking motions that
+lack dynamics. Furthermore, they do not provide mechanisms to
+model any two-way interaction with the environment, restricting
+the animation to rigid grounds only. Therefore, similar to Mitake
+et al. (2009) , we add to this model a global dynamic behavior,
+computed by simulating a single rigid body model associated with
+a bounding capsule. The centroid of the capsule is located at the
+root joint of the articulated character (the hips), which is assumed
+to be close to the character ’s center of mass, and its inertia tensor
+is precomputed from the character ’s geometry in rest pose. This
+simpliﬁed physically based model is used for coarse collision
+detection, enabling the mass, the position of the center of mass,
+and dimensions of the capsule to have a direct impact on the
+character’s motion. The time evolution of the position and
+orientation of the physically based capsule is computed from a
+forward dynamic simulation. It takes as input the velocity of the
+kinematic animation and a torque. This simulated capsule is then
+used to deﬁne the new orientation and position of the root joint of
+the character. The limbs corresponding to the feet are ﬁnally
+adjusted in a second step. They are placed using the joint-angles
+described in the direct kinematics input motion and then adjusted
+using inverse-kinematics to enforce contact with the ground. The
+aforementioned elements can be seen as a layered model for
+character motion control, where each layer acts at a different level
+of detail. They span from global control for the rigid body that
+controls the position and orientation of the coarse geometric
+collider to local control for the IK, whose positions, computed
+using dynamic ray casting, allow for accurate feet positioning on
+the ground. To make this model adaptive to non- ﬂat terrains, we
+enhance the coarser, rigid body model with tilt and swing control
+terms, as presented next.
+3.2 A High-Level Controller for Tilting and
+Swinging Motion
+Our global controller computes a torque applied to the rigid body
+representation of the character over time, modeling the need of
+the character to self-stabilize on steep terrains. An additional
+dynamic swinging behavior conveys the effort developed by the
+character to remain stable and move forward. In contrast to usual
+controllers, expressed as a difference between current and
+objective angles for speci ﬁc limbs, our high-level controller
+builds on the notion of center of mass, more relevant in our
+case, by trying to keep its projection along the gravity direction
+onto the character ’s support polygon. Because we aim at
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 8018563
+Alvarado et al. Real-Time Locomotion on Soft Grounds
+modeling this tilting motion in the velocity direction, we simplify
+the representation to a 2D-planar problem, where the plane is
+deﬁned by the gravity direction, the current character velocity,
+and is passing through its center of mass. The support polygon is
+dynamically computed as the segment de ﬁned by the projection
+of the feet positions onto the ground in this plane. The objective
+projection of the center of mass ptargetcom is thus expressed as the
+middle of this segment (Figure 1-left). The torque magnitude T is
+ﬁnally computed as a proportional derivative controller:
+T /equals α ptargetcom − pcom() · u + β _θ, (1)
+where pcom and ptargetcom are, respectively, the coordinates of the
+current and the target projections of the center of mass onto the
+ground, u is the unit vector along the terrain slope, and _θ is the
+angular velocity of the rigid body around the axis orthogonal to
+the plane. The control parameter α is used to tune the freedom of
+the character to tilt out of its ideal equilibrium position, while β
+sets the amount of dynamic swinging allowed. The values of these
+parameters can easily be adapted to the nature of the
+environment, as explained in Section 6 . As shown in
+Figure 1 -middle and right, this new high-level controller
+automatically adapts to various slopes and character
+morphology without requiring any parameter tuning. To
+ensure the accuracy of foot positioning (second, IK layer of
+the character ’s model) and avoid any sliding artifact, a small
+offset is added to the character with the PD controller to match
+the IK objective of the animation.
+4 FORCE MODEL FOR FEET-TO-GROUND
+CONTACT
+In this section, we propose a model for the forces that the
+character applies to the ground when its feet are in contact
+with it, based on its kinematics and the nature of the ground.
+The resulting interaction forces over time are used to compute a
+plausible ground deformation as described in the second part of
+Section 5 . The overview of our global physics-inspired terrain
+deformation process is displayed in Figure 2 .
+4.1 Static Forces Mode and Weight Ratio
+When a foot of the character is in contact with the terrain, it exerts
+a force on it that we denote ⃗Fleftfoot and ⃗Frightfoot for the respective left
+and right foot, or denoted simply ⃗Ffoot for a single foot when its
+left/right placement is not important. This force is at the origin of
+the deformation of the terrain, and we therefore aim to estimate
+as long as the foot is considered to be in contact with the ground.
+⃗Ffoot is closely related to the notion of the so-called Ground
+Reaction Force ⃗FGR, which is the reaction force that the terrain
+exert on the foot and we have at any time of the contact:
+⃗FGR /equals− ⃗Ffoot.( 2 )
+While we will consider later the geometrical contact surface
+between the foot and the terrain to compute the deformation of
+the ground, we assume at this stage that the contact forces are
+applied at the foot ’s joint position, supposed to be a ﬁxed point
+relative to the character.
+When the character is static, ⃗Ffoot only depends on its weight⃗Fweight and on the current character balance. Let m be the mass of
+the character and ⃗g the gravity constant. We can write
+⃗Fleftfoot + ⃗Frightfoot /equals ⃗Fleftweight + ⃗Frightweight /equals m ⃗g.( 3 )
+If only a single foot is in contact with the ground, then the full
+weight of the character is applied through it, while the other foot
+has a null contribution with respect to the ground. When the two
+feet are in contact, the weight force is distributed through the two
+contact points, and we introduce the weight ratios αleft and αright
+such that
+⃗Fleft/rightweight /equals αleft/right m ⃗g
+with αleft/right ∈ 0, 1[] , and αleft + αright /equals 1. (4)
+Assuming that the mass of the character is evenly distributed
+in the 2D plane deﬁned by the contact points of the feet pleft, pright
+and its center of mass, the weight ratio represents the relative
+position of pcom—the projection of the center of mass on the
+segment [ pleft, pright]—leading to
+αright /equals pcom − pleft() · pright − pleft()‖pcom − pleft‖‖ pright − pleft‖ .( 5 )
+This weight ratio can be intuitively seen as a way to split the
+contribution of the character weight between a left and right side
+that adapts to its posture ( Garcia, 2012) and is therefore a value
+that is re-computed at each frame of the animation.
+4.2 Dynamic Force Model During the
+Contact
+When the character is in walking motion, its global change of
+momentum is expressed by forces exerted on the ground and
+applied at the position of the feet. Let us call ⃗Fmomentum the
+additional force due to the motion such that
+⃗Fleft/rightfoot /equals ⃗Fleft/rightweight + ⃗Fleft/rightmomentum (6)
+Our idea is to estimate plausible value for ⃗Fmomentum from the
+kinematics inputs. To this end, we will make the assumption that,
+during the gait phase where the foot moves down and touches the
+ground, the corresponding left/right side of the character —as
+induced by our deﬁnition of αleft/right—acts like a rigid body falling
+down. Therefore, we neglect the in ﬂuence of the internal muscle
+that would lead to local adaptation of the articulations during the
+impact and assume that the change of momentum of each side of
+the character is fully supported by the ground.
+When the character’s foot touches the ground at a time t0, the
+IK-based system considers its position to be ﬁxed, and its motion
+stops therefore suddenly. This change of velocity can be
+represented by an impulse ⃗J of the feet on the ground.
+Considering our previous assumption that a whole part of the
+body falls rigidly, we express this impulse as
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 8018564
+Alvarado et al. Real-Time Locomotion on Soft Grounds
+⃗J /equals α m ⃗vt 0 − Δt() , (7)
+where ⃗v(t0 − Δt) is the velocity of the foot evaluated at the frame
+preceding its impact on the ground and Δt is the time step of the
+real-time game engine. A naive approach could consist in
+computing a short momentum force ⃗J/Δt during the time step
+Δt, this would, however, lead to a very large force burst during a
+single time step of the animation, which may not accurately
+represent the slower motion happening on soft ground as the foot
+velocity obtained from the forward kinematics and IK constraints
+does not represent this speci ﬁc foot-to-soft-ground interaction.
+Our objective is thus to model a simple yet reasonable continuous
+momentum force expression during contact with such inaccurate
+kinematics input. To this end, we propose to introduce an
+external parameter called the characteristic time τ, possibly
+greater than Δt, that represents the typical time needed for the
+character to be fully stopped by a given type of terrain. In a ﬁrst
+approximation, we will assume, for a standard range of weight
+and velocity compatible with human locomotion, the value τ as a
+constant that only depends on the type of terrain. Thanks to this
+parameter, we can model the momentum force as the vector:
+⃗Fmomentum /equals ⃗J/τ /equals α m ⃗vt − Δt() τ , (8)
+FIGURE 1 | Adaptive character locomotion on non- ﬂat terrains. Left: the torque magnitude depends on the distance between the middle of the support polygon
+ptargetcom and the projection of the character ’s center of mass pcom on the terrain, as well as on the current angular velocity _θ. Middle: comparison between characters
+without (red) and with (blue) our torque-based controller. The blue character exhibits an increased swinging motion, which dynamically tilts it for ward or backward,
+depending on the slope. Right: the controller is robust to changes of character morphology as the oscillating motion automatically adapts when the ce nter of mass
+(red sphere) is positioned closer to or further from the ground.
+FIGURE 2 | Framework for terrain deformation. Block (A) is in charge of calculating the forces taking place at each frame and then initializes block (B), where
+footprints are computed. The coroutine (C) computes the associated deformation and terminates when the terrain displacement is completed.
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 8018565
+Alvarado et al. Real-Time Locomotion on Soft Grounds
+applied from the colliding foot to the ground during the time
+interval t ∈ [t0, t0 + τ], where t is the current frame time. Note that
+this formulation allows scaling the magnitude of ⃗Fmomentum
+independently from the engine frame rate and using instead
+the parameter τ that relates to the type of terrain. Therefore, a
+given forward kinematics motion provided as input can be
+associated with different forces, such as a large magnitude of
+momentum force on a hard terrain with a small τ value and a
+small force magnitude with a long effect on soft terrain with large
+τ. This dependence of ⃗Fmomentum magnitude and duration time to
+the type of ground is then used to modify the way the terrain is
+modiﬁed as explained in the following section.
+5 REAL-TIME TERRAIN DEFORMATION
+Let us now describe the second part of our two-way interaction
+model, namely terrain deformation, which in turn will modify the
+character’s gait.
+5.1 Plastic Model for Terrain Compression
+Our ﬁrst objective is to convert the time-varying force Ffoot into a
+dynamic compression behavior that will take place under the
+character’s foot. Our model is based on the following two
+assumptions. First, we suppose that only the upper layer of the
+ground is loose enough to be deformed by the action of the foot.
+This loose upper layer of depth L0, typically a few centimeters,
+depends on the material, and we suppose that the deeper part
+below is fully rigid. Second, we assume that this loose layer
+exhibits a viscoplastic deformation following Hooke ’s law
+under compression. Once the foot stress is released, we
+assume a pure plastic behavior, and the footprint remains fully
+carved in the terrain. As illustrated in Figure 3-left, each grid cell
+of the terrain is seen as a compressive rod, with relative
+deformation characterized by its Cauchy strain ϵ = ΔL/L0,
+which is linearly related to the stress σ exerted by the foot
+through its Young modulus of elasticity E and σ = E ϵ. The
+plastic behavior of the material is enforced in keeping track of a
+total accumulated compression cacc ∈ [0, L0] for each cell of the
+terrain grid and constraining it to only increase from one frame to
+the other.
+To compute the stress σ applied to the ground, we consider the
+orthogonal component of the force Ffoot⊥ with respect to the
+ground normal ⃗n such that Ffoot⊥ /equals ⃗Ffoot · ⃗n and assume that this
+component is evenly spread on the contact area Acontact between
+the foot and the ground. This leads to the following stress
+σ /equals Ffoot⊥/Acontact.( 9 )
+The contact area Acontact must be ef ﬁciently computed as it
+varies dynamically with the motion of the character and the
+deformation of the terrain. We ﬁrst set a local window on the
+terrain grid set as a bounding square around the initial foot
+position at the contact time (Figure 3-right). Then, at each frame,
+we use ray casting on each cell of the bounding square to estimate
+the total area where the foot collides with the terrain. Considering
+that each terrain cell has a unit area cellarea and the ray cast detects
+FIGURE 3 | Left: compressive model of the terrain using Hooke ’s law. Each cell in contact with the foot is represented by a compressible cylinder of initial length L0
+and Young ’s modulus E. Right: 2D grid generation and contact area for each foot.
+FIGURE 4 | Kinematics-driven characters walking and running on different soft terrains (snow and sand). Our method generates dynamic footprints that take
+physical parameters (weight, velocity, contact surface) into account, as well as the nature of the terrain. This deformation is coupled with an adapt ive locomotion model
+leading to coherent, real-time coupling between character gait and dynamic terrain deformation.
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 8018566
+Alvarado et al. Real-Time Locomotion on Soft Grounds
+#hits cells where the foot collides with the terrain, we have Acontact
+= #hits · cellarea.
+Based on our compressible rod model, we can therefore
+compute a target deformation magnitude:
+ΔL /equals σ L0
+E /equals
+⃗Ffoot · ⃗n
+Acontact
+L0
+E . (10 )
+While this target deformation is dynamically updated at each
+frame, we cannot apply it instantaneously to the terrain as it does
+not take into account its viscoplastic behavior. The latter indeed
+limits its deformation rate along the characteristic time τ. Instead,
+we apply on each cell the limited per-frame compression cframe
+given by
+cframe /equals Δt/τ ΔL, if cacc < ΔL ≤ L00 otherwise
+⏐⏐⏐⏐⏐⏐⏐⏐ (11)
+with cacc adding the new value of cframe at each new frame.
+5.2 Terrain Vertical Accumulation Using
+Poisson’s Ratio
+While some terrain types such as snow can be highly
+compressible, others such as dry sand are not. In this case, the
+volume carved under the foot needs to be moved transversely and
+accumulated to form a bump around the foot position. We model
+this behavior by assuming that a given terrain can be
+homogeneously characterized by Poisson ’s ratio ] with small
+deformation such that
+V1 − V0
+V0
+/equals 1 − 2]() ΔLL0 , (12)
+with V0 = Acontact L0 being the volume before deformation and V1
+the ﬁnal volume corresponding to this material after deformation.
+Let us call Vc1 /equals Acontact (L0 − ΔL) the volume corresponding to a
+purely compressible material. Then, the additional amount of
+volume characterized by Poisson ’s ratio trying to extend in the
+orthogonal direction of the compression is ΔV /equals V1 − Vc1.W e
+will now assume that this additional amount of material is
+constrained to accumulate only at the top of the terrain and
+around the foot, thus creating a local bump.
+Let us call Acontour the area de ﬁned as the exterior
+neighborhood of Acontact. The diameter of Acontour is denoted
+by rcontour, which represents how far the accumulated material
+may spread around the feet on a given type of ground. Acontour is
+represented on the discrete terrain grid as a ﬁnite number of
+#neighbors cells. Assuming a uniform distribution of material
+over Acontour, each cell of this area should follow a target height
+increase of
+ΔLinc /equals ΔVcellarea #neighbors. (13 )
+Similar to the compression, this target increase of material is
+also temporally spread along the characteristic time τ and we
+therefore apply at each frame an actual height increase hframe of
+hframe /equals Δt/τ ΔLinc , if hacc < ΔLinc0 otherwise
+⏐⏐⏐⏐⏐⏐⏐⏐ (14)
+with hacc begin the accumulated height on the cell of Acontour.
+To preserve a smooth appearance of the bumps, we display a
+ﬁltered version of the accumulated height ﬁeld using standard
+Gaussian blur. In order to avoid accumulating volume errors, we
+keep in memory and use the uniform accumulated height for
+FIGURE 5 | Display of the force vectors ⃗Fweight , ⃗Fmomentum , ⃗Ffoot for each foot in contact with the terrain. The distribution of force automatically adapts to the left and
+right foot depending on the posture of the character (top and bottom left). Higher velocity during a running motion increases the magnitude of the forc e (bottom right).
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 8018567
+Alvarado et al. Real-Time Locomotion on Soft Grounds
+computations, while the smoothed version is only used for
+display.
+6 RESULTS AND APPLICATION
+We implemented our method as an interactive prototype in Unity
+(Figure 4 ), where the character can be controlled using the
+keyboard or a game pad. In the last case, the character ’s
+motion will interpolate between walking, running, and
+jumping animation, based on the intensity with which we
+move the joystick. The character is placed on different preset
+terrain types, such as snow, dry sand, and mud. Each of these
+sample grounds has a size of 10, ×, 10 m with a maximum vertical
+difference of 10 m between the lowest and highest point. The
+height maps are initially sampled using a grid of 256 2 points. We
+use a bounding square of size 40 × 40 cm to subdivide the terrain
+grid around each foot impact center. To estimate the neighboring
+area where the vertical deformation around the impact is applied,
+we de ﬁne rcontour =4 cm. The loose upper layer length in the
+linear-elastic model is described by L0 = 30 cm. The default
+character has a total mass of 77.5 kg and a height of 1.8 m.
+The feet are de ﬁned by abstract box colliders of a surface area of
+10 cm2. The locomotion controller was set with values α = 30N
+and β = 6Nm. Our deformation implementation in Unity makes
+use of coroutines which allow computing the terrain modiﬁcation
+using a non-blocking multitask process. The process associated
+with the deformation (the orange blocks in Figure 2) runs parallel
+with the character IK and our model of controller and is
+automatically synchronized for coherent display. The entire
+method—character locomotion and terrain deformation —is
+fully coded in high-level C # scripts but still runs in real time
+at about 65 fps on a standard laptop (CPU: Intel Core i7, eight
+cores, 3.10 GHz) for a resolution of 4 cm (grid of 256 2 shown in
+our illustrations) and 30 fps for a resolution of 2 cm per cell.
+6.1 Validation of Ground Reaction Forces
+We ﬁrst show that our model of force robustly adapts to various
+situations, including walking motion and running, or equilibrium
+situation where the character stands alternatively with one or two
+feet in contact with the ground. Figure 5 displays the vectors
+corresponding to ⃗Fweight, ⃗Fmomentum, and ⃗Ffoot /equals− ⃗FGR for the left
+and right foot at different times of character animations. Figure 5
+illustrates the impact of the foot velocity prior to contact and the
+distribution of forces between the left and right foot.
+We then display and compare the values of our estimated
+Ground Reaction Forces on a standard walking motion with
+respect to real measurements from the literature ( Ren et al.,
+2008). For this experiment, we considered a relatively hard terrain
+deﬁned by a small characteristic time τ = 0.05s and Young ’s
+modulus of 2 MPa for small terrain deformation. We set the
+subject to have similar weight and height with respect to the
+average real subjects and set the walking speed to 1.65 m/s. The
+corresponding graph of the forces is reported in Figure 6 . The
+FIGURE 6 | Graph of forces during a walking animation. The green marker in the plot of the second row represents the moment at which the force due to the
+change in momentum reaches its maximum value. This same time is shown by the black arrow in the other plots and shows the associated GRF maximal value. Th e four
+main events happening before and during the foot contact in the walking cycle are indicated by numbers 1–4 and illustrated on the right side.
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 8018568
+Alvarado et al. Real-Time Locomotion on Soft Grounds
+ﬁrst row shows how each foot supports the proportional part of
+the weight depending on the gait phase. When the right foot starts
+to hit the terrain 1), it prompts the ground to respond with an
+additional force due to the variation in momentum, as shown in
+the second row. This affects, in return, the Ground Reaction
+Forces by inducing a peak in that exact moment, as illustrated in
+the plot of the third row, and continues during the short time
+when both feet are grounded 2). The force exerted due to the
+impact mitigates when the character begins to place most of its
+weight on the right foot 3), being the instant at which the GRFs
+stabilizes with the force caused by the character ’s weight. The
+switch between the forces is complete when the right foot
+supports the entire weight of our model 4).
+These graphs show the very similar shape and range of
+magnitude with the real measurements obtained using force
+plates and optical capture system reported by Ren et al. (2008)
+and Shahabpoor and Pavic (2017). In particular, the main steps of
+the walking cycle (1, 2, 3, 4) are depicted on the graph of forces,
+and the total vertical component of Ground Reaction Force
+normalized by the character weight varies has a maximum pic
+intensity in the range of 2.5 –3.
+6.2 Test Case of Terrain Deformation
+We present in Figure 7 a test scenario of our terrain deformation
+for the simple case of a sphere of mass m falling from a distance
+d = 2.5 m. When not explicitly modi ﬁed, the default parameters
+are m = 50kg, E = 1MPa, and τ = 0.2s. Figure 7B shows the
+increase in the terrain hole for a purely compressive material with
+varying mass and Young ’s modulus. Figure 7C shows the full
+model of a semi-compressible material, with the effect of
+increasing the Poisson ratio (constant hole depth, but
+increased amount of accumulated material) and decreasing the
+Young modulus (deeper deformation leading to a larger amount
+of moved material).
+FIGURE 7 | (A) Test scenario of our terrain deformation model for a sphere falling from a ﬁxed distance on soft ground. (B) Pure compressive material deformation
+for different weight sphere mass m and Young ’s modulus E. (C) Lateral accumulation for semi-incompressible material for various Poisson ’s ratio ] and Young ’s
+modulus E.
+FIGURE 8 | Terrain scenarios in our experiments representing a virtual model of dry sand, snow, soil, and mud. The right-most images are real photographs of
+footprints on such materials.
+TABLE 1 | Parameters used to represent the different type of terrains.
+Parameter Snow Dry sand Mud Soil
+Young’s modulus E (MPa) [0.25, 0.5] [1.5, 3] [0.5, 0.75] [1, 1.5]
+Characteristic time τ (s) 0.2 0.05 0.15 0.05
+Poisson’s ratio ] 0.05 0.5 0.35 0.35
+Gaussian ﬁlter variance (cm) 0.5 1 1 0.5
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 8018569
+Alvarado et al. Real-Time Locomotion on Soft Grounds
+6.3 Application to Various Ground Materials
+We are able to model different types of ground material, as
+illustrated in Figure 8 . The latter were set coherent with real
+photographs of footprints, using the parameters reported in
+Table 1 . Young ’s modulus values were given the same order
+of magnitude as the ones reported by Gerling et al. (2017) , while
+the characteristic time, Poisson ’s ratio, and Gaussian ﬁlter were
+set based on phenomenological tests.
+Thanks to the automatic adaptation of the character
+locomotion controller to the feet position on the terrain, our
+system handles two-way, dynamic interaction between the
+character gait and the terrain deformation. Such an effect on
+the character motion is illustrated in Figure 9 , comparing the
+default walking behavior on a ﬂat terrain (red character) to the
+one considering the change of terrain (blue character).
+Figure 4 illustrates a typical locomotion scenario with a
+variety of behaviors, terrain geometry on snow, and sand
+model. The closest character follows a standard walking
+motion, and we can note the change of footprint depth when
+moving from snow to sand. The second character is running. Due
+to its velocity, the footprints remain deep on both types of
+ground. Note that our locomotion system automatically adapts
+its legs ’ position on the small hill. The third character wears
+snowshoes that increase the surface of its feet, thus leading to
+shallow footprints. The increased size of the feet leads to the
+adaptation of the gait when a collision with the terrain is detected.
+The fourth character is heavy, which leads to deep footprints. The
+character also has large feet volume and small legs compared to its
+size, which coupled to the deep prints, leading to an almost
+constant collision between the feet and the ground, which turns
+out to generate trails. The last walking character has a smaller
+weight and a tiny foot surface, which leads salient, individual
+footprints. We further encourage reviewers to watch the full
+quality video accompanying this submission at the
+following URL 1.
+Finally, thanks to its simplicity, our method is able to robustly
+extend to various types of kinematics input beyond standard
+walks and can generate plausible footprints along the feet
+trajectory, as illustrated in Figure 10 .
+7 DISCUSSIONS AND CONCLUSION
+We have proposed a method able to convert, in real time, a simple
+kinematic locomotion model into a dynamic animation with two-
+way interactions between the character and soft grounds. Our
+physically based interaction forces drive the generation of local
+footprints, controlled using standard values parameters for the
+ground material such as its Young ’s modulus and Poisson’s ratio.
+Given a user-deﬁned terrain type, our method is able to compute
+coherent forces during foot contact, despite considering a raw
+kinematics input for the character model. The geometric
+deformation of the terrain is itself impacting the walking gait,
+thus leading to a bilateral interaction between the soft terrain and
+the motion of the character. The main advantage of this approach
+is to be lightweight enough to run interactively in a game engine
+like Unity. Beyond interactive video-game applications, such a
+system could be useful in virtual reality applications, with a VR
+setup where the user could see in real time its own footprints. Our
+force model could also be coupled with other physically based
+systems to allow interaction with other objects in the scene.
+FIGURE 9 | Dynamic adaptation of the character ’s walking gait to the change of the terrain. Red: default character walking on ﬂat ground. Blue: our result, with a
+character, locally adapting its posture to the evolving terrain.
+FIGURE 10 | Various kinematics motion inputs lead to plausible terrain footprints.
+1https://drive.google.com/drive/folders/1Bke_
+NmZLUEU0fKLgWMHt7j5128Myqvz_?usp=sharing.
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 80185610
+Alvarado et al. Real-Time Locomotion on Soft Grounds
+We made a series of approximations in our force model to
+achieve ef ﬁcient computations, leading to several limitations. In
+order to estimate the interaction forces between the character and
+the ground from kinematic inputs, we only considered the change
+of velocity of the foot and assumed that the character behaves like
+a rigid body falling down, thus neglecting any internal muscle
+inﬂuence that the character might use for dynamically adapting
+its motion during the collision of its feet with the terrain. While
+this assumption led to reasonable results for walking characters, it
+could not capture the change of pressure exerted on the ground
+during foot kick, or dancing-like motion, for instance, where
+body parts in the air have rapid variations of momentum. To
+accurately handle such cases, the change of momentum of each
+body part could be taken into account in a global system to
+retrieve all the forces and torque at all joints. Furthermore, the use
+of a fully controlled-based model together with an optimization
+strategy for each joint could bring an advantage, not only to
+reproduce more suitable deformations but also to better recreate
+the impact of the terrain on the character’s movement. This might
+be helpful in different situations, such as decreasing the
+character’s speed on terrains where his feet sink to reduce
+effort and maintain a constant energy consumption or
+extending the arms and bending the knees for balance and
+stability.
+In addition, our physical model for grounds, which makes
+use of a global property for the d eformable material, is also an
+approximation of how granular material behaves. In
+particular, assuming a constant deformation time τ per
+material is only valid within a certain range of mass and
+velocity of the character. Making τ dependent on velocity in
+the case of a jumping character, for instance, would allow
+modeling a fast ground deformation immediately after the
+impact and slowing down as the velocity is absorbed. The
+vertical accumulation also only approximates the ﬁnal volume
+of displaced material as being spatially ﬁltered by a Gaussian.
+As an extension, we would like to integrate the direction and
+magnitude of the velocity to impact the resulting bump and
+integrate a local terrain tessellation so that our method could
+be applied to arbitrary terrain dimensions.
+Finally, we would like to adapt the system to synthesize the
+impact of not only bipedal characters but also quadrupeds. To
+this end, we need to adjust the system so that the total mass of
+the character is correctly distributed based on a variable
+number of contact points with the ground. Having such
+low-level deformations on the terrain could help us better
+recreate the long-term impact of virtual animals on natural
+environments, as an extension of Ecormier-Nocca et al.
+(2021) .
+DATA AVAILABILITY STATEMENT
+The datasets presented in this study can be found in online
+repositories. The names of the repository/repositories and
+accession number(s) can be found in the following link:
+https://github.com/edualvarado/unity-footprints.
+AUTHOR CONTRIBUTIONS
+EA, DR, and M-PC contributed to the conception and design
+of the research project. EA is the main contributor and
+developed most of the technical part of the project,
+conducted the experiments shown in the results section,
+and programmed the code available in the Supplementary
+Material . CP was the main contributor of the associated short
+paper “Soft Walks: Real-Time, Two-Ways Interactions
+between a Character and Loose Grounds, EG2021 ” at the
+starting point of this research, and developed the high-level
+controller described in Sec. A High-Level Controller for Tilting
+and Swinging Motion . All authors contributed to the
+manuscript redaction and revisions.
+FUNDING
+This work received funding from the European Union ’s Horizon
+2020 Research and Innovation Programme under the Marie
+Skłodowska-Curie Grant Agreement n. 860768 (CLIPE project).
+SUPPLEMENTARY MATERIAL
+The Supplementary Material for this article can be found online at:
+https://www.frontiersin.org/ar ticles/10.3389/frvir.2022.801856/
+full#supplementary-material
+REFERENCES
+Bekker, M. G. (1962). Theory of Land Locomotion: The Mechanics of Vehicle
+Mobility. Ann Arbor: University of Michigan Press.
+Beneš, B., and Toney Roa, I. (2004). “Simulating Desert Scenery, ” in WSCG
+International Conference on Computer Graphics, Visualization and Computer
+Vision (Plzen-Bory: Czech Republic).
+Bermudez, L., Tessendorf, J., Zimmermann, D., and Zordan, V. (2018). “Real-time
+Locomotion with Character-Fluid Interactions, ” in ACM SIGGRAPH
+Conference on Motion, Interaction and Games, MIG ’18, Limassol, Cyprus,
+8–10 November 2018. doi:10.1145/3274247.3274515
+Carensac, S., Pronost, N., and Bouakaz, S. (2015). “Real-time Gait Control for
+Partially Immersed Bipeds, ” in ACM SIGGRAPH Conference on Motion,
+Interaction and Games, MIG ’15, Lisbon, Portugal, 7 –8 May 2016.
+Cordonnier, G., Galin, E., Gain, J., Bedrich Benes, E. G., Peytavie, A., and Cani, M.-
+P. (2017). Authoring Landscapes by Combining Ecosystem and Terrain Erosion
+Simulation. ACM Trans. Graph. 36, 1 –12. doi:10.1145/3072959.3073667
+Cordonnier, G., Ecormier, P., Galin, E., Gain, J., Benes, B., and Cani, M.-P. (2018).
+Interactive Generation of Time-Evolving, Snow-Covered Landscapes with
+Avalanches. Comput. Graphics Forum 37, 497 –509. doi:10.1111/cgf.13379
+Daviet, G., and Bertails-Descoubes, F. (2016). A Semi-implicit Material point
+Method for the Continuum Simulation of Granular Materials. ACM Trans.
+Graph. 35, 1 –13. doi:10.1145/2897824.2925877
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 80185611
+Alvarado et al. Real-Time Locomotion on Soft Grounds
+Ecormier-Nocca, P., Cordonnier, G., Carrez, P., Moigne, A.-M., Memari, P., Benes,
+B., et al. (2021). Authoring Consistent Landscapes with ﬂora and Fauna. ACM
+Trans. Graph. 40, 1 –13. doi:10.1145/3476576.3476668
+Galin, E., Guérin, E., Peytavie, A., Cordonnier, G., Cani, M.-P., Benes, B., et al.
+(2019). A Review of Digital Terrain Modeling. Comput. Graphics Forum 38,
+553–577. doi:10.1111/cgf.13657
+Garcia, A. L. (2012). “Principles of Animation Physics,” in ACM SIGGRAPH 2012
+Courses, SIGGRAPH’12, Los Angeles, CA, USA, 5–9 August 2012. doi:10.1145/
+2343483.2343496
+Gerling, B., Löwe, H., and Van Herwijnen, A. (2017). Measuring the Elastic Modulus of
+Snow. Geophys. Res. Lett.44, 11,088–11,096. doi:10.1002/2017gl075110
+Holden, D., Komura, T., and Saito, J. (2017). Phase-functioned Neural Networks for
+Character Control.ACM Trans. Graph.36, 1–13. doi:10.1145/3072959.3073663
+Ihmsen, M., Wahl, A., and Teschner, M. (2013). A Lagrangian Framework for
+Simulating Granular Material with High Detail. Comput. Graphics Forum 37,
+800–808. doi:10.1016/j.cag.2013.04.010
+Klár, G., Gast, T., Pradhana, A., Fu, C., Schroeder, C., and Jiang, C. (2016).
+Drucker-prager Elastoplasticity for Sand Animation. ACM Trans. Graph. 35,
+1–12. doi:10.1145/2897824.2925906
+Kwon, T., and Hodgins, J. (2010). “Control Systems for Human Running Using an
+Inverted Pendulum Model and a Reference Motion Capture Sequence, ” in In
+Proc. Symposium on Computer Animation, ACM SIGGRAPH/Eurographics,
+Madrid, Spain, 2 –4 July 2010.
+Kwon, T., Lee, Y., and Panne, M. V. D. (2020). Fast and Flexible Multilegged
+Locomotion Using Learned Centroidal Dynamics. ACM Trans. Graph. 39, 46-1.
+doi:10.1145/3386569.3392432
+Lenaerts, T., and Dutré, P. (2009). Mixing Fluids and Granular Materials. Comput.
+Graphics Forum 28, 213 –218. doi:10.1111/j.1467-8659.2009.01360.x
+Mitake, H., Asano, K., Aoki, T., Salvati, M., Sato, M., and Hasegawa, S. (2009).
+Physics-driven Multi Dimensional Keyframe Animation for Artist-Directable
+Interactive Character. Comput. Graph. Forum 28 (2), 279 –287. doi:10.1111/j.
+1467-8659.2009.01367.x
+Narain, R., Golas, A., and Lin, M. (2010). Free-ﬂowing Granular Materials with Two-Way
+Solid Coupling.ACM Trans. Graph.29, 1–10. doi:10.1145/1882261.1866195
+Onoue, K., and Nishita, T. (2005). An Interactive Deformation System for Granular
+Material. Comput. Graphics Forum 24, 51 –60. doi:10.1111/j.1467-8659.2005.
+00828.x
+Paliard, C., Alvarado, E., Rohmer, D., and Cani, M.-p. (2021). “Soft Walks : Real-
+Time, Two-Ways Interaction between a Character and Loose Grounds, ” in
+Eurographics 2021 - Short Paper, Vienna, Austria, 3 –7 May 2021. doi:10.2312/
+egs.20211019
+Peng, X. B., Abbeel, P., Levine, S., and van de Panne, M. (2018). Deepmimic:
+Example-Guided Deep Reinforcement Learning of Physics-Based Character
+Skills. ACM Trans. Graph. 37, 143. doi:10.1145/3197517.3201311
+Ren, L., Jones, R. K., and Howard, D. (2008). Whole Body Inverse Dynamics over a
+Complete Gait Cycle Based Only on Measured Kinematics. J. Biomech. 41,
+2750–2759. doi:10.1016/J.JBIOMECH.2008.06.001
+Shahabpoor, E., and Pavic, A. (2017). Measurement of Walking Ground Reactions
+in Real-Life Environments: A Systematic Review of Techniques and
+Technologies. Sensors (Basel) 17, 2085. doi:10.3390/s17092085
+Stomakhin, A., Schroeder, C., Chai, L., Teran, J., and Selle, A. (2013). A Material
+point Method for Snow Simulation. ACM Trans. Graph. 32 (4), 102:1 –102:10.
+doi:10.1145/2461912.2461948
+Sumner, R. W., O’brien, J. F., and Hodgins, J. K. (1999). Animating Sand, Mud, and
+Snow, Tech. rep. Comput. Graphics Forum 18 (1), 17 –26. doi:10.1111/1467-
+8659.00299
+Sun, H. C., and Metaxas, D. N. (2001). “Automating Gait Generation, ” in ACM
+SIGGRAPH, Los Angeles, CA, USA, 12 –17 August 2001. doi:10.1145/383259.
+383288
+Wang, J. M., Fleet, D. J., and Hertzmann, A. (2010). “Optimizing Walking
+Controllers for Uncertain Inputs and Environments, ” in ACM SIGGRAPH
+2010 Papers, SIGGRAPH ’10, Los Angeles, CA, USA, 25 –29 July 2010. doi:10.
+1145/1833349.1778810
+Won, J., Gopinath, D., and Hodgins, J. (2020). A Scalable Approach to Control
+Diverse Behaviors for Physically Simulated Characters. ACM Trans. Graph. 39
+(4), 33-1. doi:10.1145/3386569.3392381
+Yin, K., Loken, K., and van de Panne, M. (2007). SIMBICON: Simple Biped
+Locomotion Control. ACM Trans. Graph. 26 (3). doi:10.1145/1276377.
+1276509
+Zeng, Y.-L., Tan, C. I., Tai, W.-K., Yang, M.-T., Chiang, C.-C., and Chang, C.-C.
+(2007). A Momentum-Based Deformation System for Granular Material.
+Comp. Anim. Virtual Worlds 18, 289 –300. doi:10.1002/cav.209
+Zhu, Y., and Bridson, R. (2005). Animating Sand as a Fluid. ACM Trans. Graph. 24
+(3), 965 –972. doi:10.1145/1073204.1073298
+Z h u ,Y . ,C h e n ,X . ,a n dO w e n ,G .S .( 2 0 1 1 ) .“Terramechanics Based Terrain
+Deformation for Real-Time Off-Road Vehicle Simulation, ” in
+International symposium on visual computing, Las Vegas, NV, USA,
+September 26 –28, 2011, 431 –440. 6938 LNCS. doi:10.1007/978-3-642-
+24028-7_40
+Zhu, K., He, X., Li, S., Wang, H., and Wang, G. (2019). Shallow Sand Equations:
+Real-Time Height Field Simulation of Dry Granular Flows. IEEE Trans. Vis.
+Comput. Graph 27, 2073 –2084. doi:10.1109/TVCG.2019.2944172
+Conﬂict of Interest: The authors declare that the research was conducted in the
+absence of any commercial or ﬁnancial relationships that could be construed as a
+potential con ﬂict of interest.
+Publisher’s Note: All claims expressed in this article are solely those of the authors
+and do not necessarily represent those of their af ﬁliated organizations or those of
+the publisher, the editors, and the reviewers. Any product that may be evaluated in
+this article, or claim that may be made by its manufacturer, is not guaranteed or
+endorsed by the publisher.
+Copyright © 2022 Alvarado, Paliard , Rohmer and Cani . This is an open-access
+article distributed under the terms of the Creative Commons Attribution License (CC
+BY). The use, distribution or reproduction in other forums is permitted, provided the
+original author(s) and the copyright owner(s) are credited and that the original
+publication in this journal is cited, in accordance with accepted academic practice.
+No use, distribution or reproduction is permitted which does not comply with
+these terms.
+Frontiers in Virtual Reality | www.frontiersin.org March 2022 | Volume 3 | Article 80185612
+Alvarado et al. Real-Time Locomotion on Soft Grounds
+P24: 原文二（全文文本）
+P25: TRAIL: Simulating the Impact of Human Locomotion on Natural Landscapes
+P26: Eduardo Alvarado, Oscar Argudo, Damien Rohmer, Marie-Paule Cani, Nuria Pelechano. The Visual Computer, 2024, 40(7):5029-5041. DOI:10.1007/s00371-024-03506-z. Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+P27: The Visual Computer (2024) 40:5029–5041
+https://doi.org/10.1007/s00371-024-03506-z
+REVIEW
+TRAIL: Simulating the impact of human locomotion on natural
+landscapes
+Eduardo Alvarado 1 · Oscar Argudo 2 · Damien Rohmer 3 · Marie-Paule Cani 3 · Nuria Pelechano 2
+Accepted: 18 May 2024 / Published online: 5 June 2024
+© The Author(s) 2024
+Abstract
+Human and animal presence in natural landscapes is initially revealed by the immediate impact of their locomotion, from
+footprints to crushed grass. In this work, we present an approach to model the effects of virtual characters on natural terrains,
+focusing on the impact of human locomotion. We introduce a lightweight solution to compute accurate foot placement on
+uneven ground and infer dynamic foot pressure from kinematic animation data and the mass of the character. A ground and
+vegetation model enables us to effectively simulate the local impact of locomotion on soft soils and plants over time, resulting
+in the formation of visible paths. As our results show, we can parameterize various soil materials and vegetation types validated
+with real-world data. Our method can be used to signiﬁcantly increase the realism of populated natural landscapes and the
+sense of presence in virtual applications and games.
+Keywords Character animation · Natural phenomena
+1 Introduction
+Our physical actions inevitably change our environment, par-
+ticularly when dealing with the effects of moving beings in
+highly diverse, natural scenes. For example, while a footprint
+on a beach will be washed away by the sea, taking frequently
+the same route over a grassy terrain will damage the plants,
+causing a reduction in their coverage and compacting the soil,
+resulting in the formation of a visible path (see Fig.1). This is
+what naturalists call the “short-term or immediate impact” of
+human locomotion in contrast with longer-term effects over
+years that consider plant regrowth. The goal of this work is
+to simulate such an immediate impact.
+Plausible physically based interaction between virtual
+characters and the environment can greatly enhance user
+experience and presence in games and immersive VR appli-
+cations. In this regard, current video games typically model
+footprints using textures and the bending of blades of grass
+B Eduardo Alvarado
+ealvarad@mpi-inf.mpg.de
+1 MPI Informatics, Saarland Informatics Campus, Saarbrücken,
+Germany
+2 Universitat Politècnica de Catalunya, Barcelona, Spain
+3 LIX, École Polytechnique/CNRS, Institut Polytechnique de
+Paris, Palaiseau, France
+near characters using procedural approaches. However, per-
+manent physical changes are ignored, trails are predeﬁned
+and modeled in advance by artists, rather than emerging
+from the actual trajectories of characters. Therefore, our
+goal is to introduce the cause-and-effect relationship between
+character footsteps and trail formation, using a lightweight
+physical approach that allows us to achieve more plausible
+results while maintaining real-time performance. Further-
+more, since our simulated results can be output as image
+data, they can also be integrated into texture-based pipelines
+to extend the visual results to larger scenarios.
+In this paper, we present a holistic approach to simulate
+the interactions between human locomotion and its impact on
+soil and vegetation leading to the formation of trails in natu-
+ral landscapes, thereby narrowing the gap between interactive
+animations and more realistic models of the environment in
+which our actions lead to visible effects. Our simulation uses
+a foot model, divided into heel and toe, to accurately compute
+the forces exerted when walking on both ﬂat or sloping ter-
+rain (Sect.3). It also includes a deformable plant model, with
+bending, degradation, and recovery to simulate the damage
+caused by the characters’ footsteps (Sect.4.1). Finally, a plas-
+tic terrain model is incorporated including a physically based
+simulation of soil compression, accumulation, and stabiliza-
+tion (Sect. 4.2). Our model also accounts for how vegetation
+mitigates the impact on the ground and increases soil cohe-
+123
+5030 E. Alvarado et al.
+Fig. 1 Immediate changes in a land parcel due to the frequent passage
+of hikers
+sion. Overall, our parameterized simulator can realistically
+replicate the impact of walking animations on different exam-
+ples of soil and vegetation covers, and portray the dynamic
+alterations due to the cumulative impact of human locomo-
+tion that leads to the formation of trails (see Fig.2). Our main
+contributions are:
+• A lightweight physical system to improve foot position-
+ing on soft terrains, enabling the adaptation of kinematic
+motion and computing accurate interaction forces.
+• A dynamic plant model that can simulate its progressive
+damage due to stepping leading to coverage loss. The
+model is parameterizable and can mimic real plants.
+• A foot-soil interaction model that accounts for the relative
+plant coverage and simulates loose ground stabilization
+and soil compaction.
+• A customizable real-time simulator allowing the analysis
+and generation of local, image-based impact data under
+certain natural conditions.
+While our method is general and could be extended to
+model the impact of wildlife, we focused on simulating the
+effects of humans or biped characters, which are most com-
+mon in video games.
+2 Related work
+2.1 Character locomotion on natural grounds
+While only handling ﬂat and rigid grounds, early character
+animation methods either used physical models—requiring
+the design of motion controllers [18, 35], or lighter physical
+constraints with kinematic methods [ 6, 26, 38]t os i m u -
+late character-scene interactions. More recently, data-driven
+methods addressed locomotion on uneven terrains [7, 19, 20,
+30] but without tackling soft, dynamic grounds. In parallel,
+Deep RL gained popularity for its ability to learn motion con-
+trollers [24], but characters were never trained on deformable
+terrains.
+Animating plausible locomotion in natural scenes also
+requires modeling the effects of the two-way interaction
+between the character and its surroundings. Still popular
+for real-time character animation [ 4, 34], Inverse kinemat-
+ics (IK) was extended to characters evolving in complex
+environments thanks to speciﬁc foot placement strategies
+for both humanoids [21, 32] and multi-legged characters [1,
+22]. Although a few human locomotion models used mul-
+tiple joints for the feet [ 13, 25], they did not calculate the
+individual heel and toe rotations that would be required for
+computing interactions with uneven grounds. In addition to
+foot placement, two-way interactions might need some active
+adaptation of the character’s gait, as was shown for locomo-
+tion under strong wind conditions [27] or across water bodies
+[5]. Closer to our concerns, two-way interactions with soft
+terrains were used to adapt real-time locomotion gaits [ 2],
+but the interaction forces derived from the motion model did
+not take into account the complex foot placement on slopes,
+leading to inaccurate exerted forces.
+In this work, we combine kinematic animation data with a
+light physical model and procedural motion, enabling both,
+a more accurate foot placement and consequently, a precise
+exerted force computation on uneven grounds. Thanks to its
+genericity, our model can be applied to model varying ground
+deformations, and provide an efﬁcient way to simulate data
+for the short-term human impact on natural landscapes.
+2.2 Evolution of natural landscapes
+Natural landscapes evolve over time under the effect of
+erosion [ 12, 15], vegetation growth [ 14] or climate [ 10,
+33]. While abundant literature described landscape evolu-
+tion under such factors and their combination [11], the range
+of graphical methods that have studied the impact of fauna
+or human population is limited. One of the most essential
+aspects when evaluating the impact of living beings on nat-
+ural scenes is the short-term deformation caused on soft
+grounds, possibly covered with vegetation. Alvarado et al.
+[2] presented a terrain deformation approach to model human
+impact. However, height-ﬁeld changes caused by the feet
+were not affected by the direction of the motion, the slope
+angle, or vegetation covering the ground. Concerning the
+latter, the effect that vegetation has on characters’ gaits has
+been studied, for example, using procedural modiﬁers [ 32]
+or physics-based motion controllers [ 3]. However, none of
+these methods addressed the degradation effects that human
+locomotion caused on plants by damage to stems.
+One of the major outcomes arising from the generation of
+these short-term changes is the formation of trails. However,
+modeling trail formation by encompassing plant damage
+and local erosion is challenging, as several scientiﬁc ﬁelds
+are involved, and data is lacking. Fortunately, a few real-
+world studies partly addressed the issue in the context of
+conserving natural environments: Cole et al. [8, 9] analyzed
+the response of several trampled vegetation types over time.
+We got inspiration from this study by modeling plant types
+based on their resistance and tolerance, i.e., their ability to
+123
+TRAIL: Simulating the impact of human locomotion on natural landscapes 5031
+Fig. 2 Our simulation results
+a r eu s e dt oe s t i m a t et h e
+immediate impact of character
+locomotion on natural
+landscapes (top), including
+damage to vegetation and soft
+ground deformation. This leads
+to the progressive formation of
+trails (bottom)
+recover after being degraded. More recently, Marion et al.
+[29] identiﬁed the main key factors for trail degradation
+and proﬁling, dominated by grade (ground angle) and dry-
+ness, which we account for in our model in terms of slope
+and ground material. Although the analysis of trail forma-
+tion created over long periods of time is beyond the scope
+of this work, our approach aims to measure the short-term
+interactions occurring between humans and natural environ-
+ments that are primarily responsible for creating longer-term
+effects.
+3 Forces exerted by a walker on natural
+terrains
+The ﬁrst ingredient to model human impact on natural envi-
+ronments is to be able to compute, from any input locomotion
+and the mass of the walker, the force that the feet exert over
+time onto the vegetation and ground below. To launch such
+computation on realistic, motion-captured data—typically
+captured on ﬂat, rigid grounds—the input kinematic motion
+needs to be adapted to the terrain. In this section, we intro-
+duce a new, two-joint foot model, which allows (i) to adapt
+the placement and orientation of the feet on the ﬂy to match
+any targeted terrain and (ii) to compute the forces exerted on
+the contact surface over time.
+In what follows, the input is a character model described
+as an animated kinematic skeleton to which a skinned mesh
+is attached. We also input the mass of the character and the
+position of its center of mass relative to the kinematic skele-
+ton.
+3.1 Slope-aware foot positioning
+Unlike ﬂat terrain where the contact surface between the
+ground and the feet is always the same at a given stage of
+the gait cycle, humans continuously adapt the placement of
+their feet on uneven terrains, e.g., by leaning on their toes to
+climb. This change of contact area according to the slope has
+a signiﬁcant impact on the alteration of terrains, as shown by
+the distinct footprint shapes. We therefore introduce a model
+enabling precise heel and toe contact with uneven grounds.
+We consider a foot model made of two joints: heel and
+toe, as illustrated in Fig. 3-left. Each joint is associated with
+Fig. 3 We adapt the orientation of each joint according to the distance
+to the ground (left), paying particular attention to situations where the
+tip of the foot makes contact before the heel (right)
+a position pheel (resp. ptoe) and orientation represented as
+a quaternion qheel (resp. qtoe). The foot is rigged with a 3D
+mesh, using a simple primitive or a more realistic model (e.g.,
+a shoe). We further associate the two geometric extremities of
+the respective mesh,cheel and ctoe, indicating the mesh points
+considered for detecting contact with the ground. We ﬁrst
+apply the local alignment of each foot part as a continuous
+function of the vertical distance to the ground. Denotingqjoint
+for either heel or toe orientation, we consider:
+qjoint = SLERP(qkinjoint, q⊥joint,w d),
+wd = clamp
+(
+1 − djoint/dmax, 0, 1
+)
+, (1)
+where qkinjoint is the input orientation generated from the kine-
+matic animation, q⊥joint is the joint orientation orthogonal to
+the ground surface and preserving the local forward direc-
+tion of the foot, djoint is the distance between cjoint and its
+vertical projection on the ﬂoor, and dmax is a user-deﬁned
+threshold describing the spatial extension of the inﬂuence of
+this smooth IK constraint.
+On ﬂat terrain, the character’s heel is normally the ﬁrst
+body part to touch the ground. However, this behavior might
+change on steep terrains, where the forefoot is the ﬁrst con-
+tact point, leading to variations in the foot-ground plantar
+and dorsiﬂexion angles [37]. In this case, the character’s toe
+is often used to support maintaining balance and moving for-
+ward and upward, while the heel remains above the ground
+at all times. We reﬁne our two-joint model to represent this
+additional plantar and dorsiﬂexion in the ankle with qoffset,
+123
+5032 E. Alvarado et al.
+such as the foot pushes off with the toes when it gets closer
+to the ground, followed by raising the toes to clear the steep
+slope as it moves away. Letθ be the angle of the local slope
+of the terrain with respect to the horizontal direction, and θ0
+the minimum angle for which the foot can use only its toe as
+support. We apply the rotationqoffset of angle θ −θ0 to qheel:
+qheel ← qoffset qheel. (2)
+This mechanism, illustrated in Fig.3-right, leads to a smaller
+contact area onto the ground, thus generating increased local
+pressure, as explained in the next section.
+3.2 Exerted forces during feet-to-ground contact
+Inspiring by Alvarado et al. [ 2] force model in the case of
+a rigid foot, we estimate the force ⃗Ffoot exerted by our new
+dual-joint foot on the ground as follows. We compute an
+impulse-based response from the input animation and convert
+it into a smooth time-varying force spread over a character-
+istic time interval τ:
+⃗Ffoot = α( ⃗Fweight + ⃗Fmomentum),
+= α( m ⃗g + ⃗J/τ), (3)
+where α represents the percentage of weight and impulse
+spread between the left and right foot position, depending
+on the position of the character’s center of mass [ 16], m is
+the character’s mass and⃗g is the gravity constant. ⃗Fmomentum
+represents the required exerted force during the intervalτ to
+establish a certain impulse: ⃗J = m ⃗v( t0 − Δt), where t0
+is the time of contact between the foot and the ground, Δt
+is the frame time interval, and ⃗v( t0 − Δt) is the velocity of
+the foot evaluated at the frame immediately before impact.
+⃗Fmomentum is active only during the interval [t0, t0 + τ].
+This force is exerted either by the heel, the toe, or both,
+depending on the contact surface over time. We consider that
+cheel or ctoe are in contact with the ground when the dis-
+tances to the ground ‖dheel‖, respectively ‖dtoe‖ (see Fig. 3)
+fall below a user-deﬁned threshold value ϵ, typically in the
+range of [0.5, 1] cm. We evaluate the velocity⃗v at the frame
+preceding the impact of the foot on the ground as:
+⃗v =
+⎧
+⎪⎨
+⎪⎩
+⃗vheel if dheel <ϵ
+⃗vtoe if dtoe <ϵ
+⃗vcentroid if dheel <ϵ and dtoe <ϵ
+(4)
+where ⃗vcentroid is the velocity at the center of mass of the foot.
+As illustrated in Fig. 4, the procedural foot placement
+deﬁned by Eqs. ( 1) and ( 2) inﬂuences the magnitude and
+direction of ⃗v, and therefore ⃗Fmomentum, based on the adap-
+tive motion of the foot and the resulting point of contact with
+Fig. 4 Interaction forces are exerted on the terrain for ﬂat ground (top)
+and slopes (middle) at different gait stages. During the stance phase,
+the force exerted into the ground equals the weight supported by that
+foot ( ⃗Ffoot = ⃗Fweight). Modeling heel and toe contact events (bottom)
+helps evaluate accurate forces on uneven grounds
+the ground. This is most noticeable on uneven terrain. For
+example, when walking uphill, characters use their toes to
+exert larger forces and push their bodies upward.
+4 Impact on plants and soft grounds
+As humans traverse a path, vegetation tends to degrade, leav-
+ing the bare ground exposed. This leads to more intense
+damage and progressive ground compaction for a repeated
+application of stress at the same location. In this section, we
+describe how we convert the character’s exerted force into
+localized vegetation and natural ground responses.
+4.1 Modeling vegetation
+Damage to vegetation plays a crucial role when deforming
+the ground underneath. However, plants are resilient barriers:
+even when crushed underfoot, they can repair themselves and
+grow back over time. In addition, while protecting the soil
+by reducing direct contact, they also increase its cohesion
+thanks to their roots. We propose a dynamic plant model
+that depicts not only their deformation but also their change
+in robustness—referred to as degradation and recovery—,
+which models the damage generated in the plant over the
+short term.
+123
+TRAIL: Simulating the impact of human locomotion on natural landscapes 5033
+Fig. 5 A surface 2D plant-row model. Particles are vertically intercon-
+nected using stretching and bending constraints, enabling the model to
+retrieve its shape after trampling
+4.1.1 Deformable plant model
+As simulating the bending and breaking of individual plant
+stems would be costly, our model relies on an approxima-
+tion using efﬁcient Position-Based Dynamics (PBD) [31]t o
+animate them. Our approach allows us to model vegetation
+instances in a variety of shapes, whether using 2D vertical
+surfaces or combining them to form a volumetric represen-
+tation of the plant. Either way, our approach allows entire
+sets of plants to be simulated at once on the terrain surface,
+able to bend. These instances are created and placed on the
+ground with random orientations according to the nature and
+local density of plants.
+A plant instance is characterized by its height h p, width
+wp and depth dp. The shape is sampled using physical par-
+ticles forming a 2D-or-3D grid structure and equipped with
+spherical rigid colliders of radius r p (as illustrated in Fig. 5-
+left for the 2D case). To enable plants to retrieve their shape
+after any light interaction with the feet, we inter-connect par-
+ticles using stretchingCs and bendingCb constraints, deﬁned
+as:
+Cs : l − l0 = 0
+Cb : ϕ − ϕ0 = 0, (5)
+where l is the constrained edge length between horizontal,
+vertical, or diagonal particles, andϕ is the constrained angle
+between consecutive edges in the horizontal, respectively
+vertical direction, l0 and ϕ0 being their initial values. In our
+model, increasing the horizontal l0 decreases the density of
+particles since the vertical edges can be interpreted as dis-
+tinct stems (see Fig.5-middle-right). Stiffness parametersεs
+and εb for stretching and bending, respectively, are associ-
+ated with each constraint. They are set to lower values along
+the horizontal edges (connecting neighboring stems) with
+respect to vertical ones, especially as the density of stems
+in the rows decreases. This induces the desired anisotropic
+behavior under deformation. For the 2D case, the ﬁrst two
+lines of particles, located respectively at the root of the ﬁrst
+row, are not animated but serve to maintain the base in a
+stable, vertical position.
+4.1.2 Dynamic degradation and recovery
+When the character’s foot comes close to the plant, colli-
+sions with the physical particles in the 2D-or-3D grid cause
+local changes of l and ϕ. We consider three cases based on
+the bending value ϕ concerning the degradation and rupture
+thresholds, (ϕdeg,ϕ max), respectively.
+For a small bending (ϕ<ϕ deg), the affected stem adopts
+a purely elastic behavior and returns to its original state
+when the foot moves away. In contrast, for a large bend-
+ing (ϕ>ϕ max), the stem is set to break and the associated
+constraint is disabled. Lastly, for intermediate deformations
+ϕ ∈[ ϕdeg,ϕ max], the stem undergoes a temporal degrada-
+tion or recovery process modeled by a time-varying angular
+stiffness εb:
+εb ← εb − μdeg Δt while ϕ ∈[ ϕdeg,ϕ max]
+εb ← εb + μrec Δt once ϕ<ϕ deg
+(6)
+where μdeg and μrec are the plant-type related temporal
+degradation and recovery factors, and Δt is the time-step.
+If εb reaches 0 during this process, the stem is considered
+to be broken and the associated constraint is removed, as in
+the high-bending case. Inversely, ifεb increases and reaches
+the maximum stiffness for this category of plants, the stem
+recovery process stops.
+As a result, our stem degradation and recovery processes
+modify the plant elastic behavior; reducingεb makes the stem
+more ﬂexible, thus more prone to bend beyond ϕmax and
+break. As introduced in the next section, our plant model
+assimilates the ratio of remaining stems (active constraints)
+to the plant’s health.
+4.1.3 Increased ground cohesion due to vegetation
+In addition to directly interacting with the walkers’ feet,
+dense and healthy vegetation also strengthens the ground
+due to its root system. We model this using a “vegetation-
+induced stiffness” term Ev, which is added to the ground’s
+Young modulus before computing the compaction under the
+feet. Ev is computed as follows.
+We ﬁrst compute a local strength ratioαveg of vegetation,
+deﬁned as the density of healthy, non-broken stems around a
+given point p, where the stems are assimilated to the vertical
+constraints of our deformable plant-row model:
+αveg( p) = 1Nveg
+Nveg∑
+k
+(
+1 − ‖ p − pk‖wp
+)
+αkveg, (7)
+123
+5034 E. Alvarado et al.
+where Nveg is the total number of plants whose center pk is
+located in a circle of radiuswp around p, andαkveg = Nc/N0c
+is the strength ratio of a given plantk, with Nc the number of
+active vertical constraints, and N0c its initial number at full
+plant health. A value of αveg( p) close to 1 indicates locally
+dense and healthy, and therefore strong vegetation at point
+p, while a value close to 0 indicates sparse and/or broken
+vegetation.
+Considering that healthy vegetation coverage would imply
+a maximum increase E0v , we deﬁne the increase of Young
+Modulus due to degraded vegetation as:
+Ev( p) = αveg( p) E0v. (8)
+This value is used when computing the ground’s response to
+foot pressure, as described next.
+4.2 Plastic model for natural terrains
+Consider a natural terrain whose upper soil layer of thickness
+L0 is malleable enough to be affected by the pressure of
+the walker’s foot while the ground remains rigid below. We
+present a new plastic model for the top layer, calculating
+both underfoot compression and lateral displacement of part
+of the loose soil. Our model takes into account not only the
+presence of the plant roots but also the movement of the feet
+and the direction of the slope, which allows us to model the
+cascading motion of the displaced material.
+4.2.1 Ground compression
+We use the linear stress–strain relation from [2] to compute
+the local ground compression at a point p of the foot contact
+area. But in contrast with this work, we increase the ground
+modulus E by the previously computed vegetation-induced
+term from Eq. (8):
+E( p) = Eg( p) + Ev( p), (9)
+where Eg( p) is the Young modulus at p, which may be
+obtained from geological data [17, 23].
+The terrain being represented as a height ﬁeld stored in a
+2D grid, the soil’s compression and carvingΔL at each grid
+cell experiencing foot contact is then derived from Hooke’s
+law:
+ΔL = σ L0
+E =
+⃗Ffoot ·⃗ny
+Acontact
+L0
+E , (10)
+where σ is the pressure stress, computed based on ⃗Ffoot ·⃗ny,
+the component of the force ⃗Ffoot orthogonal to the ground,
+and where the contact area Acontact is efﬁciently computed
+using ray-casting from a small sub-grid of the terrain’s map,
+Fig. 6 Vertical cross sections of different accumulation models on an
+initially ﬂat terrain. From left to right: uniform distribution, cosine distri-
+bution along a projection to the terrain’s tangent plane of the direction
+of the force ⃗Ffoot exerted by the foot, and our adaptive interpolation
+where the amount of anisotropy depends on the norm of the projection
+centered on the foot: Acontact = nhits cell2length, where nhits is
+the number of cells where the foot intersects the ground.
+Since loose soils are partly compressible, part of the mate-
+rial under the foot should move and accumulate nearby in
+the form of a small bump. [2] addressed this by evenly redis-
+tributing the amount of incompressible material under the
+foot (characterized by the ground’s Poisson’s ratio νg), to
+the 1-neighboring cells around the contact zone of total area
+Aborder, leading to uniform bumps around the compressed
+region (see Fig. 6-left).
+In the next section, we introduce an improved model,
+accounting for the orientation of the foot’s pressure force
+with respect to the local terrain slope.
+4.2.2 Anisotropic soil accumulation
+Walking on steep terrain or pushing the feet hard on the
+ground throws soil material unevenly, leading to its nonuni-
+form accumulation around the contact region. We introduce
+an anisotropic soil accumulation model that takes into
+account the local orientation of the foot force relative to the
+terrain. Let’s call ⃗F‖foot = ⃗Ffoot −( ⃗Ffoot ·⃗ny) ⃗ny the tangential
+component, with respect to the terrain, of the force exerted
+by the foot.
+Being ⃗F‖foot the main direction of material projection, a
+purely anisotropic distribution of accumulated material could
+be modeled by using a positive cosine distribution law ωicos
+around it, as:
+ωicos = max( ⃗F‖foot · uicell, 0)/ ‖ ⃗F‖foot‖, (11)
+where uicell is the unit vector between the force applica-
+tion position and the current cell i of the footprint border
+in Aborder. This distribution is maximal and equals to one
+in cells aligned with ⃗F‖foot, and smoothly decreases as the
+cosine of the angle between uicell and ⃗F‖foot. It vanishes when
+the cell is orthogonal or opposite to ⃗F‖foot (see Fig. 6-center).
+The anisotropic distributionωi is set to interpolate between a
+123
+TRAIL: Simulating the impact of human locomotion on natural landscapes 5035
+distribution uniformly equal to 1, and this cosine distribution:
+ωi = βω icos + (1 − β). (12)
+The anisotropic material accumulation in i-th cell is thus
+ΔLiinc = ωi∑k ωk ΔLinc Aborder. The value of the interpola-
+tion weightβ is automatically computed from‖ ⃗F‖foot‖. When
+‖ ⃗F‖foot‖ is close to zero, the foot is applying an orthogonal
+force to the ground, so the distribution is set to isotropic
+(β = 0). Conversely, if ‖ ⃗F‖foot‖ is large (steep terrain or
+high speed for the character’s foot), its tangential component
+pushes the material in the direction of this force. We then use
+the cosine distribution (β = 1). In the general case:
+β = min
+( ⃗F‖foot
+Fthreshold
+, 1
+)
+, (13)
+where Fthreshold is a user-deﬁned parameter giving the limit
+force magnitude above which a purely anisotropic distribu-
+tion applies.
+4.2.3 Terrain stabilization
+Displaying stacks of material around the foot-ground contact
+area would be unrealistic. We use a height-ﬁeld stabilization
+mechanism inspired by a sand-dune model [33] to calculate,
+at each time-step, a quasi-static equilibrium conﬁguration.
+This method generates a physically valid conﬁguration of
+the accumulated loose soil, depending on the local slope.
+In a stable slope, the angle γ(i, j) between each pair of
+cells (i, j):
+γ(i, j) = tan−1
+(
+hci − hc+1j
+celllength
+)
+(14)
+is smaller than the so-called resting angle γr , a parameter
+that depends on the soil material. Thus, for a given frame,
+we look at each cell and its neighbors to check the local
+stability of the stack of material. If γ(i, j) >γ r , we transfer
+material from the celli to its neighbors. Given the amount of
+material h to be distributed, each direct, lower neighbor j in
+the 1-ring receives a fraction w(i, j)s of h proportional to the
+height difference:
+w(i, j)s = (hci − hc+1j )∑
+j(hci − hc+1j ). (15)
+Therefore, for each pair of cells (i, j),w eu s e :
+Fig. 7 Stabilization step, repeated until convergence. Height differ-
+ences between neighboring cells are computed to estimate stabilization
+weights w(i, j)s (left). Local slopes are classiﬁed between non-stable (in
+red) and stable (in green) (middle). Small amounts of material are moved
+(right)
+{
+hci ← hci − hstep
+hc+1j ← hc+1j + w(i, j)s hstep if γ(i, j) ≥ γr , (16)
+This stabilization process is executed starting from the
+border of the contact region A1 and then in outward rings
+of increasing radius (increasing c values), until a stabilized
+state whereγ< = γr is reached (see Fig.7). To avoid upward
+material transport, w(i, j)s is clamped to positive values. Note
+that limiting material transfer between cells to a small con-
+stant height hstep limits temporal jittering of cell elevations.
+Otherwise, the material could be sent back and forth between
+two neighboring cells over several iterations before conver-
+gence to the slope resting angle. In our implementation, less
+than 10 stabilization steps are needed for hstep = 0.01.
+4.3 Impact data generation
+We combined every presented component (from pressure
+forces on steep terrain to vegetation and ground responses),
+into a standalone simulator (Sect. 5.1), used to generate
+impact data. For each simulation, we store two maps to
+describe the landscape’s initial conditions: the initial veg-
+etation distribution expressed as the vegetation strength ratio
+αinveg in each cell, and a Young Modulus map Eintotal account-
+ing for both the nature of the ground and vegetation coverage
+(see Eq. (9)). During the simulation, we record at every new
+second the accumulated pressure stress generated by humans
+presence over a given time-interval Tsim:
+σ outacc (Tsim) =
+∫
+Tsim
+σ( t) dt, (17)
+where σ( t) is the instantaneous pressure stress from Eq. (10).
+Additionally, we store the simulated results corresponding
+to the terrain’s compression and accumulation (houtc (Tsim),
+houta (Tsim)) relative to the original terrain height (thus mod-
+eling the deformation to be applied to the height map), and
+the ﬁnal strength ratio of vegetation αoutveg(Tsim) (see Fig. 8).
+123
+5036 E. Alvarado et al.
+Fig. 8 Four simulated maps corresponding to the simulation of 50 con-
+secutive human passes walking back and forth between left and right
+5 Results and discussion
+5.1 Standalone simulator
+We developed our model as an independent simulator
+designed for use in gaming environments, particularly within
+serious games aimed at raising awareness about soil degra-
+dation for educational and environmental purposes. The
+character, which can be interactively controlled with a game-
+pad or keyboard, is animated using Motion Matching [7]. We
+also provide the possibility to deﬁne waypoints on the map
+serving as successive position targets, and the character’s
+path between two waypoints can be procedurally generated
+with random variations. Simulation outcomes are instantly
+displayed and ground/vegetation parameters can be directly
+set, giving experts the capability to adjust them to the real
+values when known. Please refer to the supplemental video
+for more details on the simulator.
+We implemented this simulator in Unity with C#. Our
+system has been tested using two terrain resolutions for the
+deformable height map, 512 × 512 and 256 × 256. The for-
+mer runs at 30 FPS while the latter resolution achieves 60 FPS
+during the terrain deformation process only. Using this last
+height map resolution, we achieve a performance of 20 FPS
+(50 ms/frame) when we add 200 plant in the simulation, on a
+single-GPU workstation (Intel Xeon, ten cores at 3.70 GHz,
+GeF orceRTX 3090). The main computational costs during
+the simulation are spent on the position-based deformation
+for multiple vegetation rows (55%), followed by the contin-
+uous contact area calculation along with terrain deformation
+(35%), and the animation system with procedural adapta-
+tion (10%). Note that these timings could be optimized by
+skipping the simulation of the plant instances far from the
+character.
+To get a greater variety of landscapes, we have experi-
+mented with three different types of soil conditions, each
+corresponding to a different material behavior. In addition,
+two types of short vegetation were studied. The parameters
+for ground and vegetation used throughout this work are
+reported in Table 1.
+The simulated impact can be used to enrich natural envi-
+ronments and depict a more accurate evolution under the
+presence of characters for interactive applications. For Fig.9,
+we run different simulations under diverse ground and vege-
+tation conditions. A shader applies the simulated output to an
+artistically detailed, identical topography in real-time, using
+impact maps for ground deformation and billboards for veg-
+etation density. Accelerated animations of these changes are
+shown in the supplementary video. This could be as well
+extended to larger terrain (see Fig. 2).
+5.2 Validation of the soft ground model
+In Fig. 10, we show the results of our terrain deformation
+model on ﬂat ground. The characters use parametric SMPL
+models [28] to depict variable body shapes associated with
+different masses, which inﬂuence the resulting deformation.
+The average walking speed of each character is 1.3m /s. For
+the character with m = 75 kg, the average pressure exerted
+by the feet at this relaxed walking pace is 20 kN, consistent
+with the experimental results reported in [36]. Using the same
+ground parametrization, we compare our new soil accumu-
+lation with [2] for left to right locomotion (see Fig.11). Note
+the anisotropy of our foot track, consistent with both motion
+direction and soil stability laws.
+Figure 12 shows the combined inﬂuence of motion direc-
+tion and steep terrain slopes on footprints and provides a
+qualitative validation compared to real, sandy terrain: Walk-
+ing up-hill (left) leads to smaller footprints (toe-only contact),
+with bumps opposite to the direction of motion; walking
+down-hill (middle) generates longer footprints due to slid-
+ing foot in contact with the ground, with sand bumps in the
+direction of motion; Finally walking sideways (right) results
+in foot-size footprints with bumps on the lowest side.
+5.3 Validation of the vegetation model
+Our simulator can be used to enhance interactive locomotion
+in natural landscapes for ﬁlms and games, thanks to the use of
+PBD for modeling different types of plants and their dynamic
+behavior just after trampling (see Fig. 13 for a comparison
+between real and simulated deformations).
+We also use our plant model to estimate the damage to
+vegetation due to trampling. We employ the real data reported
+in [8] to ﬁne-tune and then validate our vegetation model.
+This study measured the effects of trampling on various types
+of vegetation, after different numbers of successive passages
+(25, 75, 200, and 500) on controlled land patches, reporting
+the relative plant coverage after two weeks—which they refer
+to as immediate effects of trampling—and after one year.
+123
+TRAIL: Simulating the impact of human locomotion on natural landscapes 5037
+Table 1 Ground and vegetation
+parameters Ground Soft soil Dry soil Wet soil
+Eg [MPa] [0.7, 2] [0.2, 0.5] [0.3, 0.7]
+νg [0.1, 0.3] [0.3, 0.4] [0.2, 0.4]
+γr [◦] [10, 15] [5, 10] [10, 15]
+Vegetation Carex pensylvanica Lycopodium lucidulum
+E0v [MPa] 7 10
+(εb, εs ) [s−1] (0.1, 1) (0.08, 1)
+(ϕdeg, ϕmax)[ ◦] (10, 70) (5, 50)
+(μdeg , μrec) [s−1] (0.1, 0.1) (0.1, 0.1)
+Fig. 9 Soft Soil with Carex pensylvanica (top row), Dry Soil (middle
+row) and Wet Soil (bottom row), both withLycopodium lucidulum,a f t e r
+1 (left), 75 (middle) and 200 passes (right). A custom shader enables
+lightweight rendering by modifying ground appearance and billboard
+density based on the simulated maps over time
+Fig. 10 Deformation of Dry Soil in ﬂat terrain, whose settings are
+reported in Table 1. Compression, anisotropic accumulation and mate-
+rial stabilization are used to show the impact of SMPL characters [28]
+with m = 50, 75, and 100 kg
+To validate the short-term degradation and recovery of our
+plant model, we replicated the same experimental conditions,
+focusing on two of the originally reported plant types (Carex
+pensylvanica and Lycopodium lucidulum ). For this experi-
+Fig. 11 Footprint proﬁle comparison
+mental setup, we generate two simulations, each one with
+a vegetation-covered path containing 200 plant instances,
+each deﬁned by a 2D shape of size 0 .1 × 0.05 m 2, with
+particle radius r p = 0.005 m and distance between particles
+123
+5038 E. Alvarado et al.
+Fig. 12 Simulated foot tracks (top) vs. real ones (bottom) on a steep,
+sandy dune, respectively, for climbing up, going down, and a sidewalk.
+Green (resp. black) arrows show the direction of motion (resp the direc-
+tion of projected sand)
+Fig. 13 Comparison between real (top), and simulated (bottom)
+dynamic plant deformation after trampling. The plant’s bending behav-
+ior (shown here on aligned grass rows to make the direction of
+deformation more salient) makes them more resilient, and thus more
+apt to recover
+dp = 0.015 m. We use the regressive analysis in [ 8]p r o -
+vided on the immediate degradation effects to set the internal
+stiffness and threshold parameters as well as the degradation
+and recovery rates of our simulated plant model, which are
+reported in Table 1. Results illustrating the change in αveg
+(introduced in Eq. ( 7) after a certain number of passes are
+shown in Fig. 14.
+A comparison of the real vegetation cover in [ 8] and our
+simulated conditions is shown in Fig.15, demonstrating how
+our plant model captures well the immediate impact, even for
+moderate trampling. Note that this approach for parameter
+setting could be easily generalized given the corresponding
+data for a variety of plants. Finally, in Fig.16,w es h o wh o w
+damage to Carex pensylvanica affects, in our model, the ter-
+rain underneath it, due to the decreasing generalized Young
+Modulus.
+Fig. 14 Short-term damage on Carex pensylvanica (top) and
+Lycopodium lucidulum (bottom)
+Fig. 15 Comparison between our simulated vegetation cover and real
+data about immediate damage due to trampling [8]
+Fig. 16 Walking on bare ground carves deeper footprints than with
+vegetation (top). Rendering without the plants (bottom)
+5.4 Discussion and limitations
+The above results illustrated the advantages of our method
+relying on efﬁcient interactive models and allowing plausible
+modeling of the temporal impact of human locomotion in
+natural environments. However, some approximations were
+made for performance:
+123
+TRAIL: Simulating the impact of human locomotion on natural landscapes 5039
+Firstly, although efﬁcient, our vegetation model could be
+improved by automatically optimizing its internal parame-
+ters based on real-world data for different plant species. The
+use of PBD for more complex, asymmetric deformable vol-
+umes tuned from the underlying plant strength and density
+should be explored. In addition, while our time-linear degra-
+dation and recovery models are easy to control, they would
+beneﬁt from a more complex stress model, accounting for the
+quality of the surrounding soil (function of compaction) and
+the impact of climatic conditions. Another important aspect
+would be the long-term regeneration and regrowth of vegeta-
+tion, which our approach does not consider and would allow
+us to have a more consistent model for trail evolution.
+Second, our anisotropic soil accumulation approach con-
+siders the tangential force with respect to the terrain when the
+foot establishes contact. However, dragging material due to
+friction forces while the foot remains grounded is not consid-
+ered. Its implementation would add further plausibility to the
+impact, enabling the simulation of more general categories of
+gaits, such as walk shufﬂing. In addition, modeling the accu-
+mulation of solid debris like gravel, or erosion and transport
+of bare ground due to rainfalls and other climatic conditions
+(such as temperature changes fracturing compacted ground)
+would also be needed for accurately predicting the long-term
+evolution of trails once vegetation has been damaged.
+Finally, character behavioral modes encompass manual
+control or procedural routes. While it is beyond the scope
+of this paper, it would be very interesting to further explore
+the idea of autonomous characters whose decision-making is
+inﬂuenced by the evolution of the terrain, often making them
+take more accessible routes due to the lack of vegetation, and
+thus accentuating the degradation effect over time.
+6 Conclusions and future work
+In this work, we introduced a method to simulate short-term
+changes in populated, natural landscapes due to the pres-
+ence of two-legged characters. We adapt input kinematic
+motion to establish accurate force interactions with the irreg-
+ular ground, which in combination with deformable terrain
+and vegetation models, allows us to measure the local impact
+data on the surroundings. We integrate these individual tasks
+into a comprehensive simulator, enabling users to seamlessly
+input motion and environmental conditions, thereby facilitat-
+ing the analysis of the resulting impact.
+This work represents a ﬁrst step toward a more accu-
+rate analysis of human inﬂuence on natural landscapes. Our
+methodology could be potentially extended with data-driven
+strategies, aiming to forecast the long-term evolution of
+wildlife scenes. Lastly, the method can be already integrated
+into standard texture-based pipelines in games and ﬁlms,
+thereby highlighting the existence of virtual populations and
+creating more lively and diverse natural environments over
+time.
+Supplementary Information The online version contains supplemen-
+tary material available at https://doi.org/10.1007/s00371-024-03506-
+z.
+Acknowledgements This work is part of the project SENDA (TED2021-
+129761B-I00), funded by MCIN/AEI/10.13039/501100011033 and the
+European Union “NextGenerationEU”/PRTR. It is also part of the Euro-
+pean Union’s Horizon 2020 research and innovation programme CLIPE,
+under the Marie Skłodowska-Curie grant agreement No. 860768.
+Author Contributions E.A. and O.A. carried out the main technical
+implementation. E.A. and O.A. wrote the main manuscript text and
+prepared ﬁgures, with continuous assistance from D.R., M-P.C., and
+N.P. E.A. prepared the supplementary material. All authors reviewed
+the manuscript.
+Funding Open Access funding enabled and organized by Projekt
+DEAL.
+Data Availability No datasets were generated or analyzed during the
+current study.
+Declarations
+Conﬂict of interest The authors declare no competing interests.
+Open Access This article is licensed under a Creative Commons
+Attribution 4.0 International License, which permits use, sharing, adap-
+tation, distribution and reproduction in any medium or format, as
+long as you give appropriate credit to the original author(s) and the
+source, provide a link to the Creative Commons licence, and indi-
+cate if changes were made. The images or other third party material
+in this article are included in the article’s Creative Commons licence,
+unless indicated otherwise in a credit line to the material. If material
+is not included in the article’s Creative Commons licence and your
+intended use is not permitted by statutory regulation or exceeds the
+permitted use, you will need to obtain permission directly from the copy-
+right holder. To view a copy of this licence, visit http://creativecomm
+ons.org/licenses/by/4.0/.
+References
+1. Abdul Karim, A., Gaudin, T., Meyer, A., Buendia, A., Bouakaz, S.:
+Procedural locomotion of multi-legged characters in dynamic envi-
+ronments. Comput. Animat. Virtual Worlds 24(1), 3–15 (2012).
+https://doi.org/10.1002/cav.1467
+2. Alvarado, E., Paliard, C., Rohmer, D., Cani, M.P.: Real-time loco-
+motion on soft grounds with dynamic footprints. Front. Virtual
+Real. 3, 3 (2022). https://doi.org/10.3389/FRVIR.2022.801856
+3. Alvarado, E., Rohmer, D., Cani, M.P.: Generating upper-body
+motion for real-time characters making their way through dynamic
+environments. Comput. Graph. Forum 41(8), 169–181 (2022).
+https://doi.org/10.1111/cgf.14633
+4. Aristidou, A., Lasenby, J., Chrysanthou, Y ., Shamir, A.: Inverse
+kinematics techniques in computer graphics: a survey. Comput.
+Graph. Forum 37(6), 35–58 (2018). https://doi.org/10.1111/cgf.
+13310
+5. Bermudez, L., Tessendorf, J., Zimmermann, D., Zordan, V .: Real-
+time locomotion with character-ﬂuid interactions. In: Proceedings
+123
+5040 E. Alvarado et al.
+of the 11th ACM SIGGRAPH Conference on Motion, Interaction
+and Games, MIG’18. Association for Computing Machinery, New
+York (2018). https://doi.org/10.1145/3274247.3274515
+6. Boulic, R., Mas, R., Thalmann, D.: A robust approach for the
+control of the center of mass with inverse kinetics. Comput.
+Graph. 20(5), 693–701 (1996). https://doi.org/10.1016/S0097-
+8493(96)00043-X
+7. Clavet, S.: Motion matching and the road to next-gen animation.
+In: Game Developer Conference (GDC) (2016)
+8. Cole, D.N.: Experimental trampling of vegetation. I. Relationship
+between trampling intensity and vegetation response. J. Appl. Ecol.
+32(1), 203–214 (1995)
+9. Cole, D.N.: Experimental trampling of vegetation. II. Predictors of
+resistance and resilience. J. Appl. Ecol. 32(1), 215–224 (1995)
+10. Cordonnier, G., Ecormier, P., Galin, E., Gain, J., Benes, B., Cani,
+M.P.: Interactive generation of time-evolving, snow-covered land-
+scapes with avalanches. Comput. Graph. Forum 37(2), 497–509
+(2018). https://doi.org/10.1111/cgf.13379
+11. Cordonnier, G., Galin, E., Gain, J., Benes, B., Guérin, E., Peytavie,
+A., Cani, M.P.: Authoring landscapes by combining ecosystem
+and terrain erosion simulation. ACM Trans. Graph. 36(4) (2017).
+https://doi.org/10.1145/3072959.3073667
+12. Cordonnier, G., Jouvet, G., Peytavie, A., Braun, J., Cani, M.P.,
+Benes, B., Galin, E., Guérin, E., Gain, J.: Forming Terrains by
+Glacial Erosion. ACM Trans. Graph.42(4) (2023). https://doi.org/
+10.1145/3592422
+13. da Silva, D.B., Nunes, R.F., Vidal, C.A., Cavalcante-Neto, J.B.,
+Kry, P.G., Zordan, V .B.: Tunable robustness: an artiﬁcial contact
+strategy with virtual actuator control for balance. Comput. Graph.
+Forum 36(8), 499–510 (2017). https://doi.org/10.1111/cgf.13096
+14. Gain, J., Long, H., Cordonnier, G., Cani, M.: Ecobrush: interac-
+tive control of visually consistent large-scale ecosystems. Comput.
+Graph. Forum 36(2), 63–73 (2017). https://doi.org/10.1111/cgf.
+13107
+15. Galin, E., Guérin, E., Peytavie, A., Cordonnier, G., Cani, M.P.,
+Benes, B., Gain, J.: A review of digital terrain modeling. Comput.
+Graph. Forum 38(2), 553–577 (2019)
+16. Garcia, A.L.: Principles of animation physics. In: ACM SIG-
+GRAPH 2012 Courses, SIGGRAPH’12 (2012)
+17. Gerling, B., Löwe, H., Van Herwijnen, A.: Measuring the elastic
+modulus of snow. Geophys. Res. Lett. 44, 11088–11096 (2017).
+https://doi.org/10.1002/2017GL075110
+18. Hodgins, J.K., Wooten, W.L., Brogan, D.C., O’Brien, J.F.: Ani-
+mating human athletics. In: Proceedings of the 22nd Annual
+Conference on Computer Graphics and Interactive Techniques,
+SIGGRAPH’95, pp. 71–78. Association for Computing Machin-
+ery, New York (1995).https://doi.org/10.1145/218380.218414
+19. Holden, D., Kanoun, O., Perepichka, M., Popa, T.: Learned motion
+matching. ACM Trans. Graph. 39(4) (2020). https://doi.org/10.
+1145/3386569.3392440
+20. Holden, D., Komura, T., Saito, J.: Phase-functioned neural net-
+works for character control. ACM Trans. Graph. 36(4) (2017).
+https://doi.org/10.1145/3072959.3073663
+21. Johansen, R.S.: Automated semi-procedural animation for char-
+acter locomotion. Master’s thesis, Aarhus Universitet, Institut for
+Informations Medievidenskab (2009)
+22. Karim, A.A., Meyer, A., Gaudin, T., Buendia, A., Bouakaz, S.:
+Generic spine model with simple physics for life-like quadrupeds
+and reptiles. In: Bender, J., Kuijper, A., Fellner, D.W., Guerin,
+E. (eds.) Workshop on Virtual Reality Interaction and Physical
+Simulation. The Eurographics Association (2012). https://doi.org/
+10.2312/PE/vriphys/vriphys12/097-106
+23. Klár, G., Gast, T., Pradhana, A., Fu, C., Schroeder, C., Jiang, C.,
+Teran, J.: Drucker–Prager elastoplasticity for sand animation. ACM
+Trans. Graph. (TOG) 35(4), 1–12 (2016). https://doi.org/10.1145/
+2897824.2925906
+24. Kwiatkowski, A., Alvarado, E., Kalogeiton, V ., Liu, C.K., Pettré,
+J., van de Panne, M., Cani, M.P.: A survey on reinforcement learn-
+ing methods in character animation. Comput. Graph. Forum41(2),
+613–639 (2022). https://doi.org/10.1111/cgf.14504
+25. Kwon, T., Lee, Y ., Van De Panne, M.: Fast and ﬂexible multilegged
+locomotion using learned centroidal dynamics. ACM Trans. Graph.
+39(4) (2020). https://doi.org/10.1145/3386569.3392432
+26. Lee, J., Shin, S.Y .: A hierarchical approach to interactive motion
+editing for human-like ﬁgures. In: Proceedings of the 26th Annual
+Conference on Computer Graphics and Interactive Techniques,
+SIGGRAPH’99, pp. 39–48. ACM Press/Addison-Wesley Publish-
+ing Co., USA (1999). https://doi.org/10.1145/311535.311539
+27. Lentine, M., Gretarsson, J.T., Schroeder, C., Robinson-Mosher, A.,
+Fedkiw, R.: Creature control in a ﬂuid environment. IEEE Trans.
+Vis. Comput. Graph. 17(5), 682–693 (2011). https://doi.org/10.
+1109/TVCG.2010.108
+28. Loper, M., Mahmood, N., Romero, J., Pons-Moll, G., Black, M.J.:
+SMPL: A skinned multi-person linear model. ACM Trans. Graph-
+ics (Proc. SIGGRAPH Asia) 34(6), 248:1–248:16 (2015)
+29. Marion, J.L., Wimpey, J.: Assessing the inﬂuence of sustainable
+trail design and maintenance on soil loss. J. Environ. Manag. 189,
+46–57 (2017). https://doi.org/10.1016/j.jenvman.2016.11.074
+30. Mourot, L., Hoyet, L., Le Clerc, F., Schnitzler, F., Hellier, P.: A sur-
+vey on deep learning for skeleton-based human animation. Comput.
+Graph. Forum 41(1), 122–157 (2022).https://doi.org/10.1111/cgf.
+14426
+31. Müller, M., Heidelberger, B., Hennix, M., Ratcliff, J.: Position
+based dynamics. J. Vis. Commun. Image Represent. 18(2), 109–
+118 (2007). https://doi.org/10.1016/j.jvcir.2007.01.005
+32. Paliard, C., Alvarado, E., Rohmer, D., Cani, M.P.: soft walks: real-
+time, two-ways interaction between a character and loose grounds.
+In: Theisel, H., Wimmer, M. (eds.) Eurographics 2021—Short
+Papers. The Eurographics Association, Vienna, Austria (2021).
+https://doi.org/10.2312/egs.20211019
+33. Paris, A., Peytavie, A., Guérin, E., Argudo, O., Galin, E.:
+Desertscape simulation. Comput. Graph. Forum 38(7), 47–55
+(2019). https://doi.org/10.1111/cgf.13815
+34. Rahgoshay, C., Rabbani, A., Singh, K., Kry, P.G.: Inverse kin-
+odynamics: editing and constraining kinematic approximations
+of dynamic motion. In: Proceedings of Graphics Interface 2012,
+GI’12, pp. 185–192. Canadian Information Processing Society,
+CAN (2012)
+35. Raibert, M.H., Hodgins, J.K.: Animation of dynamic legged loco-
+motion. SIGGRAPH Comput. Graph. 25(4), 349–358 (1991).
+https://doi.org/10.1145/127719.122755
+36. Shahabpoor, E., Pavic, A.: Measurement of walking ground reac-
+tions in real-life environments: a systematic review of techniques
+and technologies. Sensors (Switzerland) 17 (2017)
+37. Wannop, J.W., Worobets, J.T., Ruiz, R., Stefanyshyn, D.J.:
+Footwear traction and three-dimensional kinematics of level,
+downhill, uphill and cross-slope walking. Gait & Posture 40(1),
+118–122 (2014). https://doi.org/10.1016/j.gaitpost.2014.03.004
+38. Witkin, A., Kass, M.: Spacetime constraints. SIGGRAPH Comput.
+Graph. 22(4), 159–168 (1988). https://doi.org/10.1145/378456.
+378507
+Publisher’s Note Springer Nature remains neutral with regard to juris-
+dictional claims in published maps and institutional afﬁliations.
+123
+TRAIL: Simulating the impact of human locomotion on natural landscapes 5041
+Eduardo Alvarado is a postdoc-
+toral researcher at Max Planck
+Institute for Informatics (Visual
+Computing and Artiﬁcial Intelli-
+gence). He completed his PhD in
+Character Animation and Com-
+puter Graphics at École Polytech-
+nique, in the Visual Worlds: Tem-
+poral Analysis, Animation and
+Authoring (VISTA) group under
+the supervision of Prof. Damien
+Rohmer and Prof. Marie-Paule Cani,
+while being part of the Marie
+Skłodowska-Curie Innovative Train-
+ing Network CLIPE, funded by
+the European Union Horizon 2020 framework. Prior to his PhD, he got
+his M.Sc. in Embedded Systems and AI at Albert-Ludwigs-Universität
+Freiburg and his B.Sc. in Electronics and Automation Engineering at
+Universidad Carlos III de Madrid. His research is centered on plausi-
+ble, interactive, and multi-scale 3D animation (physically-based, kine-
+matic) of virtual characters in dynamic and deformable environments,
+with focus on authoring tools for the entertainment industry (games,
+VR).
+Oscar Argudo is Assistant Pro-
+fessor at the Computer Science
+department of Universitat Politèc-
+nica de Catalunya, working with
+the ViRVIG research group. He
+obtained his PhD in Computing
+from UPC in 2018, under the super-
+vision of Carlos Andújar and Anto-
+nio Chica. His thesis focused on
+the creation of realistic natural
+scenarios, leveraging machine learn-
+ing techniques and real data to
+improve procedural and example-
+based modeling algorithms. After
+that, he was hired as a postdoc-
+toral researcher by the CNRS in the LIRIS laboratory in Lyon, work-
+ing on procedural modeling of mountainous landscapes and the simu-
+lation of natural phenomena such as dunes, glaciers, and ecosystems.
+His current research project deals with the generation of hiking paths
+networks and the modeling of degradation effects caused by outdoor
+activities. He has published in journals such as ACM Transactions on
+Graphics and Computer Graphics Forum and presented in top confer-
+ences like SIGGRAPH Asia and Eurographics.
+Damien Rohmer is Professor of
+Computer Science at Ecole Poly-
+technique, part of Institut Poly-
+technique de Paris. His research
+lies in the Computer Graphics ﬁeld,
+and revolves primarily around 3D
+Modeling, Deformation, and Ani-
+mation of virtual content, with a
+keen interest in Real-Time Efﬁ-
+ciency, Interactivity and User Con-
+trol. His previous research con-
+tributed to the Modeling and Ani-
+mation of Virtual Character, Devel-
+opable Surface, 3D Garment mod-
+els, and to the Simulation of Natu-
+ral Phenomena. His methodology typically couples procedural
+approaches and lightweight physics, with the use of appropriate geo-
+metrical representation featuring for instance hierarchical level of
+details and ﬁeld-based representations. His work principally ﬁnds
+applications for entertainment production requiring efﬁciency and
+interactivity such as Animation Cinema, VFX, and Games, with publi-
+cations in Graphics journals and venues including SIGGRAPH, Euro-
+graphics, SCA and MIG. He additionally enjoys collaboration with
+other disciplines such as Medical Sciences, Math, or Design.
+Marie-Paule Cani is Professor of
+Computer Science at Ecole Poly-
+technique. Her research interests
+cover both Shape Modelling and
+Computer Animation. She con-
+tributed over the years to several
+high-level models for shapes and
+motion such as implicit surfaces,
+multi-resolution physically-based
+animation methods and hybrid rep-
+resentations for real-time natural
+scenes. Following a long-lasting
+interest in virtual sculpture, she
+has been recently searching for
+more expressive ways to create
+3D content such as combining sketch-based interfaces with proce-
+dural models based on a priori knowledge or learning. She received
+the Eurographics outstanding technical contributions award in 2011,
+a Silver medal from CNRS in 2012, and was elected at the Academia
+Europaea in 2013. She was awarded the ERC advanced grant EXPRES-
+SIVE (2012-2017) and joined the ACM SIGGRAPH Academy in
+2019. She was elected at the French Academy of Sciences in 2020.
+Nuria Pelechano is Associate
+Professor (Professor Agregat) at
+the HYPERLINK
+“http://www.upc.edu/” Universitat
+Politecnica de Catalunya (UPC)
+in Barcelona, and member of the
+research group HYPERLINK
+“http://www.virvig.eu/” ViRVIG.
+She is coordinator of the HYPER-
+LINK “ https://www.ﬁb.upc.edu/
+en/studies/masters/master-innovati
+on-and-research-informatics/curricu
+lum/specializations/computer-grap
+hics-and-virtual-reality” Computer
+Graphics and Virtual Reality spe-
+cialty of the HYPERLINK “https://www.ﬁb.upc.edu/en/studies/masters/
+master-innovation-and-research-informatics ” MIRI master degree at
+the Facultat de Informàtica (UPC). She received her PhD in 2006 (as
+a Fulbright scholar) at the University of Pennsylvania (UPenn) under
+the supervision of Dr. Norman I. Badler. Afterwards she was a post-
+doctorate researcher at the TC Chan Center for Building Simulation
+and Energy Studies with Dr. Ali Malkawi and the Center for Human
+Modeling and Simulation with Dr. Norman I. Badler.
+123
+TABLE 0 5x4
+R0: 学  院 | 中医药人工智能学院 | 专  业 | 
+R1: 姓  名 |  | 学  号 | 
+R2: 指导老师 |  | 职  称 | 
+R3: 合作老师 |  | 职  称 | 
+R4: 题  目 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现
+
+### 本科毕业论文(设计)开题报告.docx
+P0: 本科毕业论文(设计)开题报告
+P4: 附：开题报告会情况记录
+TABLE 0 7x9
+R0: 学  院 | 中医药人工智能学院 | 中医药人工智能学院 | 中医药人工智能学院 | 专  业 | 专  业 |  |  | 
+R1: 姓  名 |  |  |  | 学  号 | 学  号 |  |  | 
+R2: 指导老师 |  |  |  | 职  称 | 职  称 |  |  | 
+R3: 合作老师 |  |  |  | 职  称 | 职  称 |  |  | 
+R4: 题  目 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现
+R5: 题目性质 | ☑实验研究 | 技术开发 | 工程设计 | 工程设计 | 应用型 | 应用型 | 调查型 | 其他
+R6: 一、选题依据和目标 / （该研究的目的、意义、国内外研究现状及发展趋势） / 研究的目的 / 本研究以Unity中的动画驱动马匹为对象，目标是在保留原有步态与高速运动观感的前提下，降低复杂地形上足端悬空、穿地和支撑期滑移。研究将动画足端轨迹作为先验，通过地形查询和支撑状态判定生成稳定的足端目标，并在腿部可达范围内进行平滑约束；同时考察躯干姿态补偿和动画/IK更新时序。论文拟实现并比较基础射线地面修正与支撑目标锁定/平滑过渡策略，形成面向实时游戏角色的实现流程。 / 研究意义 / 四足动画角色直接复用预制动画时，脚步轨迹与实际地形接触不一致，容易削弱重量感和运动可信度。足部IK能够在动画后处理中调整末端位置，但效果依赖接触时机、目标连续性、骨骼可达性及动画系统的求值顺序。四足角色相较双足角色具有四条腿的相位耦合问题；高速奔跑时采样延迟和逐帧重算造成的目标跳变更明显。本课题从角色动画工程角度研究可实时实现、可测量验证的方案，不将机器人全身动力学控制作为研究目标。 / 国内研究现状及发展趋势 / 国外研究可概括为动画后处理、程序化步态、数据驱动控制和物理交互几类。Burdka与Rohleder以实时环境检测和IK后处理修正双足角色在多样地形上的姿态；Glardon等研究在线足底接触检测和约束施加，强调运动类型变化时接触判定的鲁棒性；Miller等提出将角色运动关系描述映射到随地形展开的“地毯”表面，使多部位轨迹适配地形；Abdul Karim等以步态管理、路径构造和足迹规划模块生成多足角色运动。Skrba等综述四足动画的运动数据、骨骼建模、运动学及物理方法。Zhang等以模式自适应网络处理四足多步态控制，但依赖运动数据与学习流程。近年工作进一步把足端IK、角色平衡与软地面交互分层处理。 / 国内相关工作多以游戏角色控制、程序化动画和Unity骨骼约束的工程实现为主；本课题将通过公开英文论文与Unity官方文档建立方法依据，并结合现有工程逐项验证。当前项目已完成马匹控制器、状态机、KCC移动与动画Rig的部分搭建，也已解决Animation Rigging采样时序导致的抖动问题。现有HorseGroundFootIK仍处于隔离测试状态，地面纠正代码被注释，因此不能把IK贴地作为既有完成结果。 / 技术发展呈现由“检测落点后单次修正”向“接触状态识别、目标连续性维护、全身姿态协调和环境交互”扩展的趋势。对本课题而言，研究重点不在于提出普适的生物力学模型，而是将支撑足状态、地面命中质量、目标更新频率与动画时序结合，减少高速下目标抖动和支撑足漂移；方法复杂度和帧耗时也必须纳入评价。 /  /  /  /  /  /  /  /  /  | 一、选题依据和目标 / （该研究的目的、意义、国内外研究现状及发展趋势） / 研究的目的 / 本研究以Unity中的动画驱动马匹为对象，目标是在保留原有步态与高速运动观感的前提下，降低复杂地形上足端悬空、穿地和支撑期滑移。研究将动画足端轨迹作为先验，通过地形查询和支撑状态判定生成稳定的足端目标，并在腿部可达范围内进行平滑约束；同时考察躯干姿态补偿和动画/IK更新时序。论文拟实现并比较基础射线地面修正与支撑目标锁定/平滑过渡策略，形成面向实时游戏角色的实现流程。 / 研究意义 / 四足动画角色直接复用预制动画时，脚步轨迹与实际地形接触不一致，容易削弱重量感和运动可信度。足部IK能够在动画后处理中调整末端位置，但效果依赖接触时机、目标连续性、骨骼可达性及动画系统的求值顺序。四足角色相较双足角色具有四条腿的相位耦合问题；高速奔跑时采样延迟和逐帧重算造成的目标跳变更明显。本课题从角色动画工程角度研究可实时实现、可测量验证的方案，不将机器人全身动力学控制作为研究目标。 / 国内研究现状及发展趋势 / 国外研究可概括为动画后处理、程序化步态、数据驱动控制和物理交互几类。Burdka与Rohleder以实时环境检测和IK后处理修正双足角色在多样地形上的姿态；Glardon等研究在线足底接触检测和约束施加，强调运动类型变化时接触判定的鲁棒性；Miller等提出将角色运动关系描述映射到随地形展开的“地毯”表面，使多部位轨迹适配地形；Abdul Karim等以步态管理、路径构造和足迹规划模块生成多足角色运动。Skrba等综述四足动画的运动数据、骨骼建模、运动学及物理方法。Zhang等以模式自适应网络处理四足多步态控制，但依赖运动数据与学习流程。近年工作进一步把足端IK、角色平衡与软地面交互分层处理。 / 国内相关工作多以游戏角色控制、程序化动画和Unity骨骼约束的工程实现为主；本课题将通过公开英文论文与Unity官方文档建立方法依据，并结合现有工程逐项验证。当前项目已完成马匹控制器、状态机、KCC移动与动画Rig的部分搭建，也已解决Animation Rigging采样时序导致的抖动问题。现有HorseGroundFootIK仍处于隔离测试状态，地面纠正代码被注释，因此不能把IK贴地作为既有完成结果。 / 技术发展呈现由“检测落点后单次修正”向“接触状态识别、目标连续性维护、全身姿态协调和环境交互”扩展的趋势。对本课题而言，研究重点不在于提出普适的生物力学模型，而是将支撑足状态、地面命中质量、目标更新频率与动画时序结合，减少高速下目标抖动和支撑足漂移；方法复杂度和帧耗时也必须纳入评价。 /  /  /  /  /  /  /  /  /  | 一、选题依据和目标 / （该研究的目的、意义、国内外研究现状及发展趋势） / 研究的目的 / 本研究以Unity中的动画驱动马匹为对象，目标是在保留原有步态与高速运动观感的前提下，降低复杂地形上足端悬空、穿地和支撑期滑移。研究将动画足端轨迹作为先验，通过地形查询和支撑状态判定生成稳定的足端目标，并在腿部可达范围内进行平滑约束；同时考察躯干姿态补偿和动画/IK更新时序。论文拟实现并比较基础射线地面修正与支撑目标锁定/平滑过渡策略，形成面向实时游戏角色的实现流程。 / 研究意义 / 四足动画角色直接复用预制动画时，脚步轨迹与实际地形接触不一致，容易削弱重量感和运动可信度。足部IK能够在动画后处理中调整末端位置，但效果依赖接触时机、目标连续性、骨骼可达性及动画系统的求值顺序。四足角色相较双足角色具有四条腿的相位耦合问题；高速奔跑时采样延迟和逐帧重算造成的目标跳变更明显。本课题从角色动画工程角度研究可实时实现、可测量验证的方案，不将机器人全身动力学控制作为研究目标。 / 国内研究现状及发展趋势 / 国外研究可概括为动画后处理、程序化步态、数据驱动控制和物理交互几类。Burdka与Rohleder以实时环境检测和IK后处理修正双足角色在多样地形上的姿态；Glardon等研究在线足底接触检测和约束施加，强调运动类型变化时接触判定的鲁棒性；Miller等提出将角色运动关系描述映射到随地形展开的“地毯”表面，使多部位轨迹适配地形；Abdul Karim等以步态管理、路径构造和足迹规划模块生成多足角色运动。Skrba等综述四足动画的运动数据、骨骼建模、运动学及物理方法。Zhang等以模式自适应网络处理四足多步态控制，但依赖运动数据与学习流程。近年工作进一步把足端IK、角色平衡与软地面交互分层处理。 / 国内相关工作多以游戏角色控制、程序化动画和Unity骨骼约束的工程实现为主；本课题将通过公开英文论文与Unity官方文档建立方法依据，并结合现有工程逐项验证。当前项目已完成马匹控制器、状态机、KCC移动与动画Rig的部分搭建，也已解决Animation Rigging采样时序导致的抖动问题。现有HorseGroundFootIK仍处于隔离测试状态，地面纠正代码被注释，因此不能把IK贴地作为既有完成结果。 / 技术发展呈现由“检测落点后单次修正”向“接触状态识别、目标连续性维护、全身姿态协调和环境交互”扩展的趋势。对本课题而言，研究重点不在于提出普适的生物力学模型，而是将支撑足状态、地面命中质量、目标更新频率与动画时序结合，减少高速下目标抖动和支撑足漂移；方法复杂度和帧耗时也必须纳入评价。 /  /  /  /  /  /  /  /  /  | 一、选题依据和目标 / （该研究的目的、意义、国内外研究现状及发展趋势） / 研究的目的 / 本研究以Unity中的动画驱动马匹为对象，目标是在保留原有步态与高速运动观感的前提下，降低复杂地形上足端悬空、穿地和支撑期滑移。研究将动画足端轨迹作为先验，通过地形查询和支撑状态判定生成稳定的足端目标，并在腿部可达范围内进行平滑约束；同时考察躯干姿态补偿和动画/IK更新时序。论文拟实现并比较基础射线地面修正与支撑目标锁定/平滑过渡策略，形成面向实时游戏角色的实现流程。 / 研究意义 / 四足动画角色直接复用预制动画时，脚步轨迹与实际地形接触不一致，容易削弱重量感和运动可信度。足部IK能够在动画后处理中调整末端位置，但效果依赖接触时机、目标连续性、骨骼可达性及动画系统的求值顺序。四足角色相较双足角色具有四条腿的相位耦合问题；高速奔跑时采样延迟和逐帧重算造成的目标跳变更明显。本课题从角色动画工程角度研究可实时实现、可测量验证的方案，不将机器人全身动力学控制作为研究目标。 / 国内研究现状及发展趋势 / 国外研究可概括为动画后处理、程序化步态、数据驱动控制和物理交互几类。Burdka与Rohleder以实时环境检测和IK后处理修正双足角色在多样地形上的姿态；Glardon等研究在线足底接触检测和约束施加，强调运动类型变化时接触判定的鲁棒性；Miller等提出将角色运动关系描述映射到随地形展开的“地毯”表面，使多部位轨迹适配地形；Abdul Karim等以步态管理、路径构造和足迹规划模块生成多足角色运动。Skrba等综述四足动画的运动数据、骨骼建模、运动学及物理方法。Zhang等以模式自适应网络处理四足多步态控制，但依赖运动数据与学习流程。近年工作进一步把足端IK、角色平衡与软地面交互分层处理。 / 国内相关工作多以游戏角色控制、程序化动画和Unity骨骼约束的工程实现为主；本课题将通过公开英文论文与Unity官方文档建立方法依据，并结合现有工程逐项验证。当前项目已完成马匹控制器、状态机、KCC移动与动画Rig的部分搭建，也已解决Animation Rigging采样时序导致的抖动问题。现有HorseGroundFootIK仍处于隔离测试状态，地面纠正代码被注释，因此不能把IK贴地作为既有完成结果。 / 技术发展呈现由“检测落点后单次修正”向“接触状态识别、目标连续性维护、全身姿态协调和环境交互”扩展的趋势。对本课题而言，研究重点不在于提出普适的生物力学模型，而是将支撑足状态、地面命中质量、目标更新频率与动画时序结合，减少高速下目标抖动和支撑足漂移；方法复杂度和帧耗时也必须纳入评价。 /  /  /  /  /  /  /  /  /  | 一、选题依据和目标 / （该研究的目的、意义、国内外研究现状及发展趋势） / 研究的目的 / 本研究以Unity中的动画驱动马匹为对象，目标是在保留原有步态与高速运动观感的前提下，降低复杂地形上足端悬空、穿地和支撑期滑移。研究将动画足端轨迹作为先验，通过地形查询和支撑状态判定生成稳定的足端目标，并在腿部可达范围内进行平滑约束；同时考察躯干姿态补偿和动画/IK更新时序。论文拟实现并比较基础射线地面修正与支撑目标锁定/平滑过渡策略，形成面向实时游戏角色的实现流程。 / 研究意义 / 四足动画角色直接复用预制动画时，脚步轨迹与实际地形接触不一致，容易削弱重量感和运动可信度。足部IK能够在动画后处理中调整末端位置，但效果依赖接触时机、目标连续性、骨骼可达性及动画系统的求值顺序。四足角色相较双足角色具有四条腿的相位耦合问题；高速奔跑时采样延迟和逐帧重算造成的目标跳变更明显。本课题从角色动画工程角度研究可实时实现、可测量验证的方案，不将机器人全身动力学控制作为研究目标。 / 国内研究现状及发展趋势 / 国外研究可概括为动画后处理、程序化步态、数据驱动控制和物理交互几类。Burdka与Rohleder以实时环境检测和IK后处理修正双足角色在多样地形上的姿态；Glardon等研究在线足底接触检测和约束施加，强调运动类型变化时接触判定的鲁棒性；Miller等提出将角色运动关系描述映射到随地形展开的“地毯”表面，使多部位轨迹适配地形；Abdul Karim等以步态管理、路径构造和足迹规划模块生成多足角色运动。Skrba等综述四足动画的运动数据、骨骼建模、运动学及物理方法。Zhang等以模式自适应网络处理四足多步态控制，但依赖运动数据与学习流程。近年工作进一步把足端IK、角色平衡与软地面交互分层处理。 / 国内相关工作多以游戏角色控制、程序化动画和Unity骨骼约束的工程实现为主；本课题将通过公开英文论文与Unity官方文档建立方法依据，并结合现有工程逐项验证。当前项目已完成马匹控制器、状态机、KCC移动与动画Rig的部分搭建，也已解决Animation Rigging采样时序导致的抖动问题。现有HorseGroundFootIK仍处于隔离测试状态，地面纠正代码被注释，因此不能把IK贴地作为既有完成结果。 / 技术发展呈现由“检测落点后单次修正”向“接触状态识别、目标连续性维护、全身姿态协调和环境交互”扩展的趋势。对本课题而言，研究重点不在于提出普适的生物力学模型，而是将支撑足状态、地面命中质量、目标更新频率与动画时序结合，减少高速下目标抖动和支撑足漂移；方法复杂度和帧耗时也必须纳入评价。 /  /  /  /  /  /  /  /  /  | 一、选题依据和目标 / （该研究的目的、意义、国内外研究现状及发展趋势） / 研究的目的 / 本研究以Unity中的动画驱动马匹为对象，目标是在保留原有步态与高速运动观感的前提下，降低复杂地形上足端悬空、穿地和支撑期滑移。研究将动画足端轨迹作为先验，通过地形查询和支撑状态判定生成稳定的足端目标，并在腿部可达范围内进行平滑约束；同时考察躯干姿态补偿和动画/IK更新时序。论文拟实现并比较基础射线地面修正与支撑目标锁定/平滑过渡策略，形成面向实时游戏角色的实现流程。 / 研究意义 / 四足动画角色直接复用预制动画时，脚步轨迹与实际地形接触不一致，容易削弱重量感和运动可信度。足部IK能够在动画后处理中调整末端位置，但效果依赖接触时机、目标连续性、骨骼可达性及动画系统的求值顺序。四足角色相较双足角色具有四条腿的相位耦合问题；高速奔跑时采样延迟和逐帧重算造成的目标跳变更明显。本课题从角色动画工程角度研究可实时实现、可测量验证的方案，不将机器人全身动力学控制作为研究目标。 / 国内研究现状及发展趋势 / 国外研究可概括为动画后处理、程序化步态、数据驱动控制和物理交互几类。Burdka与Rohleder以实时环境检测和IK后处理修正双足角色在多样地形上的姿态；Glardon等研究在线足底接触检测和约束施加，强调运动类型变化时接触判定的鲁棒性；Miller等提出将角色运动关系描述映射到随地形展开的“地毯”表面，使多部位轨迹适配地形；Abdul Karim等以步态管理、路径构造和足迹规划模块生成多足角色运动。Skrba等综述四足动画的运动数据、骨骼建模、运动学及物理方法。Zhang等以模式自适应网络处理四足多步态控制，但依赖运动数据与学习流程。近年工作进一步把足端IK、角色平衡与软地面交互分层处理。 / 国内相关工作多以游戏角色控制、程序化动画和Unity骨骼约束的工程实现为主；本课题将通过公开英文论文与Unity官方文档建立方法依据，并结合现有工程逐项验证。当前项目已完成马匹控制器、状态机、KCC移动与动画Rig的部分搭建，也已解决Animation Rigging采样时序导致的抖动问题。现有HorseGroundFootIK仍处于隔离测试状态，地面纠正代码被注释，因此不能把IK贴地作为既有完成结果。 / 技术发展呈现由“检测落点后单次修正”向“接触状态识别、目标连续性维护、全身姿态协调和环境交互”扩展的趋势。对本课题而言，研究重点不在于提出普适的生物力学模型，而是将支撑足状态、地面命中质量、目标更新频率与动画时序结合，减少高速下目标抖动和支撑足漂移；方法复杂度和帧耗时也必须纳入评价。 /  /  /  /  /  /  /  /  /  | 一、选题依据和目标 / （该研究的目的、意义、国内外研究现状及发展趋势） / 研究的目的 / 本研究以Unity中的动画驱动马匹为对象，目标是在保留原有步态与高速运动观感的前提下，降低复杂地形上足端悬空、穿地和支撑期滑移。研究将动画足端轨迹作为先验，通过地形查询和支撑状态判定生成稳定的足端目标，并在腿部可达范围内进行平滑约束；同时考察躯干姿态补偿和动画/IK更新时序。论文拟实现并比较基础射线地面修正与支撑目标锁定/平滑过渡策略，形成面向实时游戏角色的实现流程。 / 研究意义 / 四足动画角色直接复用预制动画时，脚步轨迹与实际地形接触不一致，容易削弱重量感和运动可信度。足部IK能够在动画后处理中调整末端位置，但效果依赖接触时机、目标连续性、骨骼可达性及动画系统的求值顺序。四足角色相较双足角色具有四条腿的相位耦合问题；高速奔跑时采样延迟和逐帧重算造成的目标跳变更明显。本课题从角色动画工程角度研究可实时实现、可测量验证的方案，不将机器人全身动力学控制作为研究目标。 / 国内研究现状及发展趋势 / 国外研究可概括为动画后处理、程序化步态、数据驱动控制和物理交互几类。Burdka与Rohleder以实时环境检测和IK后处理修正双足角色在多样地形上的姿态；Glardon等研究在线足底接触检测和约束施加，强调运动类型变化时接触判定的鲁棒性；Miller等提出将角色运动关系描述映射到随地形展开的“地毯”表面，使多部位轨迹适配地形；Abdul Karim等以步态管理、路径构造和足迹规划模块生成多足角色运动。Skrba等综述四足动画的运动数据、骨骼建模、运动学及物理方法。Zhang等以模式自适应网络处理四足多步态控制，但依赖运动数据与学习流程。近年工作进一步把足端IK、角色平衡与软地面交互分层处理。 / 国内相关工作多以游戏角色控制、程序化动画和Unity骨骼约束的工程实现为主；本课题将通过公开英文论文与Unity官方文档建立方法依据，并结合现有工程逐项验证。当前项目已完成马匹控制器、状态机、KCC移动与动画Rig的部分搭建，也已解决Animation Rigging采样时序导致的抖动问题。现有HorseGroundFootIK仍处于隔离测试状态，地面纠正代码被注释，因此不能把IK贴地作为既有完成结果。 / 技术发展呈现由“检测落点后单次修正”向“接触状态识别、目标连续性维护、全身姿态协调和环境交互”扩展的趋势。对本课题而言，研究重点不在于提出普适的生物力学模型，而是将支撑足状态、地面命中质量、目标更新频率与动画时序结合，减少高速下目标抖动和支撑足漂移；方法复杂度和帧耗时也必须纳入评价。 /  /  /  /  /  /  /  /  /  | 一、选题依据和目标 / （该研究的目的、意义、国内外研究现状及发展趋势） / 研究的目的 / 本研究以Unity中的动画驱动马匹为对象，目标是在保留原有步态与高速运动观感的前提下，降低复杂地形上足端悬空、穿地和支撑期滑移。研究将动画足端轨迹作为先验，通过地形查询和支撑状态判定生成稳定的足端目标，并在腿部可达范围内进行平滑约束；同时考察躯干姿态补偿和动画/IK更新时序。论文拟实现并比较基础射线地面修正与支撑目标锁定/平滑过渡策略，形成面向实时游戏角色的实现流程。 / 研究意义 / 四足动画角色直接复用预制动画时，脚步轨迹与实际地形接触不一致，容易削弱重量感和运动可信度。足部IK能够在动画后处理中调整末端位置，但效果依赖接触时机、目标连续性、骨骼可达性及动画系统的求值顺序。四足角色相较双足角色具有四条腿的相位耦合问题；高速奔跑时采样延迟和逐帧重算造成的目标跳变更明显。本课题从角色动画工程角度研究可实时实现、可测量验证的方案，不将机器人全身动力学控制作为研究目标。 / 国内研究现状及发展趋势 / 国外研究可概括为动画后处理、程序化步态、数据驱动控制和物理交互几类。Burdka与Rohleder以实时环境检测和IK后处理修正双足角色在多样地形上的姿态；Glardon等研究在线足底接触检测和约束施加，强调运动类型变化时接触判定的鲁棒性；Miller等提出将角色运动关系描述映射到随地形展开的“地毯”表面，使多部位轨迹适配地形；Abdul Karim等以步态管理、路径构造和足迹规划模块生成多足角色运动。Skrba等综述四足动画的运动数据、骨骼建模、运动学及物理方法。Zhang等以模式自适应网络处理四足多步态控制，但依赖运动数据与学习流程。近年工作进一步把足端IK、角色平衡与软地面交互分层处理。 / 国内相关工作多以游戏角色控制、程序化动画和Unity骨骼约束的工程实现为主；本课题将通过公开英文论文与Unity官方文档建立方法依据，并结合现有工程逐项验证。当前项目已完成马匹控制器、状态机、KCC移动与动画Rig的部分搭建，也已解决Animation Rigging采样时序导致的抖动问题。现有HorseGroundFootIK仍处于隔离测试状态，地面纠正代码被注释，因此不能把IK贴地作为既有完成结果。 / 技术发展呈现由“检测落点后单次修正”向“接触状态识别、目标连续性维护、全身姿态协调和环境交互”扩展的趋势。对本课题而言，研究重点不在于提出普适的生物力学模型，而是将支撑足状态、地面命中质量、目标更新频率与动画时序结合，减少高速下目标抖动和支撑足漂移；方法复杂度和帧耗时也必须纳入评价。 /  /  /  /  /  /  /  /  /  | 一、选题依据和目标 / （该研究的目的、意义、国内外研究现状及发展趋势） / 研究的目的 / 本研究以Unity中的动画驱动马匹为对象，目标是在保留原有步态与高速运动观感的前提下，降低复杂地形上足端悬空、穿地和支撑期滑移。研究将动画足端轨迹作为先验，通过地形查询和支撑状态判定生成稳定的足端目标，并在腿部可达范围内进行平滑约束；同时考察躯干姿态补偿和动画/IK更新时序。论文拟实现并比较基础射线地面修正与支撑目标锁定/平滑过渡策略，形成面向实时游戏角色的实现流程。 / 研究意义 / 四足动画角色直接复用预制动画时，脚步轨迹与实际地形接触不一致，容易削弱重量感和运动可信度。足部IK能够在动画后处理中调整末端位置，但效果依赖接触时机、目标连续性、骨骼可达性及动画系统的求值顺序。四足角色相较双足角色具有四条腿的相位耦合问题；高速奔跑时采样延迟和逐帧重算造成的目标跳变更明显。本课题从角色动画工程角度研究可实时实现、可测量验证的方案，不将机器人全身动力学控制作为研究目标。 / 国内研究现状及发展趋势 / 国外研究可概括为动画后处理、程序化步态、数据驱动控制和物理交互几类。Burdka与Rohleder以实时环境检测和IK后处理修正双足角色在多样地形上的姿态；Glardon等研究在线足底接触检测和约束施加，强调运动类型变化时接触判定的鲁棒性；Miller等提出将角色运动关系描述映射到随地形展开的“地毯”表面，使多部位轨迹适配地形；Abdul Karim等以步态管理、路径构造和足迹规划模块生成多足角色运动。Skrba等综述四足动画的运动数据、骨骼建模、运动学及物理方法。Zhang等以模式自适应网络处理四足多步态控制，但依赖运动数据与学习流程。近年工作进一步把足端IK、角色平衡与软地面交互分层处理。 / 国内相关工作多以游戏角色控制、程序化动画和Unity骨骼约束的工程实现为主；本课题将通过公开英文论文与Unity官方文档建立方法依据，并结合现有工程逐项验证。当前项目已完成马匹控制器、状态机、KCC移动与动画Rig的部分搭建，也已解决Animation Rigging采样时序导致的抖动问题。现有HorseGroundFootIK仍处于隔离测试状态，地面纠正代码被注释，因此不能把IK贴地作为既有完成结果。 / 技术发展呈现由“检测落点后单次修正”向“接触状态识别、目标连续性维护、全身姿态协调和环境交互”扩展的趋势。对本课题而言，研究重点不在于提出普适的生物力学模型，而是将支撑足状态、地面命中质量、目标更新频率与动画时序结合，减少高速下目标抖动和支撑足漂移；方法复杂度和帧耗时也必须纳入评价。 /  /  /  /  /  /  /  /  / 
+TABLE 1 3x1
+R0: 二、课题关键问题及难点 / 课题关键问题 / ①动画采样与Rig求值顺序：从非Humanoid马匹骨架的动画流读取足端姿态，并确保采样发生在正确帧阶段。 / ②支撑相识别：结合动画相位、足端速度与地面命中情况区分支撑和摆动，避免摆动脚被错误吸附。 / ③支撑目标连续性：角色高速奔跑、转向或经过地形接缝时，减少足端目标突跳和支撑期漂移。 / ④可达性与异常处理：限定目标在腿长范围内，处理陡坡、边缘、射线漏检、触发器和法线突变。 / ⑤整体协调：在足端修正幅度有限的前提下，使身体俯仰与地面变化平顺，避免骨骼拉伸。 /  / 难点 / 高速下脚部支撑时间短，采样滞后会转化为明显滑步；平滑滤波又可能造成目标跟随延迟。 / 四足动作相位各异，单一速度阈值难以覆盖慢走、快跑、跳跃和落地等状态。 / 台阶边缘与网格地形可能造成射线命中点和法线在相邻帧间突变。 / Animation Rigging基于动画图求值，目标更新阶段不正确会造成一帧延迟或抖动。 / 需在可视质量与实时开销之间权衡，并通过重复、可复现的实验确认改进。 / 三、完成该课题研究已具备的条件（有关的研究工作基础，仪器设备条件，经费情况） / 已有SBR Unity工程、马匹模型与步态动画、角色状态机、Horse/KCC移动控制、Animation Rigging骨骼约束及地面检测组件。 / HorseFootPoseReader通过Animation Job读取腿部与足部姿态并提供采样值；HorseGroundFootIK具备射线参数和诊断/Gizmo，但当前地面修正代码被注释，仍需实现和验证。 / HorseBodyController已有依据地面法线调节模型俯仰的逻辑，可作为整体姿态模块的工程基础。 / 可使用Unity编辑器、Profiler、Scene视图、运行录屏和脚本化记录采集结果；测试场景可自行搭建平地、坡面、台阶及连续起伏地形。 / 研究所需软件和设备以现有开发环境为主，预算与个人信息按实际情况补充；文献与外文翻译按任务要求完成。 /  /  /  /  /  / 四、研究方案 / 1. 拟采取的研究方法或试验方法及主要技术路线 / 研究方法：采用文献研究、工程代码分析和控制变量实验。先以原动画、不启用IK作为基准，再实现基础逐帧射线修正，最后实现支撑期目标锁定、摆动期释放、目标滞回/平滑及可达性约束。统一动画、角色速度、地形、相机和设备条件，按场景重复测试。记录足端离地误差、支撑滑移距离、穿地/悬空帧比例、躯干俯仰偏差、目标速度变化及平均/峰值单帧耗时；统计结果如实报告，不预设提升数值。 / 实验场景至少包括平地、连续起伏、上坡、下坡、台阶與高速转向；分析不同地形与速度下的失效模式及参数敏感性。 / （2）主要技术路线 / 技术路线如图1所示：工程与骨骼核查 → 建立动画基线及测试地形 → 读取动画流足端姿态 → 查询地面高度和法线 → 判别支撑/摆动状态 → 生成、锁定并约束足端目标 → IK求解与身体姿态协调 → 记录误差、滑移、画面及耗时 → 对照分析。 / 图1 技术路线图 / 2. 研究进度安排 / 研究进度安排：阶段一完成文献梳理和开题材料；阶段二核查Rig求值时序并搭建地形测试场景；阶段三实现基线和支撑目标稳定策略；阶段四开展对照测试、整理数据并撰写论文；阶段五依据导师意见修改定稿并准备答辩。具体日期按学院进度表填写。 / 五、参考文献 /  / [1] Skrba L, Reveret L, Hétroy F, Cani M-P, O’Sullivan C. Animating Quadrupeds: Methods and Applications[J]. Computer Graphics Forum, 2009, 28(6):1541-1560. DOI:10.1111/j.1467-8659.2008.01312.x. / [2] Burdka Ł, Rohleder P. Applied Inverse Kinematics for Bipedal Characters Moving on the Diverse Terrain[J]. Machine Graphics & Vision, 2017, 26(1/4): 1-15. DOI:10.22630/MGV.2017.26.1.1. / [3] Glardon P, Boulic R, Thalmann D. Robust On-line Adaptive Footplant Detection and Enforcement for Locomotion[J]. The Visual Computer, 2006, 22(3):194-209. DOI:10.1007/s00371-006-0376-9. / [4] Miller M, Holden D, Al-Ashqar R, et al. Carpet Unrolling for Character Control on Uneven Terrain[C]//MIG 2015. New York: ACM, 2015:193-198. DOI:10.1145/2822013.2822031. / [5] Abdul Karim A, Gaudin T, Meyer A, et al. Procedural Locomotion of Multilegged Characters in Dynamic Environments[J]. Computer Animation and Virtual Worlds, 2013, 24(1):3-15. DOI:10.1002/cav.1467. / [6] Zhang H, Starke S, Komura T, et al. Mode-Adaptive Neural Networks for Quadruped Motion Control[J]. ACM Transactions on Graphics, 2018, 37(4):145. DOI:10.1145/3197517.3201366. / [7] Alvarado E, Paliard C, Rohmer D, et al. Real-Time Locomotion on Soft Grounds With Dynamic Footprints[J]. Frontiers in Virtual Reality, 2022, 3:801856. DOI:10.3389/frvir.2022.801856. / [8] Alvarado E, Argudo O, Rohmer D, et al. TRAIL: Simulating the Impact of Human Locomotion on Natural Landscapes[J]. The Visual Computer, 2024, 40: 1-20. DOI:10.1007/s00371-024-03506-z. / [9] Aristidou A, Lasenby J, Chrysanthou Y, et al. Inverse Kinematics Techniques in Computer Graphics: A Survey[J]. Computer Graphics Forum, 2018, 37(6):35-58. DOI:10.1111/cgf.13310. / [10] Raibert M H, Hodgins J K. Animation of Dynamic Legged Locomotion[J]. Computer Graphics, 1991, 25(4):349-358. DOI:10.1145/127719.122738 / [11] Kovar L, Gleicher M, Pighin F. Motion Graphs[J]. ACM Transactions on Graphics, 2002, 21(3):473-482. DOI:10.1145/566654.566605. / [12] Gleicher M. Retargetting Motion to New Characters[C]//Proceedings of SIGGRAPH 1998. New York: ACM, 1998:33-42. DOI:10.1145/280814.280820. / [13] Kwon T, Lee Y, van de Panne M. Fast and Flexible Multilegged Locomotion Using Learned Centroidal Dynamics[J]. ACM Transactions on Graphics, 2020, 39(4):46. DOI:10.1145/3386569.3392432. / [14] Kwiatkowski A, Alvarado E, Kalogeiton V, et al. A Survey on Reinforcement Learning Methods in Character Animation[J]. Computer Graphics Forum, 2022, 41(2):613-639. DOI:10.1111/cgf.14504. / [15] Zordan V B, Hodgins J K. Motion Capture-Driven Simulations That Hit and React[C]//Proceedings of the 2002 ACM SIGGRAPH/Eurographics Symposium on Computer Animation. 2002:89-96. DOI:10.1145/545261.545276. / [16] Unity Technologies. Animation Rigging: Two Bone IK Constraint[EB/OL]. Unity Manual. https://docs.unity3d.com/Packages/com.unity.animation.rigging@1.2/manual/constraints/TwoBoneIKConstraint.html.
+R1: 六、指导老师意见 / （选题意义，文献综述、外文翻译完成情况，工作量和难易度评价，是否同意开题，100字以上） /  / 签名：  / 		    年   月   日
+R2: 七、学院意见 /  / 学院负责人签名： /    年   月   日
+TABLE 2 6x4
+R0: 参加开题报告会的主要人员 | 参加开题报告会的主要人员 | 参加开题报告会的主要人员 | 参加开题报告会的主要人员
+R1: 姓 名 | 职 称 | 姓 名 | 职 称
+R2:  |  |  | 
+R3:  |  |  | 
+R4:  |  |  | 
+R5: 开题报告提出的主要问题及回答情况： /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /                                                 记录人： /                                                      年    月    日 | 开题报告提出的主要问题及回答情况： /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /                                                 记录人： /                                                      年    月    日 | 开题报告提出的主要问题及回答情况： /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /                                                 记录人： /                                                      年    月    日 | 开题报告提出的主要问题及回答情况： /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /  /                                                 记录人： /                                                      年    月    日
+
+### 本科毕业论文(设计)文献综述.docx
+P0: 本科毕业论文(设计)文献综述
+P2: 文献综述（主要包括国内外现状、研究方向、进展情况、存在问题、参考文献等）
+P3: 复杂地形下动画驱动四足角色的运动适配方法研究与实现：动画驱动四足角色复杂地形运动适配研究综述
+P4: 引言
+P5: 四足角色的动画驱动方法能够以较低运行成本保留艺术家制作的步态特征，但动画足端轨迹通常按平地或固定地面制作。当角色进入坡面、台阶和起伏地表时，预制轨迹与真实接触位置不再一致，常出现脚掌悬空、穿入地表、支撑期间滑动以及身体与地形姿态不协调等现象。逆向运动学（Inverse Kinematics，IK）可以在给定末端目标后反求关节姿态，因此常被用作动画后的局部修正手段。对于游戏中的高速四足角色，单纯逐帧射线检测并把脚移动到命中点，仍可能因接触状态误判、地面法线突变、目标重算和动画求值时序问题而产生抖动。本文围绕动画驱动四足角色，归纳足端接触修正、支撑目标稳定、躯干补偿及实验评价等研究脉络，并讨论其在实时工程中的适用边界。
+P6: 国内外现状
+P7: 早期角色动画研究主要通过运动学、物理仿真或动作数据构造自然运动。四足动画综述指出，动物运动数据采集、适配动物骨骼结构以及在运动学与物理方法之间取舍，都是四足角色动画的基础难点[1]。数据驱动方法可以保留动作风格，但需要覆盖不同速度、地形和步态的素材；物理方法可显式描述受力，却增加参数与调试成本。游戏工程通常采用混合方式：主体动作仍由动画驱动，IK或程序化后处理负责修正接触和局部姿态。
+
+在地形适配方面，Burdka和Rohleder提出在实时检查环境后，将IK作为现有动画的程序化后处理，以减轻角色腿部悬空或穿入环境的问题[2]。这一类方法容易集成到既有动画管线，关键在于环境采样点、地面命中筛选和腿部关节可达性。Glardon等进一步研究在线足底接触检测与约束施加，利用适应运动类型的阈值识别足底接触，再通过数值IK保持足底约束；他们还通过运动预判使约束起始姿态过渡平滑[3]。这说明足端纠正的时机与目标连续性和IK算法本身同样重要。
+
+Miller等提出Carpet Unrolling方法，把局部坐标关系映射到沿地形展开的表面，以求取身体部位在起伏地形上的轨迹；该方法强调由地形几何直接适配多部位运动，并面向实时角色动画[4]。Abdul Karim等构建由角色控制器、步态/节奏管理器、三维路径构造器和足迹规划器组成的多足程序化运动系统，实时生成足印及脚、骨盆轨迹[5]。这类工作更偏向程序化产生运动，不直接等价于“保留既有马匹动画并只修正足端”的策略，但提供了把步态相位和足迹规划显式纳入系统的思路。
+
+四足数据驱动研究进一步处理多种周期和非周期动作。Zhang等提出Mode-Adaptive Neural Networks，通过运动预测网络和门控网络组合专门化权重，以减少对动作分段标注的依赖并生成响应式四足运动[6]。这类学习方法能表达丰富运动模式，但需要运动数据、训练和模型部署，研究目标与轻量级IK后处理不同。整体而言，国外研究已形成从局部接触约束到程序化步态、数据驱动控制和环境交互的连续谱系。国内公开研究和工程实践也关注Unity骨骼约束、地面检测和动画后处理，但针对高速动画驱动四足角色的目标连续性、求值时序与可重复指标的系统比较仍有进一步研究空间。
+P8: 研究方向
+P9: 现有方法可按修正范围分为三层。第一层只调整足端：从动画流读取当前足端位置，沿角色重力方向或预设方向查询地面，再把目标位置送入两骨IK约束。其实现简单，适用于小幅地面高度变化，但容易产生脚步粘地或目标跳变。第二层显式管理支撑与摆动状态：支撑期间锁定接触点或缓慢更新目标，摆动期间依据动画轨迹释放并跨越障碍；目标切换采用滞回、权重渐变和最大速度限制，减少临界状态的频繁切换。第三层联动身体姿态和整体运动：依据支撑足、地面法线及角色速度微调躯干俯仰或高度，使腿部修正不必承担全部地形差异。
+
+对于本课题，适宜先采用“动画保持主体风格、程序识别支撑状态并修正少量目标、IK完成局部求解”的混合策略。检测阶段需对触发器、不可行走表面和台阶边缘作筛选；求解阶段需限制目标在腿部可达范围内，并处理射线漏检时回退至动画姿态；身体补偿需设定幅度上限，避免马体骨骼拉伸或姿态突变。若速度升高，应提高支撑状态稳定性，避免每帧把足端无条件拉向新命中点。
+P10: 进展情况
+P11: 近年来研究逐渐把足端位置、身体平衡、运动相位和环境响应放在同一控制链路中讨论。Alvarado等的软地面研究从动画驱动角色出发，结合简化刚体控制、足端IK和地形形变，分析角色运动与软地面的双向影响[7]；其方法表明即便使用运动学动画，也可通过额外的平衡控制让身体姿态随坡度产生动态变化。TRAIL研究则将足部分成脚跟与脚尖，按距离地面的情况调整局部朝向，并根据角色运动和地面材料估计足部作用，进一步模拟植物与土壤的短期变化[8]。这些工作扩展了地形适配的物理与环境维度，但其足部模型、地面形变和计算流程不宜不加取舍地移植到本课题。
+
+从工程实现看，研究趋势是分层：全局根节点负责移动与粗略平衡，局部足部IK负责接触精度；不同层级以清晰的更新顺序协作。Unity Animation Rigging的约束系统提供双骨IK组件，可在目标Transform驱动下求解上、下肢链条[16]。但通用组件不会自动识别马匹步态支撑相，也不会替项目解决Job采样和IK求解的帧时序。故工程验证应包括：动画Job读取是否对应当前帧姿态，脚本在Rig求解前还是后写入目标，场景变速时的延迟，以及目标与地面法线过滤对画面的影响。
+P12: 存在问题
+P13: 文献与工程实践显示仍有几类问题。其一，足端检测不等于支撑判定：射线命中地面只能说明脚附近存在表面，无法判断该足正处于承重支撑还是摆动经过。若不识别动画相位，摆动脚会被吸到地面，支撑脚也可能在每帧重新定位而产生滑动。其二，单射线在地形边缘、窄台阶和不规则网格上不稳定；法线突变会造成足端旋转跳变，目标点又可能超出腿部长度。其三，高速运动对更新延迟敏感，过度平滑会跟不上角色，缺乏平滑则产生抖动；因此需同时约束位置变化速度与允许跟随误差。其四，四足角色四条腿的相位与身体姿态相互影响，逐腿独立纠正可能导致骨骼拉伸或躯干扭曲。
+
+此外，许多研究对象是双足角色、机器人或纯程序化步态，不能直接证明某一方法对动画驱动马匹有效；不同模型的骨架长度、动画质量、运动速度和地形网格都会影响效果。现有SBR工程中的HorseGroundFootIK已实现采样与诊断接口，但地面纠正段落处于注释状态，当前无法把它作为已经验证的贴地系统。后续需先确认Animation Rigging求值时序，再实现稳定策略，并通过固定条件实验比较基线与改进方案。实验应记录地面距离误差、支撑期滑移、穿地/悬空帧数、身体姿态偏差和帧耗时；在数据完成前，不对改善比例作结论。
+P15: 参考文献
+P17: [2] Burdka Ł, Rohleder P. Applied Inverse Kinematics for Bipedal Characters Moving on the Diverse Terrain[J]. Machine Graphics & Vision, 2017, 26(1/4): 1-15. DOI:10.22630/MGV.2017.26.1.1.
+P18: [3] Glardon P, Boulic R, Thalmann D. Robust On-line Adaptive Footplant Detection and Enforcement for Locomotion[J]. The Visual Computer, 2006, 22(3):194-209. DOI:10.1007/s00371-006-0376-9.
+P19: [4] Miller M, Holden D, Al-Ashqar R, et al. Carpet Unrolling for Character Control on Uneven Terrain[C]//MIG 2015. New York: ACM, 2015:193-198. DOI:10.1145/2822013.2822031.
+P20: [5] Abdul Karim A, Gaudin T, Meyer A, et al. Procedural Locomotion of Multilegged Characters in Dynamic Environments[J]. Computer Animation and Virtual Worlds, 2013, 24(1):3-15. DOI:10.1002/cav.1467.
+P21: [6] Zhang H, Starke S, Komura T, et al. Mode-Adaptive Neural Networks for Quadruped Motion Control[J]. ACM Transactions on Graphics, 2018, 37(4):145. DOI:10.1145/3197517.3201366.
+P22: [7] Alvarado E, Paliard C, Rohmer D, et al. Real-Time Locomotion on Soft Grounds With Dynamic Footprints[J]. Frontiers in Virtual Reality, 2022, 3:801856. DOI:10.3389/frvir.2022.801856.
+P23: [8] Alvarado E, Argudo O, Rohmer D, et al. TRAIL: Simulating the Impact of Human Locomotion on Natural Landscapes[J]. The Visual Computer, 2024, 40: 1-20. DOI:10.1007/s00371-024-03506-z.
+P24: [9] Aristidou A, Lasenby J, Chrysanthou Y, et al. Inverse Kinematics Techniques in Computer Graphics: A Survey[J]. Computer Graphics Forum, 2018, 37(6):35-58. DOI:10.1111/cgf.13310.
+P25: [10] Raibert M H, Hodgins J K. Animation of Dynamic Legged Locomotion[J]. Computer Graphics, 1991, 25(4):349-358. DOI:10.1145/127719.122738
+P26: [11] Kovar L, Gleicher M, Pighin F. Motion Graphs[J]. ACM Transactions on Graphics, 2002, 21(3):473-482. DOI:10.1145/566654.566605.
+P27: [12] Gleicher M. Retargetting Motion to New Characters[C]//Proceedings of SIGGRAPH 1998. New York: ACM, 1998:33-42. DOI:10.1145/280814.280820.
+P28: [13] Kwon T, Lee Y, van de Panne M. Fast and Flexible Multilegged Locomotion Using Learned Centroidal Dynamics[J]. ACM Transactions on Graphics, 2020, 39(4):46. DOI:10.1145/3386569.3392432.
+P29: [14] Kwiatkowski A, Alvarado E, Kalogeiton V, et al. A Survey on Reinforcement Learning Methods in Character Animation[J]. Computer Graphics Forum, 2022, 41(2):613-639. DOI:10.1111/cgf.14504.
+P30: [15] Zordan V B, Hodgins J K. Motion Capture-Driven Simulations That Hit and React[C]//Proceedings of the 2002 ACM SIGGRAPH/Eurographics Symposium on Computer Animation. 2002:89-96. DOI:10.1145/545261.545276.
+P31: [16] Unity Technologies. Animation Rigging: Two Bone IK Constraint[EB/OL]. Unity Manual. https://docs.unity3d.com/Packages/com.unity.animation.rigging@1.2/manual/constraints/TwoBoneIKConstraint.html.
+TABLE 0 5x4
+R0: 学  院 | 中医药人工智能学院 | 专  业 | 
+R1: 姓  名 |  | 学  号 | 
+R2: 指导老师 |  | 职  称 | 
+R3: 合作老师 |  | 职  称 | 
+R4: 题  目 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现 | 复杂地形下动画驱动四足角色的运动适配方法研究与实现

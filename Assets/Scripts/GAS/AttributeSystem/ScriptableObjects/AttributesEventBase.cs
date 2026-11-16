@@ -12,7 +12,6 @@ namespace SBR.GAS.AttributeSystem.ScriptableObjects
             ref AttributeValue newAttributeValue
         );
 
-
         public abstract void PostAttributeChange(   //属性更新后调用
             AttributeSystemBehaviour attributeSystem,
             ref AttributeValue oldAttributeValue,

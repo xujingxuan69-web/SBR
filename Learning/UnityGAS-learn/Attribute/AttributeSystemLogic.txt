@@ -1,7 +1,50 @@
-AttributeSystem
+AttributeSystem——①定义；②角色初始数据；③运行时状态；④计算；⑤变化通知
 
-AttributeValueCalculator-定义计算接口，声明初始化和当前值的计算规则
+①定义
+ScriptableObjects/AttributeSO-定义属性，选择具体的初始化和当前值的计算规则(未自定义拓展情况下为默认计算规则)
 
-AttributeSO-定义属性，选择具体的初始化和当前值的计算规则，因为不同规则可能有不同的计算方式，当然，我的项目里并没有特殊的计算规则，所以使用的是AttributeValueCalculator声明的默认规则
+AttributeValueCalculator-定义计算接口IAttributeValueCalculator的Calculate方法，声明初始化和当前值的计算规则InitialAttributeValueCalculator和CurrentAttributeValueCalculator，为AttributeSO提供默认Calculate计算规则
+[
+Extra1	InitialAttributeValueCalculator-Calculate将数值初始化为baseValue
+Extra2	CurrentAttributeValueCalculator-Calculate按照特殊规则计算当前数值
+]
 
-AttributeSystemBehaviour-
+②角色初始数据
+
+
+
+
+
+AttributeSystemBehaviour-声明固定格式的事件PreAttributeChange和PostAttributeChange，用于
+
+
+
+使用规则
+
+创建AttributeSO
+
+
+
+
+
+
+
+
+
+
+AttributeSystem——①定义；②角色初始数据；③运行时状态；④计算；⑤变化通知
+
+①定义
+ScriptableObjects/AttributeSO-定义属性，选择具体的初始化和当前值的计算规则(未自定义拓展情况下为默认计算规则)
+
+AttributeValueCalculator-定义计算接口IAttributeValueCalculator的Calculate方法，声明初始化和当前值的计算规则InitialAttributeValueCalculator和CurrentAttributeValueCalculator，为AttributeSO提供默认Calculate计算规则
+[
+Extra1	InitialAttributeValueCalculator-Calculate将数值初始化为baseValue
+Extra2	CurrentAttributeValueCalculator-Calculate按照特殊规则计算当前数值
+]
+
+②角色初始数据
+
+
+
+我目前推进到这里了，接下来要先弄哪部分

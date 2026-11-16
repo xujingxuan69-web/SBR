@@ -19,7 +19,7 @@ namespace SBR.GAS.AttributeSystem.Components
 
         [SerializeField] private bool _initOnAwake = true;
 
-        [SerializeField, Tooltip("")]
+        [SerializeField, Tooltip("属性变化前后调用的事件逻辑")]
         private List<AttributesEventBase> _attributeEvents = new();
     }
 }
