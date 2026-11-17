@@ -1,0 +1,15 @@
+概述
+InspectorReadOnlyField 使用 Unity 原生控件绘制序列化字段，但不把 Inspector 中的修改应用回原对象。控件仍可交互，重绘后恢复原值。
+
+
+用法
+为需要以临时序列化副本绘制的字段添加 InspectorReadOnlyField。私有字段仍需 SerializeField。
+
+
+示例
+[SerializeField, InspectorReadOnlyField]
+private string status; // Inspector 中的交互不会保存回原对象
+
+
+推荐场景
+查看需要保留原生 Inspector 外观、但不应保存 Inspector 修改的序列化字段。该特性不会显示未序列化字段，也不会移除构建数据。

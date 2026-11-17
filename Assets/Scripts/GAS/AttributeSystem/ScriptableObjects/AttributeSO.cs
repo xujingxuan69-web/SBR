@@ -5,8 +5,10 @@ namespace SBR.GAS.AttributeSystem.ScriptableObjects
     [CreateAssetMenu(menuName = "SBR/GAS/Attributes/Attribute")]
     public class AttributeSO : ScriptableObject
     {
-        [field: SerializeField, TextArea, Tooltip("属性描述，仅供查看，不参与游戏逻辑")]
+        #if UNITY_EDITOR
+        [field: SerializeField, EditorOnlyMetadata, TextArea, Tooltip("属性描述，仅供查看，不参与游戏逻辑")]
         public string description { get; private set; }
+        #endif
 
         [field: SerializeReference, SubclassSelector, Tooltip("选择合适的初始值计算规则")]
         //SerializeReference-存储序列化字段，但不提供Inspector选中功能

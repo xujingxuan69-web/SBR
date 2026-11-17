@@ -1,8 +1,26 @@
 概述
-MergeHeader 用于合并父类与子类中标题相同的 Inspector 分组。标题比较不区分大小写。
+MergeHeader 合并 MonoBehaviour 继承层级中标题完全相同的 Inspector 分组，标题比较区分大小写。
+
 
 用法
-在字段上添加 [MergeHeader]；如果是属性，则使用 [field: MergeHeader]。
+字段使用 MergeHeader；自动属性使用 field: MergeHeader。相同标题的 Unity Header 也会并入该组。
 
-场景
-适用于子类需要在父类已有分组中添加字段的情况。相同标题的字段会显示在同一分组下，使 Inspector 层级更清晰。
+
+示例
+public class BaseCharacter : MonoBehaviour
+{
+    [MergeHeader("Movement")]
+    [SerializeField] private float moveSpeed;
+}
+
+public class PlayerCharacter : BaseCharacter
+{
+    [MergeHeader("Movement")]
+    [SerializeField] private float jumpHeight; // 与基类字段显示在同一分组
+}
+
+// 自动属性写法：[field: MergeHeader("Movement")]
+
+
+推荐场景
+将基类与派生类中属于同一模块的字段集中显示。没有 MergeHeader 标记时使用 Unity 默认 Inspector。

@@ -1,3 +1,6 @@
+2026/11/17 codex自制插件，EditorOnlyMetadata
+[之前还搞过一个InspectorInheritance，两个插件的用法在SBR/Learning中有记录]
+
 2026/11/12 调整部分参数以优化手感，继续推进GAS
 
 2026/11/10 去除马匹IK系统测试脚本并完善IK系统

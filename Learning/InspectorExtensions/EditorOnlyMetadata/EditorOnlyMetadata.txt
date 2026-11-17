@@ -1,3 +1,25 @@
-首先，我通过特殊地声明了某个参数，它被打上了特殊的编辑器标记，在之后，这个字段都可以被编辑器读取，并且显示在Inspector，但是，它不会对运行产生任何影响
+概述
+EditorOnlyMetadata 标记编辑器专用字段；ShowEditorOnlyMetadata 在引用字段下显示被引用对象上的标记字段。
 
-我的使用场景是在开发者对某个内容定义了一个描述，但是只能由开发者看见，方便开发，但是我又不想影响到游戏，而且打包时也不能让它被包括进去，包括当前插件，以给玩家更好的优化
+
+用法
+元数据字段放在 UNITY_EDITOR 条件编译块中，并符合 Unity 序列化规则。在引用字段上添加 ShowEditorOnlyMetadata。
+
+
+示例
+#if UNITY_EDITOR
+[SerializeField, EditorOnlyMetadata, TextArea]
+private string description;
+#endif
+
+#if UNITY_EDITOR
+[ShowEditorOnlyMetadata]
+#endif
+public AttributeSO Attribute; // 在此引用下显示 AttributeSO 的元数据
+
+// 普通字段标签与内容同行；TextArea 标签在上方，内容占整行。
+// 显示使用临时 SerializedObject，输入不会写回资源，重绘后恢复原值。
+
+
+推荐场景
+在配置列表或对象引用旁查看资源备注等编辑器专用信息。

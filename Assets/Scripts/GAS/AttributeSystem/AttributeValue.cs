@@ -15,7 +15,6 @@ namespace SBR.GAS.AttributeSystem
     {
         [field: SerializeField] public AttributeSO Attribute { get; set; }
         public float BaseValue { get; set; }
-
         public float CurrentValue { get; set; }
 
 

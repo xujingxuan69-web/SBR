@@ -38,6 +38,7 @@ namespace Emo.InspectorInheritance.Editor
         }
 
         private static readonly Dictionary<Type, Layout> Layouts = new Dictionary<Type, Layout>();
+        private readonly HashSet<string> drawnProperties = new HashSet<string>(StringComparer.Ordinal);
 
         [InitializeOnLoadMethod]
         private static void WarmLayoutsAfterScriptReload()
@@ -69,7 +70,7 @@ namespace Emo.InspectorInheritance.Editor
 
         private void DrawMergedLayout(Layout layout)
         {
-            var drawnProperties = new HashSet<string>(StringComparer.Ordinal);
+            drawnProperties.Clear();
             foreach (DisplayGroup group in layout.DisplayGroups)
             {
                 if (group.IsMerged && !string.IsNullOrEmpty(group.Name) && !group.HasUnityHeader)

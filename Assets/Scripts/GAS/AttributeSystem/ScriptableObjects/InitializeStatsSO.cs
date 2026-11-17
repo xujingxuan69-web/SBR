@@ -17,12 +17,10 @@ namespace SBR.GAS.AttributeSystem.ScriptableObjects
         public AttributeWithValue(AttributeSO attribute, float value)
         {
             Attribute = attribute;
-            Description = attribute.description;
             Value = value;
         }
 
-        public AttributeSO Attribute;
-        [SerializeField] private string Description;
+        [ShowEditorOnlyMetadata] public AttributeSO Attribute;
         public float Value;
     }
 }
